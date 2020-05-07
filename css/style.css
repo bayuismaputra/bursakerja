@@ -1,0 +1,26 @@
+.container-fluid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #0c9463;
+    height: 663px;
+}
+
+.login {
+    width: 25%;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 2px;
+    background-color: white;
+}
+
+
+.masuk {
+    background: #0c9463;
+    width: 137px;
+    margin-right: 5px;
+}
+
+.batal {
+    width: 137px;
+}
