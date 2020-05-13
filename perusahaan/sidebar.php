@@ -35,7 +35,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="?menu=ranking">
+            <a class="nav-link text-white" href="?menu=pengumuman">
                 <span class="icon"><i class="fas fa-chart-bar"></i></span>
                 <span class="text">Pengumuman</span>
             </a>

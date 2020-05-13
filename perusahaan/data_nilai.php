@@ -2,35 +2,39 @@
     <div class="container">
         <div class="judul-content">
             <h5><i class="fas fa-book-open mr-2"></i> DATA NILAI</h5>
-        </div>
-        <div class="content">
-
-            <h5><label for="">Pilih Lowongan</label></h5>
-            <div class="input-group mb-3">
-                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                    <option selected>--lowongan--</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <div class="input-group-append">
-                    <button class="btn btn-success" type="button">CEK</button>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-12">
+                    <form action="#" method="GET">
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                <option selected>Pilih lowongan</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="button">CEK</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <div class="table-responsive table-sm">
-                <table class="table table-bordered table-hover table">
-                    <tr>
-                        <thead class="tabel" align="center">
+        </div>
+        <div class="content">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTables">
+                    <thead class="tabel" align="center">
+                        <tr>
                             <th>No.</th>
                             <th>PELAMAR</th>
                             <th>NILAI</th>
-                        </thead>
-                    </tr>
+                        </tr>
+                    </thead>
                     <tr>
                         <td align="center">1</td>
                         <td>MENGUASAI BASIS DATA</td>
-                        <td align="center"><a href="" class="btn btn-success btn-sm"><i class="fas fa-book-open mr-1"></i> Penilain</a></td>
+                        <td align="center"><a href="?menu=penilaian_kriteria" class="btn btn-success btn-sm"><i class="fas fa-book-open mr-1"></i> Penilain</a></td>
                     </tr>
                 </table>
 
@@ -39,4 +43,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -66,6 +66,19 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                <div class="col-md-2">
+                                    <label class="control-label" for="status_uploud">Uploud File</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <select class="form-control" name="status_uploud" id="status_uploud">
+                                        <option value="benefit" <?php echo ($value['status_uploud'] == "benefit") ? "selected" : "" ?>>Ada</option>
+                                        <option value="cost" <?php echo ($value['status_uploud'] == "cost") ? "selected" : "" ?>>Tidak Ada</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 <div class="col-md-2"></div>
                                 <div class="col-md-10">
                                     <button type="submit" name="submit" class="btn btn-success">Simpan</button>

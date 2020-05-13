@@ -5,8 +5,8 @@
             <a class="btn btn-success mb-2" href="?menu=tambah_kriteria&id_lowongan=<?php echo $_GET['id_lowongan'] ?>"><i class="fa fa-plus mr-1"></i> Tambah</a>
         </div>
         <div class="content">
-            <div class="table-responsive table-sm">
-                <table class="table table-bordered table-hover table-striped">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTables">
                     <thead class="tabel" align="center">
                         <tr>
                             <th>No.</th>

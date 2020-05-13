@@ -44,18 +44,10 @@
                         <a href="#">Bayu Isma Putra</a>.
                     </p>
                 </div>
-
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <ul class="social-icons">
-                        <li><a class="facebook" href="#"></a></li>
-                        <li><a class="twitter" href="#"></a></li>
-                        <li><a class="Instagram" href="#"></a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </footer>
-    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
@@ -64,6 +56,14 @@
     <script src="bootstrap/js/popper.min.js">
     </script>
     <script src="bootstrap/js/bootstrap.min.js">
+    </script>
+    <script src="bootstrap/js/jquery.dataTables.min.js"></script>
+    <script src="bootstrap/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        // Call the dataTables jQuery plugin
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
     </script>
     </body>
 

@@ -69,8 +69,8 @@ include "require/koneksi.php";
                         <input type="Password" name="password" class="form-control" placeholder="Password">
                     </div>
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary masuk">Masuk</button>
-                <button type="submit" name="batal" class="btn btn-danger batal">Batal</button>
+                <button type="submit" name="submit" class="btn btn-primary tombol-masuk">Masuk</button>
+                <button type="submit" name="batal" class="btn btn-danger tombol-batal">Batal</button>
             </form>
         </div>
     </div>

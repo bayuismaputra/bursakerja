@@ -1,7 +1,7 @@
 <div class="col-md-10 main-container">
     <div class="container">
         <div class="judul-content">
-            <h5><i class="fas fa-tachometer-alt mr-2"></i> DATA RANKING</h5>
+            <h5><i class="fas fa-tachometer-alt mr-2"></i> PENGUMUMAN</h5>
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-12">
@@ -28,7 +28,7 @@
                         <tr>
                             <th>No.</th>
                             <th>PELAMAR</th>
-                            <th>NILAI RANKING</th>
+                            <th>HASIL</th>
                         </tr>
                     </thead>
                     <tr>
@@ -38,7 +38,7 @@
                     </tr>
                 </table>
 
-                <button class="btn btn-success"><i class="fas fa-calculator mr-1"></i> Hitung</button>
+                <button class="btn btn-success"><i class="fas fa-calculator mr-1"></i> Umumkan Hasil</button>
 
             </div>
         </div>

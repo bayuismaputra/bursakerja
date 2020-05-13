@@ -76,7 +76,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success btn-block">DAFTAR</button>
+                <button type="submit" class="btn tombol-daftar btn-success btn-block">DAFTAR</button>
                 <small class="text-center mt-2">Sudah Punya Akun ? <a href="login.php">Masuk</a> Sekarang</small>
                 <!-- <p class="text-center mb-2 "><small><i>Atau daftar dengan</i></small></p>
             <button class=" btn btn-light btn-block btn-outline-info text-center"><i class="fab fa-google"></i>  Daftar dengan Google</button>

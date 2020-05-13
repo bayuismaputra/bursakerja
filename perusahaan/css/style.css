@@ -112,6 +112,7 @@ body {
 }
 
 .main-container .judul-content {
+    border-radius: 2px;
     background: #fff;
     padding: 25px;
     display: flex;
@@ -127,6 +128,7 @@ body {
 }
 
 .main-container .content {
+    border-radius: 2px;
     background: #fff;
     padding: 25px;
     margin-right: 45px;
@@ -138,7 +140,9 @@ body {
 }
 
 .main-container button {
-    border-radius: 0;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
     color: #fff;
     background: #0c9463;
     border: 0;
@@ -148,12 +152,15 @@ body {
 
 .main-container button:hover {
     color: #fff;
+    background-color: #1ea876;
 }
 
-.main-container .content .tabel {
+/* .main-container .content .tabel {
+    border: 0;
+    border-color: #0c9463;
     background: #0c9463;
     color: #fff;
-}
+} */
 
 .main-container .content .input {
     display: flex;

@@ -4,9 +4,10 @@
             <h5><i class="fas fa-suitcase mr-2"></i> DATA LOWONGAN</h5>
             <a class="btn btn-success mb-2" href="?menu=tambah_lowongan&id_perusahaan=<?php echo $_SESSION['id_user'] ?>"><i class="fa fa-plus mr-1"></i> Tambah</a>
         </div>
+        
         <div class="content">
-            <div class="table-responsive table-sm">
-                <table class="table table-bordered table-hover table-striped">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTables" cellspacing="0">
                     <thead class="tabel" align="center">
                         <tr>
                             <th>No.</th>

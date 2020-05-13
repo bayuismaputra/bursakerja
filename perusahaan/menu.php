@@ -43,8 +43,8 @@ if (isset($_GET['menu'])) {
 	if ($menu == "edit_profil") {
 		include "../pelamar/edit_profil.php";
 	}
-	if ($menu == "pengumuman") {
-		include "../pelamar/pengumuman.php";
+	if ($menu == "pengumuman_pelamar") {
+		include "../pelamar/pengumuman_pelamar.php";
 	}
 	if ($menu == "detail_lowongan") {
 		include "../pelamar/detail_lowongan.php";
@@ -54,6 +54,12 @@ if (isset($_GET['menu'])) {
 	}
 	if ($menu == "lamaran") {
 		include "../pelamar/lamaran.php";
+	}
+	if ($menu == "pengumuman") {
+		include "pengumuman.php";
+	}
+	if ($menu == "penilaian_kriteria") {
+		include "penilaian_kriteria.php";
 	}
 } else {
 	include "dashboard_content.php";

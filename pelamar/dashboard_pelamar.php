@@ -21,16 +21,13 @@ session_start();
         <div class="top-navbar">
             <div class="brand">Bursa <span>SAW</span></div>
 
-            <div class="input-group col-md-5">
-                <form action="" method="GET">
-                    <input type="text" name="posisi" class="form-control" placeholder="Posisi atau Perusahaan" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <input type="text" name="kota" class="form-control kota" placeholder="Kota" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-success btn-sm" type="submit" name="menu" value="cari_lowongan" id="button-addon2">Cari lowongan</button>
-                        <!-- <a href="" class="btn btn-primary tombol">Cari lowongan</a> -->
-                    </div>
-                </form>
-            </div>
+            <form action="" method="GET" class="input-group col-lg-5">
+                <input type="text" name="posisi" class="form-control" placeholder="Posisi atau Perusahaan" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" name="kota" class="form-control kota" placeholder="Kota" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="submit" name="menu" value="cari_lowongan" id="button-addon2">Cari Lowongan</button>
+                </div>
+            </form>
             <div class="menu">
                 <div class="profile-wrap">
                     <div class="profile">

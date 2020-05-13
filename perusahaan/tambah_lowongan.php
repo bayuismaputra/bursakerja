@@ -22,9 +22,9 @@
                 $deskripsi = $_POST['deskripsi'];
                 $qry = $lowongan->InsertData($id_perusahaan, $nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi);
                 if ($qry) {
-                    echo "<script language='javascript'>alert('Data berhasil disimpan'); document.location='?menu=data_lowongan'</script>";
+                    echo "<script language='javascript'>alert('Data berhasil disimpan'); document.location='?menu=data_lowongan&id_perusahaan={$id_perusahaan}'</script>";
                 } else {
-                    echo "<script language='javascript'>alert('Data gagal disimpan!'); document.location='?menu=tambah_lowongan&id_lowongan={$id_lowongan}'</script>";
+                    echo "<script language='javascript'>alert('Data gagal disimpan!'); document.location='?menu=tambah_lowongan&id_perusahaan={$id_perusahaan}'</script>";
                 }
             }
 

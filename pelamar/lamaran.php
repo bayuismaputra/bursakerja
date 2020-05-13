@@ -4,28 +4,17 @@
             <h5><i class="fas fa-tachometer-alt mr-2"></i> LAMARAN</h5>
         </div>
         <div class="content">
-            <div class="table-responsive">
-                <table class="table table-bordered table table-hover table table-striped">
-                    <thead class="tabel" align="center">
-                        <tr>
-                            <th>No.</th>
-                            <th>LOWONGAN</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>it support</td>
-                            <td align="center">
-                                <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Pengumuman</a>
+            <table class="table table-borderless">
+                <tr>
+                    <td style="width: 200px;">kategori 1 </td>
+                    <td style="opacity: 50%;">input Kategori 1</td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">kategori 2 </td>
+                    <td style="opacity: 50%;">input kategori 2</td>
+                </tr>
 
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            </table>
         </div>
     </div>
 </div>
