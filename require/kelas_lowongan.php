@@ -9,7 +9,7 @@ class Lowongan extends Bursakerja
     function __construct()
     {
         try {
-            $this->sqlInsert = $this->bukaKoneksi()->prepare("insert into lowongan values ('', :nama_lowongan, :departemen, :gaji, :kota, :tanggal_buka, :tanggal_tutup, :pengalaman_kerja, :deskripsi, :id_perusahaan)");
+            $this->sqlInsert = $this->bukaKoneksi()->prepare("insert INTO `lowongan` VALUES (NULL, :nama_lowongan, :departemen, :gaji, :kota, :tanggal_buka, :tanggal_tutup, :pengalaman_kerja, :deskripsi, :id_perusahaan)");
             $this->sqlHapus = $this->bukaKoneksi()->prepare("delete from lowongan where id_lowongan = :id_lowongan");
             $this->sqlEdit = $this->bukaKoneksi()->prepare("update lowongan set nama_lowongan=:nama_lowongan, departemen=:departemen, gaji=:gaji, kota=:kota, tanggal_buka=:tanggal_buka, tanggal_tutup=:tanggal_tutup, pengalaman_kerja=:pengalaman_kerja, deskripsi=:deskripsi) where id_lowongan=:id_lowongan");
             $this->sqlUmumkan = $this->bukaKoneksi()->prepare("update lowongan set pengumuman=:pengumuman where id_lowongan=:id_lowongan");
@@ -32,7 +32,6 @@ class Lowongan extends Bursakerja
     function InsertData($id_perusahaan, $nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi)
     {
         try {
-            $this->sqlInsert->bindParam(':id_perusahaan', $id_perusahaan);
             $this->sqlInsert->bindParam(':nama_lowongan', $nama_lowongan);
             $this->sqlInsert->bindParam(':departemen', $departemen);
             $this->sqlInsert->bindParam(':gaji', $gaji);
@@ -41,6 +40,7 @@ class Lowongan extends Bursakerja
             $this->sqlInsert->bindParam(':tanggal_tutup', $tanggal_tutup);
             $this->sqlInsert->bindParam(':pengalaman_kerja', $pengalaman_kerja);
             $this->sqlInsert->bindParam(':deskripsi', $deskripsi);
+            $this->sqlInsert->bindParam(':id_perusahaan', $id_perusahaan);
             $this->sqlInsert->execute();
             return $this->sqlInsert;
         } catch (PDOException $e) {
