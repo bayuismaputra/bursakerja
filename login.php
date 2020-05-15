@@ -39,6 +39,12 @@ include "require/koneksi.php";
                     $_SESSION['username'] = $hak_akses['username'];
                     $_SESSION['email'] = $hak_akses['email'];
                     if ($hak_akses['hak_akses'] == 'perusahaan') {
+                        $perusahaan = $login->getDataperusahaan($hak_akses['id_user']);
+                        if ($perusahaan->rowCount() > 0) {
+                            $row = $perusahaan->fetch();
+                            $_SESSION['id_perusahaan'] = $row['id_perusahaan'];
+                        }
+
                         echo "<script language='javascript'>alert('Login Success'); document.location='perusahaan/dashboard.php'</script>";
                     } else if ($hak_akses['hak_akses'] == 'pelamar') {
                         echo "<script language='javascript'>alert('Login Success'); document.location='pelamar/dashboard_pelamar.php'</script>";

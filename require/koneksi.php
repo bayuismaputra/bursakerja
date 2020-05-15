@@ -26,8 +26,18 @@ class Bursakerja
             print $e->getMessage();
         }
     }
+    function getDataperusahaan($id_user)
+    {
+        try {
+            $sql = $this->bukaKoneksi()->prepare("select * from perusahaan where id_user=:id_user");
+            $sql->bindParam(':id_user', $id_user);
+            $sql->execute();
+            return $sql;
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
 }
-
 
 class Perusahaan extends Bursakerja
 {
@@ -177,14 +187,16 @@ class User extends Bursakerja
     }
 }
 
-class Pelamar extends Bursakerja{
+class Pelamar extends Bursakerja
+{
     private $sqlCekLamaran;
     private $sqlInsertAwal;
     private $sqlUploadBerkas;
     private $sqlSetNilai;
     private $sqlInsertAwalHitung;
 
-    function __construct(){
+    function __construct()
+    {
         $this->sqlCekLamaran = $this->bukaKoneksi()->prepare("select * from pelamar where id_user=:id_user and id_lowongan=:id_lowongan");
         $this->sqlInsertAwal = $this->bukaKoneksi()->prepare("insert into pelamar (id_user, id_lowongan, kriteria) values (:id_user, :id_lowongan, :kriteria)");
         $this->sqlUploadBerkas = $this->bukaKoneksi()->prepare("update pelamar set file=:file where id_user=:id_user and id_lowongan=:id_lowongan and kriteria=:kriteria");
@@ -192,75 +204,79 @@ class Pelamar extends Bursakerja{
         $this->sqlInsertAwalHitung = $this->bukaKoneksi()->prepare("insert into hitung (id_user, id_lowongan) values (:id_user, :id_lowongan)");
     }
 
-    function GetData($qry_custom){
-        try{
+    function GetData($qry_custom)
+    {
+        try {
             $sql = $this->bukaKoneksi()->prepare("select * from pelamar " . $qry_custom);
             $sql->execute();
             return $sql;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             print $e->getMessage();
         }
     }
 
-    function CekLamaran($id_user, $id_lowongan){
-        try{
+    function CekLamaran($id_user, $id_lowongan)
+    {
+        try {
             $this->sqlCekLamaran->bindParam(':id_user', $id_user);
             $this->sqlCekLamaran->bindParam(':id_lowongan', $id_lowongan);
             $this->sqlCekLamaran->execute();
             return $this->sqlCekLamaran;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             print $e->getMessage();
         }
     }
 
-    function InsertAwal($id_user, $id_lowongan, $kriteria){
-        try{
+    function InsertAwal($id_user, $id_lowongan, $kriteria)
+    {
+        try {
             $this->sqlInsertAwal->bindParam(':id_user', $id_user);
             $this->sqlInsertAwal->bindParam(':id_lowongan', $id_lowongan);
             $this->sqlInsertAwal->bindParam(':kriteria', $kriteria);
             $this->sqlInsertAwal->execute();
             return $this->sqlInsertAwal;
-        }catch (PDOException $e){
-            print $e->getMessage();
-        }	
-    }
-
-    function InsertAwalHitung($id_user, $id_lowongan){
-        try{
-            $this->sqlInsertAwalHitung->bindParam(':id_user', $id_user);
-            $this->sqlInsertAwalHitung->bindParam(':id_lowongan', $id_lowongan);
-            $this->sqlInsertAwalHitung->execute();
-            return $this->sqlInsertAwalHitung;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             print $e->getMessage();
         }
     }
 
-    function UploadBerkas($file, $id_user, $id_lowongan, $kriteria){
-        try{
+    function InsertAwalHitung($id_user, $id_lowongan)
+    {
+        try {
+            $this->sqlInsertAwalHitung->bindParam(':id_user', $id_user);
+            $this->sqlInsertAwalHitung->bindParam(':id_lowongan', $id_lowongan);
+            $this->sqlInsertAwalHitung->execute();
+            return $this->sqlInsertAwalHitung;
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
+
+    function UploadBerkas($file, $id_user, $id_lowongan, $kriteria)
+    {
+        try {
             $this->sqlUploadBerkas->bindParam(':file', $file);
             $this->sqlUploadBerkas->bindParam(':id_user', $id_user);
             $this->sqlUploadBerkas->bindParam(':id_lowongan', $id_lowongan);
             $this->sqlUploadBerkas->bindParam(':kriteria', $kriteria);
             $this->sqlUploadBerkas->execute();
             return $this->sqlUploadBerkas;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             print $e->getMessage();
         }
     }
 
-    function SetNilai($nilai, $id_user, $id_lowongan, $kriteria){
-        try{
+    function SetNilai($nilai, $id_user, $id_lowongan, $kriteria)
+    {
+        try {
             $this->sqlSetNilai->bindParam(':nilai', $nilai);
             $this->sqlSetNilai->bindParam(':id_user', $id_user);
             $this->sqlSetNilai->bindParam(':id_lowongan', $id_lowongan);
             $this->sqlSetNilai->bindParam(':kriteria', $kriteria);
             $this->sqlSetNilai->execute();
             return $this->sqlSetNilai;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             print $e->getMessage();
         }
     }
 }
-
-
