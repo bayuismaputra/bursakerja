@@ -61,6 +61,12 @@ if (isset($_GET['menu'])) {
 	if ($menu == "penilaian_kriteria") {
 		include "penilaian_kriteria.php";
 	}
+	if ($menu == "profil_perusahaan") {
+		include "../perusahaan/profil_perusahaan.php";
+	}
+	if ($menu == "edit_profil_perusahaan") {
+		include "../perusahaan/edit_profil_perusahaan.php";
+	}
 } else {
 	include "dashboard_content.php";
 }

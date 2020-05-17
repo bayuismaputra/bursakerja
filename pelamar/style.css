@@ -181,13 +181,23 @@ body {
 
 .main-container .content .tabel {
     background: #fff;
-    color: #fff;
+    color: #000;
 }
 
 .main-container .content .input {
     display: flex;
     align-items: center;
     font-weight: bold;
+}
+
+.main-container .content img {
+    width: 100%;
+    height: auto;
+    border: #1ea876;
+}
+
+.main-container .content .cari-lowongan {
+    margin-bottom: 5px;
 }
 
 .display-4 {
