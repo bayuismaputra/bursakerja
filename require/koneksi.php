@@ -37,6 +37,7 @@ class Bursakerja
             $e->getMessage();
         }
     }
+
     function getDatapelamar($id_user)
     {
         try {
@@ -143,6 +144,17 @@ class User extends Bursakerja
     {
         try {
             $sql = $this->bukaKoneksi()->prepare("select * from user " . $qry_custom);
+            $sql->execute();
+            return $sql;
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
+
+    function GetDataRinci($hak_akses, $id_user, $id)
+    {
+        try {
+            $sql = $this->bukaKoneksi()->prepare("select * from user inner join {$hak_akses} where id_user={$id_user} AND id_{$hak_akses}={$id}");
             $sql->execute();
             return $sql;
         } catch (PDOException $e) {

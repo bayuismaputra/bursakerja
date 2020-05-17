@@ -5,15 +5,25 @@
         </div>
         <div class="content">
             <div class="wrapper">
+
+                <?php
+                include("../require/koneksi.php");
+                $id_user = $_SESSION['id_user'];
+                $user = new User();
+                // printf($id_user);
+                $profile = $user->getData("where id_user={$id_user}");
+                $row = $profile->fetch(PDO::FETCH_ASSOC);
+                // echo $row['nama_lengkap'];
+                ?>
+
                 <form action="" method="POST">
-                    <input type="hidden" name="id_perusahaan" value="<?php echo $_GET['id_perusahaan'] ?>">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
                                 <label class="control-label" for="nama_pelamar">Nama Pelamar</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="nama_pelamar" class="form-control" id="nama_pelamar" placeholder="Nama Pelamar" required>
+                                <input type="text" name="nama_pelamar" value="<?= $row['nama_lengkap'] ?>" class="form-control" id="nama_pelamar" placeholder="Nama Pelamar" required>
                             </div>
                         </div>
                     </div>
