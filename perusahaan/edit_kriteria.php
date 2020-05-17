@@ -13,8 +13,9 @@
                 $nama_kriteria = $_POST['nama_kriteria'];
                 $tipe_kriteria = $_POST['tipe_kriteria'];
                 $bobot = $_POST['bobot'];
+                $status_uploud = $_POST['status_uploud'];
                 $id_lowongan = $_POST['id_lowongan'];
-                $qry = $kriteria->EditData($nama_kriteria, $tipe_kriteria, $bobot, $id_kriteria);
+                $qry = $kriteria->EditData($nama_kriteria, $tipe_kriteria, $bobot, $status_uploud, $id_kriteria);
 
                 if ($qry) {
                     echo "<script language='javascript'>alert('Data berhasil diedit'); document.location='?menu=data_kriteria&id_lowongan={$id_lowongan}'</script>";
@@ -71,8 +72,8 @@
                                 </div>
                                 <div class="col-md-10">
                                     <select class="form-control" name="status_uploud" id="status_uploud">
-                                        <option value="benefit" <?php echo ($value['status_uploud'] == "benefit") ? "selected" : "" ?>>Ada</option>
-                                        <option value="cost" <?php echo ($value['status_uploud'] == "cost") ? "selected" : "" ?>>Tidak Ada</option>
+                                        <option value="1" <?php echo ($value['status_uploud'] == "1") ? "selected" : "" ?>>Ada</option>
+                                        <option value="0" <?php echo ($value['status_uploud'] == "0") ? "selected" : "" ?>>Tidak Ada</option>
                                     </select>
                                 </div>
                             </div>

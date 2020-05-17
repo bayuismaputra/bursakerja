@@ -5,7 +5,7 @@
         </div>
         <div class="content">
             <div class="table-responsive">
-                <table class="table table-bordered table table-hover table table-striped">
+                <table class="table table-bordered table table-hover" id="dataTables">
                     <thead class="tabel" align="center">
                         <tr>
                             <th>No.</th>
@@ -15,7 +15,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td align="center">1</td>
                             <td>it support</td>
                             <td>lulus</td>
                         </tr>

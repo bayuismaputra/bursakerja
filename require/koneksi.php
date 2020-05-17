@@ -37,6 +37,17 @@ class Bursakerja
             $e->getMessage();
         }
     }
+    function getDatapelamar($id_user)
+    {
+        try {
+            $sql = $this->bukaKoneksi()->prepare("select * from pelamar where id_user=:id_user");
+            $sql->bindParam(':id_user', $id_user);
+            $sql->execute();
+            return $sql;
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
 }
 
 class Perusahaan extends Bursakerja

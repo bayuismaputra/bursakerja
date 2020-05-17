@@ -13,8 +13,9 @@
                 $nama_kriteria = $_POST['nama_kriteria'];
                 $tipe_kriteria = $_POST['tipe_kriteria'];
                 $bobot = $_POST['bobot'];
+                $status_uploud = $_POST['status_uploud'];
 
-                $qry = $kriteria->InsertData($id_lowongan, $nama_kriteria, $tipe_kriteria, $bobot);
+                $qry = $kriteria->InsertData($id_lowongan, $nama_kriteria, $tipe_kriteria, $bobot, $status_uploud);
 
                 if ($qry) {
                     echo "<script language='javascript'>alert('Data berhasil disimpan'); document.location='?menu=data_kriteria&id_lowongan={$id_lowongan}'</script>";
@@ -54,6 +55,19 @@
                         </div>
                         <div class="col-md-10">
                             <input type="text" name="bobot" class="form-control" id="bobot" placeholder="bobot" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="control-label" for="status_uploud">Uploud File</label>
+                        </div>
+                        <div class="col-md-10">
+                            <select class="form-control" name="status_uploud" id="status_uploud">
+                                <option value="1">Ada</option>
+                                <option value="0">Tidak Ada</option>
+                            </select>
                         </div>
                     </div>
                 </div>

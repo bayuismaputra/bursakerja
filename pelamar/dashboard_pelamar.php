@@ -13,6 +13,7 @@ session_start();
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap4.min.css">
     <title>Bursa Kerja</title>
 </head>
 
@@ -57,6 +58,14 @@ session_start();
             <script src="../bootstrap/js/popper.min.js">
             </script>
             <script src="../bootstrap/js/bootstrap.min.js">
+            </script>
+            <script src="../bootstrap/js/jquery.dataTables.min.js"></script>
+            <script src="../bootstrap/js/dataTables.bootstrap4.min.js"></script>
+            <script>
+                // Call the dataTables jQuery plugin
+                $(document).ready(function() {
+                    $('#dataTables').DataTable();
+                });
             </script>
 </body>
 

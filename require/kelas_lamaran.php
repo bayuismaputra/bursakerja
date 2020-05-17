@@ -1,5 +1,5 @@
-<?php require('koneksi.php');
-class Kriteria extends Bursakerja
+<?php //require('koneksi.php');
+class Lamaran extends Bursakerja
 {
     private $sqlDataLowongan;
     private $sqlInsert;
@@ -9,11 +9,10 @@ class Kriteria extends Bursakerja
 
     function __construct()
     {
-        $this->sqlDataLowongan = $this->bukaKoneksi()->prepare("select * from kriteria where id_lowongan=:id_lowongan");
-        $this->sqlInsert = $this->bukaKoneksi()->prepare("insert into kriteria values ('', :id_lowongan, :nama_kriteria, :tipe_kriteria, :bobot, :status_uploud)");
-        $this->sqlEdit = $this->bukaKoneksi()->prepare("update kriteria set nama_kriteria=:nama_kriteria, tipe_kriteria=:tipe_kriteria, bobot=:bobot, status_uploud=:status_uploud where id_kriteria=:id_kriteria");
-        $this->sqlHapus = $this->bukaKoneksi()->prepare("delete from kriteria where id_kriteria=:id_kriteria");
-        $this->sqlHapuskriteria = $this->bukaKoneksi()->prepare("delete from pelamar where id_lowongan=:id_lowongan and kriteria=:kriteria");
+        $this->sqlDataLowongan = $this->bukaKoneksi()->prepare("select * from lamaran where id_lamaran=:id_lamaran");
+        $this->sqlInsert = $this->bukaKoneksi()->prepare("insert into lamaran (`id_lamaran`, `id_pelamar`, `id_lowongan`, `id_kriteria`, `file`) values ('', :id_pelamar, :id_lowongan, :id_kriteria, :file)");
+        $this->sqlEdit = $this->bukaKoneksi()->prepare("update lamaran set nama_kriteria=:nama_kriteria, tipe_kriteria=:tipe_kriteria, bobot=:bobot, status_uploud=:status_uploud where id_kriteria=:id_kriteria");
+        $this->sqlHapus = $this->bukaKoneksi()->prepare("delete from lamaran where id_kriteria=:id_kriteria");
     }
 
     function GetData($qry_custom)
@@ -27,14 +26,24 @@ class Kriteria extends Bursakerja
         }
     }
 
-    function InsertData($id_lowongan, $nama_kriteria, $tipe_kriteria, $bobot, $status_uploud)
+    function GetDataPelamar($qry_custom)
     {
         try {
+            $sql = $this->bukaKoneksi()->prepare("select * from pelamar " . $qry_custom);
+            $sql->execute();
+            return $sql;
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
+
+    function InsertData($id_pelamar, $id_lowongan, $id_kriteria, $file)
+    {
+        try {
+            $this->sqlInsert->bindParam(':id_pelamar', $id_pelamar);
             $this->sqlInsert->bindParam(':id_lowongan', $id_lowongan);
-            $this->sqlInsert->bindParam(':nama_kriteria', $nama_kriteria);
-            $this->sqlInsert->bindParam(':tipe_kriteria', $tipe_kriteria);
-            $this->sqlInsert->bindParam(':bobot', $bobot);
-            $this->sqlInsert->bindParam(':status_uploud', $status_uploud);
+            $this->sqlInsert->bindParam(':id_kriteria', $id_kriteria);
+            $this->sqlInsert->bindParam(':file', $file);
             $this->sqlInsert->execute();
             return $this->sqlInsert;
         } catch (PDOException $e) {

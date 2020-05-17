@@ -180,7 +180,7 @@ body {
 }
 
 .main-container .content .tabel {
-    background: #0c9463;
+    background: #fff;
     color: #fff;
 }
 
@@ -201,4 +201,14 @@ body {
     top: 25px;
     opacity: 0.5;
     font-size: 90px;
+}
+
+.tombol-simpan {
+    background: #0c9463;
+    border-color: #0c9463;
+    color: #fff;
+}
+
+.tombol-simpan:hover {
+    background: #1ea876;
 }

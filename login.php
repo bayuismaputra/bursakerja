@@ -47,6 +47,12 @@ include "require/koneksi.php";
 
                         echo "<script language='javascript'>alert('Login Success'); document.location='perusahaan/dashboard.php'</script>";
                     } else if ($hak_akses['hak_akses'] == 'pelamar') {
+                        $pelamar = $login->getDatapelamar($hak_akses['id_user']);
+                        if ($pelamar->rowCount() > 0) {
+                            $row = $pelamar->fetch();
+                            $_SESSION['id_pelamar'] = $row['id_pelamar'];
+                        }
+
                         echo "<script language='javascript'>alert('Login Success'); document.location='pelamar/dashboard_pelamar.php'</script>";
                     } else {
                         echo "<script language='javascript'>alert('Login Success'); document.location='daftar.php'</script>";
