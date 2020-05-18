@@ -37,7 +37,6 @@ include "require/koneksi.php";
                     $_SESSION['nama_lengkap'] = $hak_akses['nama_lengkap'];
                     $_SESSION['hak_akses'] = $hak_akses['hak_akses'];
                     $_SESSION['username'] = $hak_akses['username'];
-                    $_SESSION['email'] = $hak_akses['email'];
                     if ($hak_akses['hak_akses'] == 'perusahaan') {
                         $perusahaan = $login->getDataperusahaan($hak_akses['id_user']);
                         if ($perusahaan->rowCount() > 0) {
