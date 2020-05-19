@@ -5,6 +5,7 @@
             <a class="btn btn-info mb-2" href="?menu=edit_profil"><i class="fa fa-edit"></i> Edit</a>
         </div>
         <div class="content">
+
             <!-- <table class="table table-borderless tabel-profil"> -->
             <?php
             include("../require/koneksi.php");
@@ -39,6 +40,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
