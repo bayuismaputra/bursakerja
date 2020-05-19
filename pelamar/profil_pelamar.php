@@ -10,23 +10,29 @@
                 include("../require/koneksi.php");
                 $id_user = $_SESSION['id_user'];
                 $user = new User();
-                print_r($_SESSION);
+                // print_r($_SESSION);
                 $profile = $user->getData("where id_user={$id_user}");
                 $row = $profile->fetch(PDO::FETCH_ASSOC);
                 // echo $row['nama_lengkap'];
                 ?>
+                <!-- comment -->
                 Disini tampilan lengkap data diri dari tabel user dan pelamar atau perusahaan, apabila data belum atau tidak lengkap, beri notifikasi untuk melengkapi data.
+                <hr>
+                <!-- .comment -->
                 <tr>
                     <td style="width: 200px;">Nama Lengkap </td>
                     <td style="opacity: 50%;"><?= $row['nama_lengkap'] ?></td>
                 </tr>
                 <tr>
                     <td style="width: 200px;">Email</td>
-                    <td style="opacity: 50%;"><?= $row['email'] ?></td>
+                    <td style="opacity: 50%;"></td>
                 </tr>
+                <!-- comment -->
                 <tr>
+
                     <td>data jenis kelamin, tanggal dan bulan lahir dan data lain yang perlu ditampilkan dari user dan detailnya</td>
                 </tr>
+                <!-- .comment -->
             </table>
         </div>
     </div>

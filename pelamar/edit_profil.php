@@ -9,6 +9,7 @@
                 <?php
                 include("../require/koneksi.php");
                 $id_user = $_SESSION['id_user'];
+                $hak_akses = $_SESSION['hak_akses'];
                 $user = new User();
                 // printf($id_user);
                 $profile = $user->getData("where id_user={$id_user}");
@@ -33,11 +34,10 @@
                                 <label class="control-label" for="jenis_kelamin">Jenis Kelamin</label>
                             </div>
                             <div class="col-md-10">
-                                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                    <option selected>--Jenis Kelamin--</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="custom-select" name="jenis_kelamin">
+                                    <option selected>Jenis Kelamin</option>
+                                    <option value="Laki-Laki">Laki - Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
                                 </select>
                             </div>
                         </div>
@@ -90,11 +90,10 @@
                                 <label class="control-label" for="status_nikah">Status Nikah</label>
                             </div>
                             <div class="col-md-10">
-                                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                    <option selected>--Status Nikah--</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="custom-select" name="status_nikah">
+                                    <option selected>Status Nikah</option>
+                                    <option value="Nikah">Nikah</option>
+                                    <option value="Belum Nikah">Belum Nikah</option>
                                 </select>
                             </div>
                         </div>
@@ -105,7 +104,7 @@
                                 <label class="control-label" for="alamat">Alamat</label>
                             </div>
                             <div class="col-md-10">
-                                <textarea class="form-control" name="alamat" id="alamat" rows="4"></textarea>
+                                <textarea class="form-control" name="alamat" id="alamat" rows="4">Alamat</textarea>
                             </div>
                         </div>
                     </div>
@@ -116,24 +115,19 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                    </div>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-10">
-                                <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                                <button type="submit" name="batal" class="btn btn-success">Batal</button>
-                            </div>
+                    <div class="form-group row">
+                        <div class="col-md-2"></div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                            <a href="#"><button type="button" class="btn btn-danger">Batal</button></a>
                         </div>
                     </div>
                 </form>
