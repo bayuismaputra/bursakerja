@@ -9,6 +9,12 @@ if (isset($_GET['menu'])) {
 	if ($menu == "tambah_lowongan") {
 		include "tambah_lowongan.php";
 	}
+	if ($menu == "edit_lowongan") {
+		include "edit_lowongan.php";
+	}
+	if ($menu == "hapus_lowongan") {
+		include "hapus_lowongan.php";
+	}
 	if ($menu == "tambah_kriteria") {
 		include "tambah_kriteria.php";
 	}
@@ -46,6 +52,7 @@ if (isset($_GET['menu'])) {
 	if ($menu == "pengumuman_pelamar") {
 		include "../pelamar/pengumuman_pelamar.php";
 	}
+
 	if ($menu == "detail_lowongan") {
 		include "../pelamar/detail_lowongan.php";
 	}
@@ -60,6 +67,12 @@ if (isset($_GET['menu'])) {
 	}
 	if ($menu == "penilaian_kriteria") {
 		include "penilaian_kriteria.php";
+	}
+	if ($menu == "profil_perusahaan") {
+		include "../perusahaan/profil_perusahaan.php";
+	}
+	if ($menu == "edit_profil_perusahaan") {
+		include "../perusahaan/edit_profil_perusahaan.php";
 	}
 } else {
 	include "dashboard_content.php";

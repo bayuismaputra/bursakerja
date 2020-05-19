@@ -59,7 +59,9 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-user"></i></div>
+                            <div class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </div>
                         </div>
                         <input type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap">
                     </div>
@@ -67,7 +69,9 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-user"></i></div>
+                            <div class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </div>
                         </div>
                         <input type="text" name="username" class="form-control" placeholder="username">
                     </div>
@@ -75,7 +79,9 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
+                            <div class="input-group-text">
+                                <i class="fas fa-unlock-alt"></i>
+                            </div>
                         </div>
                         <input type="Password" name="password" class="form-control" placeholder="Password">
                     </div>

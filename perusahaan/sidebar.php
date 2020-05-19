@@ -7,6 +7,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link active text-white" href="?menu=profil_perusahaan">
+                <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                <span class="text">Profil</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-white" href="?menu=data_lowongan">
                 <span class="icon"><i class="fas fa-suitcase"></i></span>
                 <span class="text">Data Lowongan</span>
