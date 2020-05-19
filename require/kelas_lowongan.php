@@ -62,14 +62,14 @@ class Lowongan extends Bursakerja
     function EditData($nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan)
     {
         try {
-            $this->sqlInsert->bindParam(':nama_lowongan', $nama_lowongan);
-            $this->sqlInsert->bindParam(':departemen', $departemen);
-            $this->sqlInsert->bindParam(':gaji', $gaji);
-            $this->sqlInsert->bindParam(':kota', $kota);
-            $this->sqlInsert->bindParam(':tanggal_buka', $tanggal_buka);
-            $this->sqlInsert->bindParam(':tanggal_tutup', $tanggal_tutup);
-            $this->sqlInsert->bindParam(':pengalaman_kerja', $pengalaman_kerja);
-            $this->sqlInsert->bindParam(':deskripsi', $deskripsi);
+            $this->sqlEdit->bindParam(':nama_lowongan', $nama_lowongan);
+            $this->sqlEdit->bindParam(':departemen', $departemen);
+            $this->sqlEdit->bindParam(':gaji', $gaji);
+            $this->sqlEdit->bindParam(':kota', $kota);
+            $this->sqlEdit->bindParam(':tanggal_buka', $tanggal_buka);
+            $this->sqlEdit->bindParam(':tanggal_tutup', $tanggal_tutup);
+            $this->sqlEdit->bindParam(':pengalaman_kerja', $pengalaman_kerja);
+            $this->sqlEdit->bindParam(':deskripsi', $deskripsi);
             $this->sqlEdit->bindParam(':id_lowongan', $id_lowongan);
             $this->sqlEdit->execute();
             return $this->sqlEdit;

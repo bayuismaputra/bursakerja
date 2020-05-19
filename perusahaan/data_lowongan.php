@@ -28,9 +28,9 @@
                         <td>Rp. ' . $value['gaji'] . '</td>
                         <td>' . $value['departemen'] . '</td>
                         <td align="center">
-                        <a href="?menu=data_kriteria&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-warning btn-sm"><i class="fas fa-clipboard-list mr-1"></i> Kriteria</a>
-                            <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit mr-1"></i> Edit</a>
-                            <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash mr-1"></i> Hapus</a>
+                            <a href="?menu=data_kriteria&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-warning btn-sm"><i class="fas fa-clipboard-list mr-1"></i> Kriteria</a>
+                            <a href="?menu=edit_lowongan&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-info btn-sm"><i class="fa fa-edit mr-1"></i> Edit</a>
+                            <a href="?menu=hapus_lowongan&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-danger btn-sm"><i class="fa fa-trash mr-1"></i> Hapus</a>
                         </td>
                         </tr>';
                         $no++;

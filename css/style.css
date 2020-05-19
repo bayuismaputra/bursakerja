@@ -17,7 +17,7 @@
 
 .tombol-masuk {
     background: #0c9463;
-    width: 137px;
+    width: 136px;
     margin-right: 5px;
     border-color: #0c9463;
 }
@@ -28,7 +28,7 @@
 }
 
 .tombol-batal {
-    width: 137px;
+    width: 136px;
 }
 
 .tombol-daftar {
@@ -139,13 +139,45 @@ body {
     cursor: pointer;
 }
 
+.container .judul-content {
+    border-radius: 2px;
+    background: #fff;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-right: 10px; */
+    font-family: 'viga', sans-serif;
+    color: #0c9463;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: justify;
+    border-left: 2px solid #0c9463;
+}
+
+.container .content {
+    border-radius: 2px;
+    background: #fff;
+    padding: 25px;
+    /* margin-right: 10px; */
+    font-family: 'Time New Roman', sans-serif;
+    margin-bottom: 10px;
+    text-align: justify;
+    padding-bottom: 10px;
+    border-left: 2px solid #0c9463;
+}
+
+.container .tampil-lowongan {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .container img {
     /* width: 410px;
     height: 250px; */
     margin-bottom: 10px;
     border-radius: 4px;
-
-
 }
 
 .container .btn {
