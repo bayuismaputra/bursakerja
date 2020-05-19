@@ -49,6 +49,7 @@
     text-decoration: none;
     list-style: none;
 
+
 }
 
 body {
@@ -162,6 +163,7 @@ body {
     padding: 25px;
     /* margin-right: 10px; */
     font-family: 'Time New Roman', sans-serif;
+    font-size: 15px;
     margin-bottom: 10px;
     text-align: justify;
     padding-bottom: 10px;

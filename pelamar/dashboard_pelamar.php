@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('../require/koneksi.php');
 ?>
 <!doctype html>
 <html lang="en">

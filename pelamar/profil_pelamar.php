@@ -8,7 +8,6 @@
 
             <!-- <table class="table table-borderless tabel-profil"> -->
             <?php
-            include("../require/koneksi.php");
             $id_user = $_SESSION['id_user'];
             $user = new User();
             print_r($_SESSION);

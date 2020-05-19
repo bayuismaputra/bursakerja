@@ -36,7 +36,7 @@
             <p><?php echo $value['tanggal_tutup']; ?></p>
             <p><?php echo 'Rp. ' . $value['gaji']; ?></p>
             <div align="right">
-                <a href="?menu=detail_lowongan&id_lowongan=<?php echo $value['id_lowongan']; ?>" class="btn btn-success"> Lamar</a>
+                <a href="?menu=lamaran&id_lowongan=<?php echo $value['id_lowongan']; ?>" class="btn btn-success"> Lamar</a>
             </div>
         </div>
         <br>

@@ -105,7 +105,7 @@
                                     <label class="control-label" for="deskripsi">Deskripsi</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <textarea name="deskripsi" value="<?php echo $value['deskripsi'] ?>" class="form-control" id="deskripsi" rows="4"></textarea>
+                                    <textarea name="deskripsi" class="form-control" id="deskripsi" rows="4"><?php echo $value['deskripsi'] ?></textarea>
                                 </div>
                             </div>
                         </div>

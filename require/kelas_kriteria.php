@@ -1,4 +1,4 @@
-<?php require('koneksi.php');
+<?php
 class Kriteria extends Bursakerja
 {
     private $sqlDataLowongan;
@@ -13,7 +13,7 @@ class Kriteria extends Bursakerja
         $this->sqlInsert = $this->bukaKoneksi()->prepare("insert into kriteria values ('', :id_lowongan, :nama_kriteria, :tipe_kriteria, :bobot, :status_uploud)");
         $this->sqlEdit = $this->bukaKoneksi()->prepare("update kriteria set nama_kriteria=:nama_kriteria, tipe_kriteria=:tipe_kriteria, bobot=:bobot, status_uploud=:status_uploud where id_kriteria=:id_kriteria");
         $this->sqlHapus = $this->bukaKoneksi()->prepare("delete from kriteria where id_kriteria=:id_kriteria");
-        $this->sqlHapuskriteria = $this->bukaKoneksi()->prepare("delete from pelamar where id_lowongan=:id_lowongan and kriteria=:kriteria");
+        $this->sqlHapusKriteria = $this->bukaKoneksi()->prepare("delete from kriteria where id_lowongan=:id_lowongan");
     }
 
     function GetData($qry_custom)
@@ -79,13 +79,12 @@ class Kriteria extends Bursakerja
         }
     }
 
-    function HapusKriteriaLamaran($id_lowongan, $kriteria)
+    function HapusKriteriaLowongan($id_lowongan)
     {
         try {
-            $this->sqlHapusLamaran->bindParam(':id_lowongan', $id_lowongan);
-            $this->sqlHapusLamaran->bindParam(':kriteria', $kriteria);
-            $this->sqlHapusLamaran->execute();
-            return $this->sqlHapusLamaran;
+            $this->sqlHapusKriteria->bindParam(':id_lowongan', $id_lowongan);
+            $this->sqlHapusKriteria->execute();
+            return $this->sqlHapusKriteria;
         } catch (PDOException $e) {
             print $e->getMessage();
         }

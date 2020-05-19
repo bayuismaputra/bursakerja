@@ -7,7 +7,6 @@
             <div class="wrapper">
 
                 <?php
-                include("../require/koneksi.php");
                 $id_user = $_SESSION['id_user'];
                 $hak_akses = $_SESSION['hak_akses'];
                 $user = new User();

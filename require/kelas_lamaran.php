@@ -12,7 +12,7 @@ class Lamaran extends Bursakerja
         $this->sqlDataLowongan = $this->bukaKoneksi()->prepare("select * from lamaran where id_lamaran=:id_lamaran");
         $this->sqlInsert = $this->bukaKoneksi()->prepare("insert into lamaran (`id_lamaran`, `id_pelamar`, `id_lowongan`, `id_kriteria`, `file`) values ('', :id_pelamar, :id_lowongan, :id_kriteria, :file)");
         $this->sqlEdit = $this->bukaKoneksi()->prepare("update lamaran set nama_kriteria=:nama_kriteria, tipe_kriteria=:tipe_kriteria, bobot=:bobot, status_uploud=:status_uploud where id_kriteria=:id_kriteria");
-        $this->sqlHapus = $this->bukaKoneksi()->prepare("delete from lamaran where id_kriteria=:id_kriteria");
+        $this->sqlHapusLamaran = $this->bukaKoneksi()->prepare("delete from lamaran where id_lowongan=:id_lowongan");
     }
 
     function GetData($qry_custom)
@@ -88,11 +88,10 @@ class Lamaran extends Bursakerja
         }
     }
 
-    function HapusKriteriaLamaran($id_lowongan, $kriteria)
+    function HapusLamaran($id_lowongan)
     {
         try {
             $this->sqlHapusLamaran->bindParam(':id_lowongan', $id_lowongan);
-            $this->sqlHapusLamaran->bindParam(':kriteria', $kriteria);
             $this->sqlHapusLamaran->execute();
             return $this->sqlHapusLamaran;
         } catch (PDOException $e) {

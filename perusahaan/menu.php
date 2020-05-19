@@ -1,7 +1,9 @@
 <?php
 if (isset($_GET['menu'])) {
 	$menu = $_GET['menu'];
-
+	if ($menu == "halaman_utama") {
+		include "../index.php";
+	}
 	if ($menu == "data_pelamar") {
 		include "data_pelamar.php";
 	}
