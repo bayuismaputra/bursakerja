@@ -18,6 +18,7 @@
 <div class="container">
     <div class="row">
         <?php include('menu_utama.php'); ?>
+        <?php include('require/kelas_lowongan.php'); ?>
         <?php
         $tampil_lowongan = new lowongan();
         $data_lowongan = $tampil_lowongan->GetData("");
