@@ -20,8 +20,12 @@ if (isset($_GET['menu'])) {
 	if ($menu == "tambah_kriteria") {
 		include "tambah_kriteria.php";
 	}
+
 	if ($menu == "edit_kriteria") {
 		include "edit_kriteria.php";
+	}
+	if ($menu == "hapus_kriteria") {
+		include "hapus_kriteria.php";
 	}
 	if ($menu == "data_lowongan") {
 		include "data_lowongan.php";

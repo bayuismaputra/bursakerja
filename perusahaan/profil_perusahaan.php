@@ -5,17 +5,26 @@
             <a class="btn btn-info mb-2" href="?menu=edit_profil_perusahaan"><i class="fa fa-edit"></i> Edit</a>
         </div>
         <div class="content">
-            <table class="table table-borderless">
-                <tr>
-                    <td style="width: 200px;">nama lengkap </td>
-                    <td style="opacity: 50%;">Bayu Isma Putra</td>
-                </tr>
-                <tr>
-                    <td style="width: 200px;">nama lengkap </td>
-                    <td style="opacity: 50%;">Bayu Isma Putra</td>
-                </tr>
+            <div class="row profil-perusahaan">
+                <div class="col-lg-3">
+                    <img src="" alt="Logo Perusahaan">
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <ul>
+                                <li><i class="fas fa-user"></i>Nama Perusahaan</li>
+                                <li><i class="fas fa-envelope-square"></i>Email</li>
+                                <li><i class="fas fa-map-marker-alt"></i>Alamat</li>
+                                <li><i class="fas fa-street-view"></i>Kota</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            </table>
         </div>
     </div>
 </div>

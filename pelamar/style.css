@@ -188,6 +188,8 @@ body {
     margin-right: 10px;
     opacity: 50%;
     padding: 5px;
+    width: 30px;
+    height: auto;
 }
 
 .main-container .content .input {

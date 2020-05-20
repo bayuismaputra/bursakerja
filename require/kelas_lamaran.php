@@ -12,6 +12,7 @@ class Lamaran extends Bursakerja
         $this->sqlDataLowongan = $this->bukaKoneksi()->prepare("select * from lamaran where id_lamaran=:id_lamaran");
         $this->sqlInsert = $this->bukaKoneksi()->prepare("insert into lamaran (`id_lamaran`, `id_pelamar`, `id_lowongan`, `id_kriteria`, `file`) values ('', :id_pelamar, :id_lowongan, :id_kriteria, :file)");
         $this->sqlEdit = $this->bukaKoneksi()->prepare("update lamaran set nama_kriteria=:nama_kriteria, tipe_kriteria=:tipe_kriteria, bobot=:bobot, status_uploud=:status_uploud where id_kriteria=:id_kriteria");
+        $this->sqlHapus = $this->bukaKoneksi()->prepare("DELETE FROM lamaran where id_kriteria=:id_kriteria");
         $this->sqlHapusLamaran = $this->bukaKoneksi()->prepare("delete from lamaran where id_lowongan=:id_lowongan");
         $this->sqlUpdtLamaran = $this->bukaKoneksi()->prepare("UPDATE `pelamar` SET `email`=:email,`alamat`=:alamat,`tempat_lahir`=:tempat_lahir,`tanggal_lahir`=:tanggal_lahir,`jenis_kelamin`=:jenis_kelamin,`no_telpon`=:no_telpon,`status_nikah`=:status_nikah,`curriculum_vitae`=:curriculum_vitae WHERE `id_user`=:id_user");
     }
