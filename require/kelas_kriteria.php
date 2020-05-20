@@ -12,7 +12,7 @@ class Kriteria extends Bursakerja
         $this->sqlDataLowongan = $this->bukaKoneksi()->prepare("select * from kriteria where id_lowongan=:id_lowongan");
         $this->sqlInsert = $this->bukaKoneksi()->prepare("insert into kriteria values ('', :id_lowongan, :nama_kriteria, :tipe_kriteria, :bobot, :status_uploud)");
         $this->sqlEdit = $this->bukaKoneksi()->prepare("update kriteria set nama_kriteria=:nama_kriteria, tipe_kriteria=:tipe_kriteria, bobot=:bobot, status_uploud=:status_uploud where id_kriteria=:id_kriteria");
-        $this->sqlHapus = $this->bukaKoneksi()->prepare("delete from kriteria where id_kriteria=:id_kriteria");
+        $this->sqlHapus = $this->bukaKoneksi()->prepare("DELETE FROM kriteria where id_kriteria=:id_kriteria");
         $this->sqlHapusKriteria = $this->bukaKoneksi()->prepare("delete from kriteria where id_lowongan=:id_lowongan");
     }
 
