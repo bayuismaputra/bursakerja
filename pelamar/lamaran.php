@@ -8,13 +8,6 @@ $id_pelamar = $_SESSION['id_pelamar'];
 $id_lowongan = $_GET['id_lowongan'];
 $qry_kriteria = $kriteria->GetData("WHERE id_lowongan='{$id_lowongan}' AND status_uploud='1'");
 $qry_kriteria1 = $kriteria->GetData("WHERE id_lowongan='{$id_lowongan}' AND status_uploud='1'");
-// $qry_pelamar = $lamaran->GetDataPelamar("where id_user='{$id_user}'");
-// var_dump($qry_pelamar);
-// echo $qry_pelamar['id_user'];
-// while ($a = $qry_pelamar->fetch()) {
-//     echo $a['id_user'];
-// }
-// die;
 $jml_uploud_berkas = $qry_kriteria->rowCount();
 ?>
 <div class="col-lg-10 main-container">
