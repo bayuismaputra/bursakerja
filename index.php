@@ -21,11 +21,11 @@
         <?php include('require/kelas_lowongan.php'); ?>
         <?php
         $tampil_lowongan = new lowongan();
-        $data_lowongan = $tampil_lowongan->GetData("");
+        $data_lowongan = $tampil_lowongan->GetData("where status_lowongan='ada'");
         $no = 1;
         while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
         ?>
-            <div class="col-sm-3 tampil-lowongan">
+            <div class="col-lg-3 tampil-lowongan">
                 <div class="card">
                     <div class="card-body">
                         <img src="img/undraw_sign_in_e6hj.png" class="img-fluid" alt="">
