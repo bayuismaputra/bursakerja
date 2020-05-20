@@ -7,23 +7,53 @@
             <div class="wrapper">
 
                 <?php
+                require("../require/kelas_lamaran.php");
+
                 $id_user = $_SESSION['id_user'];
                 $hak_akses = $_SESSION['hak_akses'];
                 $user = new User();
-                // printf($id_user);
-                $profile = $user->getData("where id_user={$id_user}");
+                $lamaran = new Lamaran();
+                $profile = $user->getData("INNER JOIN pelamar WHERE user.id_user=pelamar.id_user AND user.id_user={$id_user}");
                 $row = $profile->fetch(PDO::FETCH_ASSOC);
-                // echo $row['nama_lengkap'];
+
+                if ($_POST) {
+                    if ($_POST['update']) {
+                        $id_pelamar = $_POST['id_pelamar'];
+                        $nama_lengkap = $_POST['nama_lengkap'];
+                        $jenis_kelamin = $_POST['jenis_kelamin'];
+                        $no_telpon = $_POST['no_telpon'];
+                        $email = $_POST['email'];
+                        $tempat_lahir = $_POST['tempat_lahir'];
+                        $tanggal_lahir = $_POST['tanggal_lahir'];
+                        $status_nikah = $_POST['status_nikah'];
+                        $alamat = $_POST['alamat'];
+
+                        if ($jenis_kelamin == "" || $status_nikah == "" || empty($_FILES['cv']['tmp_name'])) {
+                            echo "data kosong";
+                        } else {
+                            $explode = explode(".", $_FILES['cv']['name']);
+                            $fileName = $id_user . "_" . rand(0, 100) . $_FILES['cv']['name'];
+                            move_uploaded_file($_FILES['cv']['tmp_name'], "../uploud/" . $fileName);
+
+                            $updt_user = $user->UpdateData($nama_lengkap, $_SESSION['username'], $id_user);
+
+                            $updt_user_rinci = $lamaran->updateLamaran($email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $fileName, $id_user);
+
+                            echo "<script>document.location='?menu=profil_pelamar';</script>";
+                        }
+                    }
+                }
                 ?>
 
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id_pelamar" value="<?= $row['id_pelamar'] ?>">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="control-label" for="nama_pelamar">Nama Pelamar</label>
+                                <label class="control-label" for="nama_lengkap">Nama Pelamar</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="nama_pelamar" value="<?= $row['nama_lengkap'] ?>" class="form-control" id="nama_pelamar" placeholder="Nama Pelamar" required>
+                                <input type="text" name="nama_lengkap" value="<?= $row['nama_lengkap'] ?>" class="form-control" id="nama_pelamar" placeholder="Nama Pelamar" required>
                             </div>
                         </div>
                     </div>
@@ -34,9 +64,9 @@
                             </div>
                             <div class="col-md-10">
                                 <select class="custom-select" name="jenis_kelamin">
-                                    <option selected>Jenis Kelamin</option>
-                                    <option value="Laki-Laki">Laki - Laki</option>
-                                    <option value="Perempuan">Perempuan</option>
+                                    <option <?= ($row['jenis_kelamin'] == '-') ? 'selected' : '' ?> value="">Jenis Kelamin</option>
+                                    <option value="Laki-Laki" <?= ($row['jenis_kelamin'] == 'Laki-Laki') ? 'selected' : '' ?>>Laki - Laki</option>
+                                    <option value="Perempuan" <?= ($row['jenis_kelamin'] == 'Perempuan') ? 'selected' : '' ?>>Perempuan</option>
                                 </select>
                             </div>
                         </div>
@@ -47,7 +77,7 @@
                                 <label class="control-label" for="no_telpon">Nomor Telpon</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="no_telpon" class="form-control" id="no_telpon" placeholder="Nomor_telepon" required>
+                                <input type="text" name="no_telpon" class="form-control" id="no_telpon" placeholder="Nomor_telepon" value="<?= ($row['no_telpon'] == '-') ? '' : $row['no_telpon'] ?>" required>
                             </div>
                         </div>
                     </div>
@@ -57,7 +87,7 @@
                                 <label class="control-label" for="email">Email</label>
                             </div>
                             <div class="col-md-10">
-                                <input class="form-control" name="email" id="email" rows="4" placeholder="Email"></input>
+                                <input class="form-control" name="email" id="email" rows="4" placeholder="Email" value="<?= ($row['email'] == '-') ? '' : $row['email'] ?>"></input>
                             </div>
                         </div>
                     </div>
@@ -67,7 +97,7 @@
                                 <label class="control-label" for="tempat_lahir">Tempat Lahir</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="tempat_lahir" class="form-control" id="tempat_lahir" placeholder="Tempat Lahir" required>
+                                <input type="text" name="tempat_lahir" class="form-control" id="tempat_lahir" placeholder="Tempat Lahir" required value="<?= ($row['tempat_lahir'] == '-') ? '' : $row['tempat_lahir'] ?>">
                             </div>
                         </div>
                     </div>
@@ -78,7 +108,7 @@
                                 <label class="control-label" for="tanggal_lahir">Tanggal Lahir</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="date" name="tanggal_lahir" class="form-control" id="tanggal_lahir" required>
+                                <input type="date" name="tanggal_lahir" class="form-control" id="tanggal_lahir" required value="<?= ($row['tanggal_lahir'] == '-') ? '' : $row['tanggal_lahir'] ?>">
                             </div>
 
                         </div>
@@ -90,9 +120,9 @@
                             </div>
                             <div class="col-md-10">
                                 <select class="custom-select" name="status_nikah">
-                                    <option selected>Status Nikah</option>
-                                    <option value="Nikah">Nikah</option>
-                                    <option value="Belum Nikah">Belum Nikah</option>
+                                    <option <?= ($row['status_nikah'] == '-') ? 'selected' : '' ?> value="">Status Nikah</option>
+                                    <option value="Nikah" <?= ($row['status_nikah'] == 'Nikah') ? 'selected' : '' ?>>Nikah</option>
+                                    <option value="Belum Nikah" <?= ($row['status_nikah'] == 'Belum Nikah') ? 'selected' : '' ?>>Belum Nikah</option>
                                 </select>
                             </div>
                         </div>
@@ -103,11 +133,11 @@
                                 <label class="control-label" for="alamat">Alamat</label>
                             </div>
                             <div class="col-md-10">
-                                <textarea class="form-control" name="alamat" id="alamat" rows="4">Alamat</textarea>
+                                <textarea class="form-control" name="alamat" id="alamat" rows="4" placeholder="<?= ($row['alamat'] == '-') ? 'Alamat' : '' ?>"><?= ($row['alamat'] == '-') ? '' : $row['alamat'] ?></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class=" form-group">
                         <div class="row">
                             <div class="col-md-2">
                                 <label class="control-label" for="curriculum_vitae">Curriculum Vitae</label>
@@ -115,7 +145,7 @@
                             <div class="col-md-10">
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <input type="file" class="custom-file-input" name="cv" id="customFile">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                 </div>
@@ -125,8 +155,8 @@
                     <div class="form-group row">
                         <div class="col-md-2"></div>
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                            <a href="#"><button type="button" class="btn btn-danger">Batal</button></a>
+                            <button type="submit" name="update" value="update" class="btn btn-primary">Update</button>
+                            <a href="?menu=profil_pelamar"><button type="button" class="btn btn-danger">Batal</button></a>
                         </div>
                     </div>
                 </form>

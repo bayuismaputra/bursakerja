@@ -10,12 +10,18 @@
             <?php
             $id_user = $_SESSION['id_user'];
             $user = new User();
-            print_r($_SESSION);
-            $profile = $user->getData("where id_user={$id_user}");
+            // print_r($_SESSION);
+            $profile = $user->getData("INNER JOIN pelamar WHERE user.id_user=pelamar.id_user AND user.id_user={$id_user}");
             $row = $profile->fetch(PDO::FETCH_ASSOC);
-            // echo $row['nama_lengkap'];
+            // print_r($row);
+            if ($row['email'] == '-' || $row['alamat'] == '-' || $row['tempat_lahir'] == '-' || $row['tanggal_lahir'] == '0000-00-00' || $row['jenis_kelamin'] == '-' || $row['no_telpon'] == '-' || $row['status_nikah'] == '-' || $row['curriculum_vitae'] == '-') {
+                echo '
+                <div class="alert alert-warning" role="alert">
+                    Lengkapi Data!
+                </div>
+                ';
+            }
             ?>
-            Disini tampilan lengkap data diri dari tabel user dan pelamar atau perusahaan, apabila data belum atau tidak lengkap, beri notifikasi untuk melengkapi data.
             <div class="row profil-pelamar">
                 <div class="col-lg-9">
                     <div class="row">
@@ -23,17 +29,17 @@
                             <ul>
                                 <li><i class="fas fa-user"></i> <?php echo $row['nama_lengkap'] ?></li>
                                 <li><i class="fas fa-envelope-square"></i> <?php echo $row['email'] ?></li>
-                                <li><i class="fas fa-map-marker-alt"></i> Alamat</li>
-                                <li><i class="fas fa-street-view"></i> Tempat Lahir</li>
-                                <li><i class="fas fa-birthday-cake"></i> Tanggal Lahir</li>
+                                <li><i class="fas fa-map-marker-alt"></i> <?php echo $row['alamat'] ?></li>
+                                <li><i class="fas fa-street-view"></i> <?php echo $row['tempat_lahir'] ?></li>
+                                <li><i class="fas fa-birthday-cake"></i> <?php echo $row['tanggal_lahir'] ?></li>
                             </ul>
                         </div>
                         <div class="col-lg-5">
                             <ul>
-                                <li><i class="fas fa-venus-mars"></i> Jenis Kelamin</li>
-                                <li><i class="fas fa-phone-square"></i> Nomor Telpon</li>
-                                <li><i class="fas fa-ring"></i> Status Nikah</li>
-                                <li><i class="fas fa-file"></i> Curriculum Vitae</li>
+                                <li><i class="fas fa-venus-mars"></i> <?php echo $row['jenis_kelamin'] ?></li>
+                                <li><i class="fas fa-phone-square"></i> <?php echo $row['no_telpon'] ?></li>
+                                <li><i class="fas fa-ring"></i> <?php echo $row['status_nikah'] ?></li>
+                                <li><i class="fas fa-file"></i> <?php echo $row['curriculum_vitae'] ?></li>
                             </ul>
                         </div>
                     </div>
