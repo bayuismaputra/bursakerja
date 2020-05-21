@@ -43,6 +43,18 @@ body {
     text-transform: uppercase;
 }
 
+.top-navbar button {
+    background: #0c9463;
+    color: #fff;
+    border-color: #0c9463;
+}
+
+.top-navbar button:hover {
+    background: #1ea876;
+    color: #fff;
+    border-color: #0c9463;
+}
+
 .top-navbar .menu {
     width: calc(100% - 50px);
     display: flex;
@@ -179,9 +191,33 @@ body {
     color: #fff;
 }
 
+.main-container .judul-content .btn {
+    background: #0c9463;
+    color: #fff;
+    border-color: #0c9463;
+}
+
+.main-container .judul-content .btn:hover {
+    background: #1ea876;
+    color: #fff;
+    border-color: #1ea876;
+}
+
 .main-container .content .tabel {
     background: #fff;
     color: #000;
+}
+
+.main-container .content .btn {
+    background: #0c9463;
+    color: #fff;
+    border-color: #0c9463;
+}
+
+.main-container .content .btn:hover {
+    background: #1ea876;
+    color: #fff;
+    border-color: #1ea876;
 }
 
 .main-container .profil-pelamar i {

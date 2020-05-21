@@ -3,13 +3,13 @@
         <div class="judul-content">
             <h5><i class="fas fa-tachometer-alt mr-2"></i> Cari Lowongan</h5>
         </div>
-        <div class="content">
-            <?php include('../require/kelas_lowongan.php');
-            $cari_lowongan = new lowongan();
-            $data_lowongan = $cari_lowongan->GetData("where nama_lowongan LIKE '%$_GET[posisi]%'");
-            $no = 1;
-            while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
-            ?>
+        <?php include('../require/kelas_lowongan.php');
+        $cari_lowongan = new lowongan();
+        $data_lowongan = $cari_lowongan->GetData("where nama_lowongan LIKE '%$_GET[posisi]%'");
+        $no = 1;
+        while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+            <div class="content">
                 <div class="row">
                     <div class="col-lg-3">
                         <img src="../img/undraw_sign_in_e6hj.png" class="img-fluid" alt="bayu">
@@ -37,11 +37,11 @@
                     </div>
                 </div>
 
-            <?php
-            }
-            ?>
 
-        </div>
+            </div>
+        <?php
+        }
+        ?>
 
     </div>
 </div>

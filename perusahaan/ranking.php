@@ -4,7 +4,7 @@
             <h5><i class="fas fa-tachometer-alt mr-2"></i> DATA RANKING</h5>
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 pilih-lowongan">
                     <form action="#" method="GET">
                         <div class="input-group mb-3">
                             <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">

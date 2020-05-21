@@ -67,7 +67,6 @@
                             <div class="col-md-2"></div>
                             <div class="col-md-10">
                                 <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                                <button type="submit" name="batal" class="btn btn-success">Batal</button>
                             </div>
                         </div>
                     </div>
