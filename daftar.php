@@ -45,7 +45,7 @@
                         if ($hak_akses == "pelamar") {
                             $insert_pelamar = $pelamar->InsertData('-', '-', '-', '0000-00-00', '-', '-', '-', '-', $id_user);
                         } else if ($hak_akses == "perusahaan") {
-                            $insert_perusahaan = $perusahaan->InsertData($id_user, '-', '-', '-', '-', '-');
+                            $insert_perusahaan = $perusahaan->InsertData($id_user, '-', '-', '-', 'default.png', '-');
                         }
                         echo "<script language='javascript'>alert('Register berhasil, silahkan login');document.location='http://localhost/bursakerja/index.php'</script>";
                     } else {
