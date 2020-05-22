@@ -18,7 +18,7 @@
                             <td align="center">1</td>
                             <td>it support</td>
                             <td align="center">
-                                <a href="?menu=pengumuman_pelamar" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Pengumuman</a>
+                                <a href="?menu=pengumuman_pelamar" class="btn btn-info btn-sm tombol-pengumuman"><i class="fa fa-edit"></i> Pengumuman</a>
 
 
                             </td>

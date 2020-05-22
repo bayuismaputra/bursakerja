@@ -12,7 +12,7 @@ include('../require/koneksi.php');
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../perusahaan/css/style.css">
     <link rel="stylesheet" href="../fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap4.min.css">
     <title>Bursa Kerja</title>
@@ -23,11 +23,11 @@ include('../require/koneksi.php');
         <div class="top-navbar">
             <div class="brand">Bursa <span>SAW</span></div>
 
-            <form action="" method="GET" class="input-group col-lg-5">
-                <input type="text" name="posisi" class="form-control" placeholder="Posisi atau Perusahaan" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <input type="text" name="kota" class="form-control kota" placeholder="Kota" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <form action="" method="GET" class="input-group col-lg-4">
+                <input type="text" name="posisi" class="input form-control" placeholder="Posisi atau Perusahaan" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" name="kota" class="input form-control kota" placeholder="Kota" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-success" type="submit" name="menu" value="cari_lowongan" id="button-addon2">Cari Lowongan</button>
+                    <button class="btn btn-success" type="submit" name="menu" value="cari_lowongan" id="button-addon2"><i class="fas fa-search fa-sm"></i></button>
                 </div>
             </form>
             <div class="menu">

@@ -5,7 +5,7 @@
             <a class="btn btn-info mb-2" href="?menu=edit_profil_perusahaan"><i class="fa fa-edit"></i> Edit</a>
         </div>
         <div class="content">
-            <div class="row profil-perusahaan">
+            <div class="row profil-user">
                 <div class="col-lg-3">
                     <img src="" alt="Logo Perusahaan">
                 </div>
