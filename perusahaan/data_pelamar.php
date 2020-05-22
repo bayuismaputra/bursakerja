@@ -4,17 +4,26 @@
             <h5><i class="fas fa-users mr-2"></i> DATA PELAMAR</h5>
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-12">
+                <?php
+                include('../require/kelas_lowongan.php');
+                include('../require/kelas_lamaran.php');
+                $lowongan = new Lowongan();
+                $lamaran = new Lamaran();
+                $user = new User();
+                $pilih_lowongan = $lowongan->GetData("where status_lowongan='ada'");
+                ?>
+                <div class="col-lg-12 pilih-lowongan">
                     <form action="#" method="GET">
                         <div class="input-group mb-3">
-                            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                <option selected>Pilih lowongan</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="custom-select" name="pilih-lowongan" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                <?php
+                                while ($row = $pilih_lowongan->fetch()) {
+                                    echo "<option value='$row[id_lowongan]'>$row[nama_lowongan]</option>";
+                                }
+                                ?>
                             </select>
                             <div class="input-group-append">
-                                <button class="btn btn-success" type="button">CEK</button>
+                                <button name="submit" class="btn btn-success" type="button">CEK</button>
                             </div>
                         </div>
                     </form>
@@ -33,14 +42,22 @@
                             <th>TANGGAL LAHIR</th>
                         </tr>
                     </thead>
-                    <tr>
-                        <td align="center">1</td>
-                        <td>MENGUASAI BASIS DATA</td>
-                        <td>Menguasai PHP</td>
-                        <td>Menguasai PHP</td>
-                        <td>12 12 2020</td>
-                    </tr>
+                    <?php
 
+                    $data_pelamar = $lowongan->GetData("where id_lowongan=" . $id_lowongan);
+                    $no = 1;
+                    while ($value = $data_pelamar->fetch(PDO::FETCH_ASSOC)) {
+                        echo ' <tr>
+                        <td align="center">' . $no . '</td>
+                        <td>' . $value['nama_pelamar'] . '</td>
+                        <td>' . $value['jenis_kelamian'] . '</td>
+                        <td>' . $value['tempat_lahir'] . '</td>
+                        <td>' . $value['tanggal_lahir'] . '</td>
+                        </tr>';
+                        $no++;
+                    }
+
+                    ?>
                 </table>
             </div>
             </>

@@ -4,7 +4,7 @@
             <h5><i class="fas fa-book-open mr-2"></i> DATA NILAI</h5>
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 pilih-lowongan">
                     <form action="#" method="GET">
                         <div class="input-group mb-3">
                             <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
@@ -34,7 +34,7 @@
                     <tr>
                         <td align="center">1</td>
                         <td>MENGUASAI BASIS DATA</td>
-                        <td align="center"><a href="?menu=penilaian_kriteria" class="btn btn-success btn-sm"><i class="fas fa-book-open mr-1"></i> Penilain</a></td>
+                        <td align="center"><a href="?menu=penilaian_kriteria" class="btn btn-success tombol-penilaian btn-sm"><i class="fas fa-book-open mr-1"></i> Penilain</a></td>
                     </tr>
                 </table>
 

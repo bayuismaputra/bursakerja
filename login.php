@@ -1,7 +1,6 @@
 <?php
 session_start();
-include "require/koneksi.php";
-
+include('require/koneksi.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -81,7 +80,7 @@ include "require/koneksi.php";
                     </div>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary tombol-masuk">Masuk</button>
-                <button type="submit" name="batal" class="btn btn-danger tombol-batal">Batal</button>
+                <a href="?menu=halaman_utama"><button type="submit" name="batal" class="btn btn-danger tombol-batal">Batal</button></a>
             </form>
         </div>
     </div>

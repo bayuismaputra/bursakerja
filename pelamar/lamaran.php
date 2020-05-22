@@ -50,7 +50,7 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                         // var_dump($row['nama_kriteria']);
                     ?>
                         <tr>
-                            <td class="pl-0" style="width: 200px;"><?= $row['nama_kriteria'] ?></td>
+                            <td class="pl-0" style="width: 300px;"><?= $row['nama_kriteria'] ?></td>
                             <td style="opacity: 50%;">
                                 <div class="form-group">
                                     <input type="hidden" name="fileberkas_kriteria_<?= $row['id_kriteria'] ?>" value="<?= $row['id_kriteria'] ?>">
@@ -64,7 +64,7 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
             </table>
             <table class="table table-borderless">
                 <tr>
-                    <td style="width: 200px;"></td>
+                    <td style="width: 300px;"></td>
                     <td>
                         <div class="form-group">
                             <input type='submit' name='submit' value='Simpan' class="btn btn-success tombol-simpan">
