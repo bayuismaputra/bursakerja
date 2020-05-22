@@ -22,7 +22,7 @@
                 ';
             }
             ?>
-            <div class="row profil-pelamar">
+            <div class="row profil-user">
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-lg-5">

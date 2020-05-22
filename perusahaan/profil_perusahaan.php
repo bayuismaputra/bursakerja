@@ -6,6 +6,7 @@
         </div>
         <div class="content">
 
+
             <!-- <table class="table table-borderless tabel-profil"> -->
             <?php
             $id_user = $_SESSION['id_user'];
@@ -22,7 +23,10 @@
                 ';
             }
             ?>
-            <div class="row profil-perusahaan">
+            
+
+            <div class="row profil-user">
+
                 <div class="col-lg-3">
                     <img src="../uploud/<?= $row['logo_perusahaan'] ?>" class="img img-thumbnail" alt="Logo Perusahaan">
                 </div>

@@ -48,6 +48,7 @@
     padding: 0;
     text-decoration: none;
     list-style: none;
+    font-family: 'Nunito', sans-serif;
 
 
 }
@@ -62,21 +63,22 @@ body {
 .navbar {
     display: flex;
     position: sticky;
-    height: 60px;
+    height: 65px;
     background-color: #fff;
     z-index: 2;
     box-shadow: 1px 0 5px rgba(18, 209, 136, 0.125);
     font-family: 'viga', sans-serif;
 }
 
-.menu.cus-nav {
+/* .menu.cus-nav {
     background-color: #33353d;
     z-index: 999;
     height: 60px;
-}
+} */
 
 .navbar-brand {
     font-size: 25px;
+    font-weight: 700;
 }
 
 /* cari lowongan */
@@ -114,8 +116,9 @@ body {
 .jumbotron .display-4 {
     color: white;
     margin-top: 160px;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 1px rgba(73, 73, 73, 0.3);
     font-size: 10px;
+    font-weight: 300;
     margin-bottom: 30px;
 }
 
@@ -212,10 +215,10 @@ body {
 
 .container i {
     text-transform: capitalize;
-    padding: 1px;
-    opacity: 50%;
-    border: none;
-    margin-right: 3px;
+    font-size: 15px;
+    margin-right: 18px;
+    width: 15px;
+    height: auto;
 }
 
 
@@ -255,6 +258,9 @@ body {
 
 /* utility */
 .tombol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-transform: uppercase;
     /* border-radius: 40px; */
 }
@@ -432,11 +438,11 @@ body {
 
 /* DEKSTOP VERSION */
 @media (min-width: 992px) {
-    .menu.cus-nav {
+    /* .menu.cus-nav {
         background-color: #33353d;
         z-index: 999;
         height: 60px;
-    }
+    } */
 
 
     .navbar-brand {
@@ -448,7 +454,8 @@ body {
         color: #0c9463 !important;
         text-transform: uppercase;
         margin-right: 30px;
-        letter-spacing: 1px;
+        font-weight: 500;
+        letter-spacing: 0.7px;
     }
 
 
@@ -470,6 +477,8 @@ body {
 
     .jumbotron .display-4 {
         font-size: 35px;
+        font-weight: 200;
+
     }
 
     .container img {
