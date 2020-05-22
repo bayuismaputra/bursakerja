@@ -60,7 +60,7 @@ class Perusahaan extends Bursakerja
     function __construct()
     {
         $this->sqlInsert = $this->bukaKoneksi()->prepare("INSERT INTO `perusahaan`(`id_perusahaan`, `id_user`, `nama_perusahaan`, `alamat`, `kota`, `logo_perusahaan`, `email`) VALUES (null, :id_user, :nama_perusahaan, :alamat, :kota, :logo_perusahaan, :email)");
-        $this->sqlEdit = $this->bukaKoneksi()->prepare("update perusahaan set nama_perusahaan=:nama_perusahaan, alamat=:alamat, kota=:kota, logo_perusahaan=:logo_perusahaan, email=:email where id_perusahaan=:perusahaan");
+        $this->sqlEdit = $this->bukaKoneksi()->prepare("UPDATE `perusahaan` SET `nama_perusahaan`=:nama_perusahaan,`alamat`=:alamat,`kota`=:kota,`logo_perusahaan`=:logo_perusahaan,`email`=:email WHERE `id_perusahaan`=:id_perusahaan");
         $this->sqlHapus = $this->bukaKoneksi()->prepare("delete from perusahaan where id_perusahaan=:id_perusahaan");
         $this->sqlHapusLamaran = $this->bukaKoneksi()->prepare("delete from pelamar where id_lowongan=:id_lowongan and kriteria=:kriteria");
     }
