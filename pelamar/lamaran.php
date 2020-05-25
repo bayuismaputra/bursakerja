@@ -7,7 +7,7 @@ $id_user = $_SESSION['id_user'];
 $id_pelamar = $_SESSION['id_pelamar'];
 $id_lowongan = $_GET['id_lowongan'];
 $qry_kriteria = $kriteria->GetData("WHERE id_lowongan='{$id_lowongan}' AND status_uploud='1'");
-$qry_kriteria1 = $kriteria->GetData("WHERE id_lowongan='{$id_lowongan}' AND status_uploud='1'");
+$qry_kriteria1 = $kriteria->GetData("WHERE id_lowongan='{$id_lowongan}'");
 $jml_uploud_berkas = $qry_kriteria->rowCount();
 ?>
 <div class="col-lg-10 main-container">
@@ -27,17 +27,18 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                             $explode = explode(".", $_FILES['fileberkas_' . $berkas['id_kriteria']]['name']);
                             $file = $id_user . "_" . $id_lowongan . "_" . $_FILES['fileberkas_' . $berkas['id_kriteria']]['name'] . rand(0, 100) . "." . end($explode);
                             move_uploaded_file($_FILES['fileberkas_' . $berkas['id_kriteria']]['tmp_name'], "../uploud/" . $file);
-
-                            // insert to tabel lamaran
-                            $qry = $lamaran->InsertData($id_pelamar, $id_lowongan, $berkas['id_kriteria'], $file);
-
-                            if ($qry) {
-                                echo "<script language='javascript'>alert('Berkas berhasil diupload'); document.location='?menu=pelamar'</script>";
-                            } else {
-                                echo "<script language='javascript'>alert('Gagal');document.location='?menu=lamaran&id_lowongan=$id_lowongan'</script>";
-                            }
                         } else {
                             echo "<script language='javascript'>console.log({$berkas['id_kriteria']}+'kosong');</script>";
+                            $file = '-';
+                        }
+
+                        // insert to tabel lamaran
+                        $qry = $lamaran->InsertData($id_pelamar, $id_lowongan, $berkas['id_kriteria'], $file);
+
+                        if ($qry) {
+                            echo "<script language='javascript'>alert('Berkas berhasil diupload'); document.location='?menu=pelamar'</script>";
+                        } else {
+                            echo "<script language='javascript'>alert('Gagal');document.location='?menu=lamaran&id_lowongan=$id_lowongan'</script>";
                         }
                     }
                 }

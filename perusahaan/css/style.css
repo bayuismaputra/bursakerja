@@ -24,7 +24,7 @@ body {
     font-family: 'viga', sans-serif;
     font-weight: bold;
     align-items: center;
-    box-shadow: 1px 0 5px rgba(18, 209, 136, 0.125);
+    box-shadow: 1px 0 5px rgba(179, 179, 179, 0.125);
 }
 
 .top-navbar button {
@@ -159,6 +159,7 @@ body {
     background: #0c9463;
     color: #fff;
     border-color: #0c9463;
+    font-weight: bold;
 }
 
 .main-container .judul-content .btn:hover {

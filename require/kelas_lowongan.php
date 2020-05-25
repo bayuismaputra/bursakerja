@@ -21,7 +21,7 @@ class Lowongan extends Bursakerja
     function GetData($qry_custom)
     {
         try {
-            $sql = $this->bukaKoneksi()->prepare("select * from lowongan " . $qry_custom);
+            $sql = $this->bukaKoneksi()->prepare("SELECT * FROM `lowongan` " . $qry_custom);
             $sql->execute();
             return $sql;
         } catch (PDOException $e) {

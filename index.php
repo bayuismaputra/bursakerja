@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body">
                         <img src="img/undraw_sign_in_e6hj.png" class="img-fluid" alt="">
-                        <h5 class="card-title"><?php echo $value['nama_lowongan']; ?></h5>
+                        <h6 class="card-title"><?php echo $value['nama_lowongan']; ?></h6>
                         <p class="card-text">PT. Sejahtera abadi jaya Tbk.</p>
                         <ul class="list-group">
                             <li><i class="fas fa-building"></i><?php echo $value['departemen']; ?></li>

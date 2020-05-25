@@ -19,7 +19,7 @@
                     </thead>
                     <?php include('../require/kelas_lowongan.php');
                     $lowongan = new lowongan();
-                    $data_lowongan = $lowongan->GetData("where status_lowongan='ada'");
+                    $data_lowongan = $lowongan->GetData("where status_lowongan='ada' AND id_perusahaan=" . $_SESSION['id_perusahaan']);
                     $no = 1;
                     while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
                         echo ' <tr>
