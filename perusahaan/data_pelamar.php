@@ -58,7 +58,7 @@
                     } else {
                         $id_lowongan = "kosong";
                     }
-                    $data_pelamar = $lowongan->GetData("JOIN lamaran ON lowongan.id_lowongan=lamaran.id_lowongan JOIN pelamar ON lamaran.id_pelamar=pelamar.id_pelamar JOIN user ON pelamar.id_user=user.id_user WHERE lowongan.id_lowongan=" . $id_lowongan);
+                    $data_pelamar = $lowongan->GetData("JOIN lamaran ON lowongan.id_lowongan=lamaran.id_lowongan JOIN pelamar ON lamaran.id_pelamar=pelamar.id_pelamar JOIN user ON pelamar.id_user=user.id_user WHERE lowongan.id_lowongan=" . $id_lowongan . " GROUP BY pelamar.id_pelamar");
                     $no = 1;
                     while ($value = $data_pelamar->fetch(PDO::FETCH_ASSOC)) {
                         echo ' <tr>

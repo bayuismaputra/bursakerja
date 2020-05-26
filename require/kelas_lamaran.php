@@ -28,6 +28,17 @@ class Lamaran extends Bursakerja
         }
     }
 
+    function GetDataLamaran($qry_custom)
+    {
+        try {
+            $sql = $this->bukaKoneksi()->prepare("select * from lamaran " . $qry_custom);
+            $sql->execute();
+            return $sql;
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
+
     function GetDataPelamar($qry_custom)
     {
         try {

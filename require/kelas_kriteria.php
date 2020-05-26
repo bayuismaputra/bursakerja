@@ -19,7 +19,7 @@ class Kriteria extends Bursakerja
     function GetData($qry_custom)
     {
         try {
-            $sql = $this->bukaKoneksi()->prepare("select * from kriteria " . $qry_custom);
+            $sql = $this->bukaKoneksi()->prepare("SELECT * from kriteria " . $qry_custom);
             $sql->execute();
             return $sql;
         } catch (PDOException $e) {

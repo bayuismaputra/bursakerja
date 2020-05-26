@@ -44,9 +44,9 @@
                 $id_user = $_SESSION['id_user'];
                 $id_pelamar = $_SESSION['id_pelamar'];
                 $id_lowongan = $_GET['id_lowongan'];
-                $qry_lamaran = $lamaran->GetData("WHERE id_lowongan='{$id_lowongan}' AND id_pelamar='{$id_pelamar}'");
+                $qry_lamaran = $lamaran->GetDataLamaran("WHERE id_lowongan='{$id_lowongan}' AND id_pelamar='{$id_pelamar}'");
                 // validasi belum selesai
-                if ($qry_lamaran && $qry_lamaran->rowCount() > 0) {
+                if ($qry_lamaran->rowCount() > 0) {
                 ?>
                     <button type="button" disabled class="btn btn-success">Sudah Lamar</button>
                 <?php

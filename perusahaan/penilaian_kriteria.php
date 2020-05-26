@@ -9,7 +9,7 @@ $user = new User();
 $id_user = $_SESSION['id_user'];
 $id_pelamar = $_GET['id_pelamar'];
 $id_lowongan = $_GET['id_lowongan'];
-$qry_kriteria = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan}'");
+$qry_kriteria = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan}'GROUP BY kriteria.id_kriteria");
 $qry_kriteria1 = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan}'");
 $jml_uploud_berkas = $qry_kriteria->rowCount();
 ?>
