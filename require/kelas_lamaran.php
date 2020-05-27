@@ -50,6 +50,17 @@ class Lamaran extends Bursakerja
         }
     }
 
+    function updateNilai($nilai, $id_pelamar, $id_kriteria, $id_lowongan)
+    {
+        try {
+            $sql = $this->bukaKoneksi()->prepare("UPDATE lamaran SET nilai={$nilai} where id_pelamar={$id_pelamar} AND id_lowongan={$id_lowongan} AND id_kriteria={$id_kriteria}");
+            $sql->execute();
+            return $sql;
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
+
     function InsertData($id_pelamar, $id_lowongan, $id_kriteria, $file)
     {
         try {
