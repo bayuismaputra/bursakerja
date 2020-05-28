@@ -11,8 +11,8 @@ $id_user = $_SESSION['id_user'];
 $id_pelamar = $_GET['id_pelamar'];
 $id_lowongan = $_GET['id_lowongan'];
 
-$qry_kriteria = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan}'GROUP BY kriteria.id_kriteria");
-$qry_kriteria1 = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan} GROUP BY kriteria.id_kriteria'");
+$qry_kriteria = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan}' AND lamaran.id_pelamar='{$id_pelamar}'");
+$qry_kriteria1 = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan} AND lamaran.id_pelamar='{$id_pelamar}'");
 $jml_uploud_berkas = $qry_kriteria->rowCount();
 ?>
 <div class="col-md-10 main-container">
@@ -27,7 +27,7 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                 for ($i = 1; $i <= $jml_uploud_berkas; $i++) {
                     $insertNilai = $lamaran->updateNilai($_POST['kriteria_' . $i], $id_pelamar, $_POST['id_kriteria_' . $i], $id_lowongan);
                 }
-                echo "<script language='javascript'>alert('Nilai berhasil diupload'); document.location='?menu=data_nilai'</script>";
+                echo "<script language='javascript'>alert('Nilai berhasil diberikan'); document.location='?menu=data_nilai'</script>";
 
                 // die;
             }
