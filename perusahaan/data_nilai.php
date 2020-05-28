@@ -14,7 +14,8 @@
                 $pilih_lowongan = $lowongan->GetData("where status_lowongan='ada' AND id_perusahaan=" . $_SESSION['id_perusahaan']);
                 ?>
                 <div class="col-lg-12 pilih-lowongan">
-                    <form action="?menu=data_nilai" method="POST">
+                    <form action="" method="GET">
+                        <input type="hidden" name="menu" value="data_nilai">
                         <div class="input-group mb-3">
                             <select class="custom-select" name="id_lowongan" id="inputGroupSelect04" aria-label="Example select with button addon">
                                 <?php
@@ -32,7 +33,7 @@
                                 ?>
                             </select>
                             <div class="input-group-append">
-                                <button name="submit" class="btn btn-success" type="submit">CEK</button>
+                                <button class="btn btn-success" type="submit">CEK</button>
                             </div>
                         </div>
                     </form>
@@ -51,8 +52,8 @@
                     </thead>
                     <?php
                     $id_lowongan = '';
-                    if ($_POST) {
-                        $id_lowongan = $_POST['id_lowongan'];
+                    if ($_GET) {
+                        $id_lowongan = $_GET['id_lowongan'];
                     } else {
                         $id_lowongan = "kosong";
                     }
@@ -71,10 +72,38 @@
 
                 </table>
 
-                <button class="btn btn-success"><i class="fas fa-calculator mr-1"></i> Hitung</button>
+
+                <?php
+                if ($_GET) {
+                    if (isset($_GET['id_lowongan'])) {
+                        echo '
+                        <a href="?menu=data_nilai&id_lowongan=' . $_GET['id_lowongan'] . '&action=hitung">
+                            <button class="btn btn-success"><i class="fas fa-calculator mr-1"></i> Hitung</button>
+                        </a>
+                    ';
+                    } else {
+                        echo '
+                        <button class="btn btn-success" disabled><i class="fas fa-calculator mr-1"></i> Hitung</button>
+                    ';
+                    }
+                }
+                ?>
 
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<?php
+if (isset($_GET['action'])) {
+    echo '
+    <div class="col-md-10 main-container">
+        <div class="container">
+            <div class="content">
+                Anjing.... Keluar......
+            </div>
+        </div>
+    </div>
+    ';
+}
+?>
