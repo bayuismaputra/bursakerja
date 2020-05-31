@@ -14,6 +14,17 @@ class Bursakerja
         return $this->koneksi;
     }
 
+    function queryCustom($query)
+    {
+        try {
+            $sql = $this->bukaKoneksi()->prepare($query);
+            $sql->execute();
+            return $sql;
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
     function LoginUser($username, $password)
     {
         try {
