@@ -11,13 +11,8 @@ $id_user = $_SESSION['id_user'];
 $id_pelamar = $_GET['id_pelamar'];
 $id_lowongan = $_GET['id_lowongan'];
 
-<<<<<<< HEAD
 $qry_kriteria = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan}' AND lamaran.id_pelamar='{$id_pelamar}'");
 $qry_kriteria1 = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan} AND lamaran.id_pelamar='{$id_pelamar}'");
-=======
-$qry_kriteria = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lamaran.id_lowongan={$id_lowongan} AND lamaran.id_pelamar={$id_pelamar}");
-$qry_kriteria1 = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lamaran.id_lowongan={$id_lowongan} AND lamaran.id_pelamar={$id_pelamar}");
->>>>>>> refs/remotes/origin/master
 $jml_uploud_berkas = $qry_kriteria->rowCount();
 ?>
 <div class="col-md-10 main-container">
@@ -74,7 +69,7 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                         <div class="col-md-3"></div>
                         <div class="col-md-9">
                             <button type="submit" name="submit" class="btn btn-success">Simpan</button>
-                            <button type="button" name="Back" onclick="window.history.back()" class="btn btn-danger">Back</button>
+                            <button type="button" name="Back" onclick="window.history.back()" class="btn btn-danger">Kembali</button>
                         </div>
                     </div>
                 </div>

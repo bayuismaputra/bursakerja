@@ -101,7 +101,106 @@
         </div>
     </div>
 </div>
-
+<div class="col-md-10 main-container">
+    <div class="container">
+        <div class="content">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTables">
+                    <h5 class="mb-3">KRITERIA</h5>
+                    <thead class="tabel" align="center">
+                        <tr>
+                            <th>No.</th>
+                            <th>Kriteria</th>
+                            <th>Bobot</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td align="center">1</td>
+                        <td>hjdkfds</td>
+                        <td>dfkjdsa</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-10 main-container">
+    <div class="container">
+        <div class="content">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTables">
+                    <h5 class="mb-3">NILAI PELAMAR</h5>
+                    <thead class="tabel" align="center">
+                        <tr>
+                            <th>No.</th>
+                            <th>Pelamar</th>
+                            <th>C1</th>
+                            <th>C2</th>
+                            <th>C3</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td align="center">1</td>
+                        <td>hjdkfds</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-10 main-container">
+    <div class="container">
+        <div class="content">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTables">
+                    <h5 class="mb-3">NILAI R</h5>
+                    <thead class="tabel" align="center">
+                        <tr>
+                            <th>No.</th>
+                            <th>Pelamar</th>
+                            <th>R01</th>
+                            <th>R02</th>
+                            <th>R03</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td align="center">1</td>
+                        <td>hjdkfds</td>
+                        <td>90</td>
+                        <td>90</td>
+                        <td>90</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-10 main-container">
+    <div class="container">
+        <div class="content">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTables">
+                    <h5 class="mb-3">NILAI PREFERENSI</h5>
+                    <thead class="tabel" align="center">
+                        <tr>
+                            <th>No.</th>
+                            <th>Pelamar</th>
+                            <th>PREFERENSI</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td align="center">1</td>
+                        <td>hjdkfds</td>
+                        <td>90</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 if (isset($_GET['action'])) {
     $r = [];
@@ -115,6 +214,7 @@ if (isset($_GET['action'])) {
         <div class="container">
             <div class="content">';
     echo '==============C================<br>';
+
     // set kriteria
     $krit = $Ckriteria->GetData("Where id_lowongan={$id_lowongan}");
     foreach ($krit as $C) {
