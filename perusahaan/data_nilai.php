@@ -101,106 +101,8 @@
         </div>
     </div>
 </div>
-<div class="col-md-10 main-container">
-    <div class="container">
-        <div class="content">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTables">
-                    <h5 class="mb-3">KRITERIA</h5>
-                    <thead class="tabel" align="center">
-                        <tr>
-                            <th>No.</th>
-                            <th>Kriteria</th>
-                            <th>Bobot</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td align="center">1</td>
-                        <td>hjdkfds</td>
-                        <td>dfkjdsa</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-10 main-container">
-    <div class="container">
-        <div class="content">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTables">
-                    <h5 class="mb-3">NILAI PELAMAR</h5>
-                    <thead class="tabel" align="center">
-                        <tr>
-                            <th>No.</th>
-                            <th>Pelamar</th>
-                            <th>C1</th>
-                            <th>C2</th>
-                            <th>C3</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td align="center">1</td>
-                        <td>hjdkfds</td>
-                        <td>90</td>
-                        <td>90</td>
-                        <td>90</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-10 main-container">
-    <div class="container">
-        <div class="content">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTables">
-                    <h5 class="mb-3">NILAI R</h5>
-                    <thead class="tabel" align="center">
-                        <tr>
-                            <th>No.</th>
-                            <th>Pelamar</th>
-                            <th>R01</th>
-                            <th>R02</th>
-                            <th>R03</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td align="center">1</td>
-                        <td>hjdkfds</td>
-                        <td>90</td>
-                        <td>90</td>
-                        <td>90</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-10 main-container">
-    <div class="container">
-        <div class="content">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTables">
-                    <h5 class="mb-3">NILAI PREFERENSI</h5>
-                    <thead class="tabel" align="center">
-                        <tr>
-                            <th>No.</th>
-                            <th>Pelamar</th>
-                            <th>PREFERENSI</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td align="center">1</td>
-                        <td>hjdkfds</td>
-                        <td>90</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 <?php
 if (isset($_GET['action'])) {
     $r = [];
@@ -209,54 +111,10 @@ if (isset($_GET['action'])) {
     $kriteria = [];
     $alternatif = [];
 
-    echo '
-    <div class="col-md-10 main-container">
-        <div class="container">
-            <div class="content">';
-    echo '==============C================<br>';
 
-    // set kriteria
-    $krit = $Ckriteria->GetData("Where id_lowongan={$id_lowongan}");
-    foreach ($krit as $C) {
-        $kriteria[] = [
-            'id_kriteria' => $C['id_kriteria'],
-            'tipe_kriteria' => $C['tipe_kriteria'],
-            'nilai_bobot' => $C['bobot'],
-        ];
-    }
-    var_dump($kriteria);
-    echo '
-            </div>
-        </div>
-    </div>
-    ';
-    // $kriteria = ['C1', 'C2', 'C3', 'C4'];
 
-    echo '
-    <div class="col-md-10 main-container">
-        <div class="container">
-            <div class="content">';
-    echo '==============A================<br>';
-    // set alternative
-    $pelamar = $lowongan->GetData("JOIN lamaran ON lowongan.id_lowongan=lamaran.id_lowongan JOIN pelamar ON lamaran.id_pelamar=pelamar.id_pelamar JOIN user ON pelamar.id_user=user.id_user WHERE lowongan.id_lowongan=" . $id_lowongan . " GROUP BY pelamar.id_pelamar");
-    foreach ($pelamar as $A) {
-        $k = $bursaKerja->queryCustom("SELECT * FROM lamaran where id_lowongan={$A['id_lowongan']} AND id_pelamar={$A['id_pelamar']}");
-        $k_l = [];
 
-        $k_l[] = $A['id_pelamar'];
 
-        foreach ($k as $list) {
-            $k_l[] =
-                $list['nilai'];
-        }
-
-        $alternatif[] = $k_l;
-    }
-    var_dump($alternatif);
-    echo '
-            </div>
-        </div>
-    </div>';
     // $alternatif[] = ['A1', 3, 2, 3, 4];
     // $alternatif[] = ['A2', 2, 4, 3, 3];
     // $alternatif[] = ['A3', 4, 5, 5, 5];
@@ -268,41 +126,161 @@ if (isset($_GET['action'])) {
     // - min(array) // untuk mencari nilai minimal
     // - max(array) // untuk mencari nilai maximal
 
-    echo '
+?>
+    <!-- C -->
     <div class="col-md-10 main-container">
         <div class="container">
-            <div class="content">';
-    // // mendapatkan nilai matrik R (normalisasi X) Array rumusnya 
-    echo '==============R================<br>';
-    $index_alt = 0;
-    foreach ($alternatif as $alt) {
-        $index_kriteria = 1;
-        foreach ($kriteria as $c) {
-            // echo "Keluar";
-            // echo min(array_column($alternatif, $index_kriteria)) . " / " . $alternatif[$index_alt][$index_kriteria] . "<br>";
-            if ($c['tipe_kriteria'] == "cost") {
-                echo "r" . $index_alt . $index_kriteria . "=" . min(array_column($alternatif, $index_kriteria)) . "/" . $alternatif[$index_alt][$index_kriteria] . "<br>";
-                $r[$index_alt][$index_kriteria] = min(array_column($alternatif, $index_kriteria)) / $alternatif[$index_alt][$index_kriteria];
-            } else if ($c['tipe_kriteria'] == "benefit") {
-                echo "r" . $index_alt . $index_kriteria . "=" . $alternatif[$index_alt][$index_kriteria] . "/" . max(array_column($alternatif, $index_kriteria)) . "<br>";
-                $r[$index_alt][$index_kriteria] = $alternatif[$index_alt][$index_kriteria] / max(array_column($alternatif, $index_kriteria));
-            }
-            $index_kriteria++;
-        }
-        $index_alt++;
-    }
-    echo '
+            <div class="content">
+                <?php
+                $krit = $Ckriteria->GetData("Where id_lowongan={$id_lowongan}");
+                foreach ($krit as $C) {
+                    $kriteria[] = [
+                        'id_kriteria' => $C['id_kriteria'],
+                        'nama_kriteria' => $C['nama_kriteria'],
+                        'tipe_kriteria' => $C['tipe_kriteria'],
+                        'nilai_bobot' => $C['bobot'],
+                    ];
+                }
+                ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="dataTables">
+                        <h5 class="mb-3">KRITERIA</h5>
+                        <thead class="tabel" align="center">
+                            <tr>
+                                <th>No.</th>
+                                <th>Kriteria</th>
+                                <th>Bobot</th>
+                            </tr>
+                        </thead>
+                        <?php
+                        $i = 0;
+                        foreach ($kriteria as $row) {
+                        ?>
+                            <tr>
+                                <td align="center"><?= $i += 1 ?></td>
+                                <td><?= $row['nama_kriteria'] ?></td>
+                                <td><?= $row['nilai_bobot'] ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    ';
-    // $w = [0.4, 0.3, 0.2, 0.1]; //bobot
 
+    <!-- A -->
+    <div class="col-md-10 main-container">
+        <div class="container">
+            <div class="content">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="dataTables">
+                        <h5 class="mb-3">NILAI PELAMAR</h5>
+                        <thead class="tabel" align="center">
+                            <tr>
+                                <th>No.</th>
+                                <th>Pelamar</th>
+                                <?php
+                                $kC = $Ckriteria->GetData("Where id_lowongan={$id_lowongan}");
+                                foreach ($kC as $C) {
+                                    echo '
+                                    <th>' . $C['nama_kriteria'] . '</th>
+                                    ';
+                                }
+                                ?>
+                            </tr>
+                        </thead>
+                        <?php
+                        // set alternative
+                        $o = 1;
+                        $pelamar = $lowongan->GetData("JOIN lamaran ON lowongan.id_lowongan=lamaran.id_lowongan JOIN pelamar ON lamaran.id_pelamar=pelamar.id_pelamar JOIN user ON pelamar.id_user=user.id_user WHERE lowongan.id_lowongan=" . $id_lowongan . " GROUP BY pelamar.id_pelamar");
+                        foreach ($pelamar as $A) {
+                            $k = $bursaKerja->queryCustom("SELECT * FROM lamaran where id_lowongan={$A['id_lowongan']} AND id_pelamar={$A['id_pelamar']}");
+                            $k_l = [];
+
+                            $k_l[] = $A['id_pelamar'];
+                            $k_l[] = $A['nama_lengkap'];
+                            echo '
+                            <tr>
+                                <td>' . $o  . '</td>
+                                <td>' . $A['nama_lengkap'] . '</td>
+                                
+                            ';
+                            foreach ($k as $list) {
+                                $k_l[] =
+                                    $list['nilai'];
+                                echo '<td class="text-center">' . $list['nilai'] . '</td>';
+                            }
+                            echo '
+                            </tr>
+                            ';
+
+                            $alternatif[] = $k_l;
+                            $o++;
+                        }
+                        ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- R -->
+    <div class="col-md-10 main-container">
+        <div class="container">
+            <div class="content">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="dataTables">
+                        <h5 class="mb-3">NILAI R</h5>
+                        <thead class="tabel" align="center">
+                            <tr>
+                                <th>R</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // // mendapatkan nilai matrik R (normalisasi X) Array rumusnya 
+                            $index_alt = 0;
+                            foreach ($alternatif as $alt) {
+                                $index_kriteria = 2;
+                                foreach ($kriteria as $c) {
+                                    if ($c['tipe_kriteria'] == "cost") {
+                                        echo '
+                                        <tr>
+                                            <td>R' . $index_alt . $index_kriteria . '</td>
+                                            <td  class="text-center">' . min(array_column($alternatif, $index_kriteria)) . "/" . $alternatif[$index_alt][$index_kriteria] . '</td>
+                                        </tr>
+                                        ';
+                                        $r[$index_alt][$index_kriteria] = min(array_column($alternatif, $index_kriteria)) / $alternatif[$index_alt][$index_kriteria];
+                                    } else if ($c['tipe_kriteria'] == "benefit") {
+                                        echo '
+                                        <tr>
+                                            <td>R' . $index_alt . $index_kriteria . '</td>
+                                            <td  class="text-center">' . $alternatif[$index_alt][$index_kriteria] . "/" . max(array_column($alternatif, $index_kriteria)) . '</td>
+                                        </tr>
+                                        ';
+                                        $r[$index_alt][$index_kriteria] = $alternatif[$index_alt][$index_kriteria] / max(array_column($alternatif, $index_kriteria));
+                                    }
+                                    $index_kriteria++;
+                                }
+                                $index_alt++;
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
     // // mendapatkan nilai V
     $index_alt = 0;
     foreach ($alternatif as $alt) {
         // $index_w = 0;
-        $index_r = 1;
+        $index_r = 2;
         $v = 0;
         foreach ($kriteria as $c) {
 
@@ -311,6 +289,7 @@ if (isset($_GET['action'])) {
             // $index_w++;
         }
         $nilai_v[$index_alt]['id_pelamar'] = $alt[0];
+        $nilai_v[$index_alt]['nama_pelamar'] = $alt[1];
         $nilai_v[$index_alt]['nilai'] = $v;
         $index_alt++;
     }
@@ -320,24 +299,52 @@ if (isset($_GET['action'])) {
         return $a['nilai'] <=> $b['nilai'];
     });
 
-    echo '
+    ?>
+
+    <!-- rekomendasi -->
     <div class="col-md-10 main-container">
         <div class="container">
-            <div class="content">';
-    echo "==========Rekomendasi===========<br>";
-    // var_dump($nilai_v);
-    // echo (round());
-    // // menentukan Rangking V
-    $rank = 1;
-    foreach (array_reverse($nilai_v) as $v) {
-        echo "Ranking {$rank} -> id_pelamar= {$v['id_pelamar']} Dengan Nilai {$v['nilai']}<br>";
-        $rank++;
-    }
+            <div class="content">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="dataTables">
+                        <h5 class="mb-3">NILAI PREFERENSI</h5>
+                        <thead class="tabel" align="center">
+                            <tr>
+                                <th>No.</th>
+                                <th>Pelamar</th>
+                                <th>PREFERENSI</th>
+                            </tr>
+                        </thead>
+                        <?php
 
-    echo '
+                        // // menentukan Rangking V
+                        $rank = 1;
+                        foreach (array_reverse($nilai_v) as $v) {
+                        ?>
+                            <tr>
+                                <td align="center"><?= $rank ?></td>
+                                <td><?= $v['nama_pelamar'] ?></td>
+                                <td class="text-center"><?= $v['nilai'] ?></td>
+                            </tr>
+                        <?php
+                            $rank++;
+                        }
+                        ?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-        ';
+<?php
+
+    // simpan Rank ke database
+    foreach ($nilai_v as $row) {
+        $qryCustom = $bursaKerja->queryCustom("SELECT * FROM ranking WHERE id_pelamar={$row['id_pelamar']} AND id_lowongan={$id_lowongan}");
+        if ($qryCustom->rowCount() > 0) {
+            $q = $bursaKerja->queryCustom("UPDATE `ranking` SET `nilai_akhir`={$row['nilai']} WHERE `id_pelamar`={$row['id_pelamar']} AND `id_lowongan`={$id_lowongan}");
+        } else {
+            $q = $bursaKerja->queryCustom("INSERT INTO `ranking`(`id_pelamar`, `id_lowongan`, `nilai_akhir`) VALUES ({$row['id_pelamar']},{$id_lowongan},{$row['nilai']})");
+        }
+    }
 }
 ?>
