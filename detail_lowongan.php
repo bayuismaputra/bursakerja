@@ -9,7 +9,7 @@ session_start();
         <h5>Profil Perusahaan</h5>
         <hr>
         <?php
-        include('require/kelas_lowongan.php');
+        // include('require/kelas_lowongan.php');
         require("require/kelas_kriteria.php");
         $detail_lowongan = new lowongan();
         $kriteria = new Kriteria();

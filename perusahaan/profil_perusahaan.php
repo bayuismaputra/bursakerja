@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <ul>
-                                <li><i class="fas fa-user"></i><?= ($row['nama_perusahaan'] == '-') ? "Nama Perusahaan" : $row['nama_perusahaan'] ?></li>
+                                <li><i class="fas fa-building"></i><?= ($row['nama_perusahaan'] == '-') ? "Nama Perusahaan" : $row['nama_perusahaan'] ?></li>
                                 <li><i class="fas fa-envelope-square"></i><?= ($row['email'] == '-') ? "Email" : $row['email'] ?></li>
                                 <li><i class="fas fa-map-marker-alt"></i><?= ($row['alamat'] == '-') ? "Alamat" : $row['alamat'] ?></li>
                                 <li><i class="fas fa-street-view"></i><?= ($row['kota'] == '-') ? "Kota" : $row['kota'] ?></li>
