@@ -66,8 +66,10 @@ body {
     height: 65px;
     background-color: #fff;
     z-index: 2;
-    box-shadow: 1px 0 5px rgba(18, 209, 136, 0.125);
     font-family: 'viga', sans-serif;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05),
+        0 2px 6px rgba(0, 0, 0, 0.05),
+        0 3px 7px rgba(0, 0, 0, 0.05);
 }
 
 /* .menu.cus-nav {
@@ -156,7 +158,9 @@ body {
     padding-bottom: 10px;
     text-align: justify;
     text-transform: uppercase;
-    box-shadow: 0 0 5px rgba(75, 75, 75, 0.125);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05),
+        0 2px 6px rgba(0, 0, 0, 0.05),
+        0 3px 7px rgba(0, 0, 0, 0.05);
 }
 
 
@@ -170,7 +174,9 @@ body {
     margin-bottom: 10px;
     text-align: justify;
     padding-bottom: 10px;
-    box-shadow: 0 0 5px rgba(75, 75, 75, 0.125);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05),
+        0 2px 6px rgba(0, 0, 0, 0.05),
+        0 3px 7px rgba(0, 0, 0, 0.05);
 }
 
 .container .tampil-lowongan {
@@ -180,9 +186,9 @@ body {
     border-width: 0 0 0 0;
 }
 
-.container img {
-    /* width: 410px;
-    height: 250px; */
+.container .tampil-lowongan img {
+    width: 300px;
+    height: 200px;
     margin-bottom: 10px;
     border-radius: 4px;
 }

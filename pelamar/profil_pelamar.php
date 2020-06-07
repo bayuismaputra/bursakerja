@@ -23,6 +23,9 @@
             }
             ?>
             <div class="row profil-user">
+                <div class="col-lg-3">
+                    <img src="../uploud/<?php echo $row['foto_pelamar'] ?>" class="img img-thumbnail" alt="Foto Pelamar">
+                </div>
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-lg-5">
@@ -31,7 +34,7 @@
                                 <li><i class="fas fa-envelope-square"></i> <?php echo $row['email'] ?></li>
                                 <li><i class="fas fa-map-marker-alt"></i> <?php echo $row['alamat'] ?></li>
                                 <li><i class="fas fa-street-view"></i> <?php echo $row['tempat_lahir'] ?></li>
-                                <li><i class="fas fa-birthday-cake"></i> <?php echo $row['tanggal_lahir'] ?></li>
+                                <li><i class="fas fa-birthday-cake"></i> <?php echo date("d-m-Y", strtotime($row['tanggal_lahir'])) ?></li>
                             </ul>
                         </div>
                         <div class="col-lg-5">

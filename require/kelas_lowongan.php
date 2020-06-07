@@ -9,7 +9,7 @@ class Lowongan extends Bursakerja
     function __construct()
     {
         try {
-            $this->sqlInsert = $this->bukaKoneksi()->prepare("insert INTO `lowongan` VALUES (NULL, :nama_lowongan, :departemen, :gaji, :kota, :tanggal_buka, :tanggal_tutup, :pengalaman_kerja, :deskripsi, :id_perusahaan, 'ada')");
+            $this->sqlInsert = $this->bukaKoneksi()->prepare("insert INTO `lowongan` VALUES (NULL, :nama_lowongan, :departemen, :gaji, :kota, :tanggal_buka, :tanggal_tutup, :pengalaman_kerja, :deskripsi, :id_perusahaan, 'ada', '0')");
             $this->sqlHapus = $this->bukaKoneksi()->prepare("UPDATE lowongan SET status_lowongan = 'tidak ada' where id_lowongan=:id_lowongan");
             $this->sqlEdit = $this->bukaKoneksi()->prepare("UPDATE lowongan SET nama_lowongan=:nama_lowongan, departemen=:departemen, gaji=:gaji, kota=:kota, tanggal_buka=:tanggal_buka, tanggal_tutup=:tanggal_tutup, pengalaman_kerja=:pengalaman_kerja, deskripsi=:deskripsi where id_lowongan=:id_lowongan");
             $this->sqlUmumkan = $this->bukaKoneksi()->prepare("update lowongan set pengumuman=:pengumuman where id_lowongan=:id_lowongan");

@@ -99,37 +99,34 @@
 
             </div>
         </div>
-    </div>
-</div>
-
-
-<?php
-if (isset($_GET['action'])) {
-    $r = [];
-    $nilai_v = [];
-
-    $kriteria = [];
-    $alternatif = [];
 
 
 
+        <?php
+        if (isset($_GET['action'])) {
+            $r = [];
+            $nilai_v = [];
+
+            $kriteria = [];
+            $alternatif = [];
 
 
-    // $alternatif[] = ['A1', 3, 2, 3, 4];
-    // $alternatif[] = ['A2', 2, 4, 3, 3];
-    // $alternatif[] = ['A3', 4, 5, 5, 5];
 
-    // mendapatkan value column array
-    // - array_column(array,index)
 
-    // mencari nilai min atau max dalam array
-    // - min(array) // untuk mencari nilai minimal
-    // - max(array) // untuk mencari nilai maximal
 
-?>
-    <!-- C -->
-    <div class="col-md-10 main-container">
-        <div class="container">
+            // $alternatif[] = ['A1', 3, 2, 3, 4];
+            // $alternatif[] = ['A2', 2, 4, 3, 3];
+            // $alternatif[] = ['A3', 4, 5, 5, 5];
+
+            // mendapatkan value column array
+            // - array_column(array,index)
+
+            // mencari nilai min atau max dalam array
+            // - min(array) // untuk mencari nilai minimal
+            // - max(array) // untuk mencari nilai maximal
+
+        ?>
+            <!-- C -->
             <div class="content">
                 <?php
                 $krit = $Ckriteria->GetData("Where id_lowongan={$id_lowongan}");
@@ -167,12 +164,8 @@ if (isset($_GET['action'])) {
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- A -->
-    <div class="col-md-10 main-container">
-        <div class="container">
+            <!-- A -->
             <div class="content">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="dataTables">
@@ -223,12 +216,8 @@ if (isset($_GET['action'])) {
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- R -->
-    <div class="col-md-10 main-container">
-        <div class="container">
+            <!-- R -->
             <div class="content">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="dataTables">
@@ -272,38 +261,34 @@ if (isset($_GET['action'])) {
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <?php
-    // // mendapatkan nilai V
-    $index_alt = 0;
-    foreach ($alternatif as $alt) {
-        // $index_w = 0;
-        $index_r = 2;
-        $v = 0;
-        foreach ($kriteria as $c) {
+            <?php
+            // // mendapatkan nilai V
+            $index_alt = 0;
+            foreach ($alternatif as $alt) {
+                // $index_w = 0;
+                $index_r = 2;
+                $v = 0;
+                foreach ($kriteria as $c) {
 
-            $v += (($c['nilai_bobot']) * $r[$index_alt][$index_r]);
-            $index_r++;
-            // $index_w++;
-        }
-        $nilai_v[$index_alt]['id_pelamar'] = $alt[0];
-        $nilai_v[$index_alt]['nama_pelamar'] = $alt[1];
-        $nilai_v[$index_alt]['nilai'] = $v;
-        $index_alt++;
-    }
+                    $v += (($c['nilai_bobot']) * $r[$index_alt][$index_r]);
+                    $index_r++;
+                    // $index_w++;
+                }
+                $nilai_v[$index_alt]['id_pelamar'] = $alt[0];
+                $nilai_v[$index_alt]['nama_pelamar'] = $alt[1];
+                $nilai_v[$index_alt]['nilai'] = $v;
+                $index_alt++;
+            }
 
-    // sorting array dengan usort (default data sort ASCENDING)
-    usort($nilai_v, function ($a, $b) {
-        return $a['nilai'] <=> $b['nilai'];
-    });
+            // sorting array dengan usort (default data sort ASCENDING)
+            usort($nilai_v, function ($a, $b) {
+                return $a['nilai'] <=> $b['nilai'];
+            });
 
-    ?>
+            ?>
 
-    <!-- rekomendasi -->
-    <div class="col-md-10 main-container">
-        <div class="container">
+            <!-- rekomendasi -->
             <div class="content">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="dataTables">
@@ -333,18 +318,18 @@ if (isset($_GET['action'])) {
                     </table>
                 </div>
             </div>
-        </div>
     </div>
+</div>
 <?php
 
-    // simpan Rank ke database
-    foreach ($nilai_v as $row) {
-        $qryCustom = $bursaKerja->queryCustom("SELECT * FROM ranking WHERE id_pelamar={$row['id_pelamar']} AND id_lowongan={$id_lowongan}");
-        if ($qryCustom->rowCount() > 0) {
-            $q = $bursaKerja->queryCustom("UPDATE `ranking` SET `nilai_akhir`={$row['nilai']} WHERE `id_pelamar`={$row['id_pelamar']} AND `id_lowongan`={$id_lowongan}");
-        } else {
-            $q = $bursaKerja->queryCustom("INSERT INTO `ranking`(`id_pelamar`, `id_lowongan`, `nilai_akhir`) VALUES ({$row['id_pelamar']},{$id_lowongan},{$row['nilai']})");
+            // simpan Rank ke database
+            foreach ($nilai_v as $row) {
+                $qryCustom = $bursaKerja->queryCustom("SELECT * FROM ranking WHERE id_pelamar={$row['id_pelamar']} AND id_lowongan={$id_lowongan}");
+                if ($qryCustom->rowCount() > 0) {
+                    $q = $bursaKerja->queryCustom("UPDATE `ranking` SET `nilai_akhir`={$row['nilai']} WHERE `id_pelamar`={$row['id_pelamar']} AND `id_lowongan`={$id_lowongan}");
+                } else {
+                    $q = $bursaKerja->queryCustom("INSERT INTO `ranking`(`id_pelamar`, `id_lowongan`, `nilai_akhir`) VALUES ({$row['id_pelamar']},{$id_lowongan},{$row['nilai']})");
+                }
+            }
         }
-    }
-}
 ?>

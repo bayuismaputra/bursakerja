@@ -28,16 +28,36 @@
                         $status_nikah = $_POST['status_nikah'];
                         $alamat = $_POST['alamat'];
 
+                        if (empty($_FILES['logo']['tmp_name']) && $row['foto_pelamar'] == "default.png") {
+                            echo '
+                            <div class="alert alert-warning fade show" role="alert">
+                                <strong>Data Kosong!</strong>
+                            </div>
+                            ';
+                        } else {
+                        }
+
                         if ($jenis_kelamin == "" || $status_nikah == "" || empty($_FILES['cv']['tmp_name'])) {
                             echo "data kosong";
                         } else {
+                            // ketika gambar diubah maka file yang sebelumnya harus di hapus kecuali file default.png
+                            if ($row['foto_pelamar'] != 'default.png') {
+                                $hps = unlink('../uploud/' . $row['foto_pelamar']);
+                            }
+
+                            // upload gambar
+                            $explode = explode(".", $_FILES['logo']['name']);
+                            $file_Foto = $id_user . "_" . rand(0, 100) . $_FILES['logo']['name'];
+                            move_uploaded_file($_FILES['logo']['tmp_name'], "../uploud/" . $file_Foto);
+
+                            // upload cv
                             $explode = explode(".", $_FILES['cv']['name']);
-                            $fileName = $id_user . "_" . rand(0, 100) . $_FILES['cv']['name'];
-                            move_uploaded_file($_FILES['cv']['tmp_name'], "../uploud/" . $fileName);
+                            $file_Cv = $id_user . "_" . rand(0, 100) . $_FILES['cv']['name'];
+                            move_uploaded_file($_FILES['cv']['tmp_name'], "../uploud/" . $file_Cv);
 
                             $updt_user = $user->UpdateData($nama_lengkap, $_SESSION['username'], $id_user);
 
-                            $updt_user_rinci = $lamaran->updateLamaran($email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $fileName, $id_user);
+                            $updt_user_rinci = $lamaran->updateLamaran($file_Foto, $email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $file_Cv, $id_user);
 
                             echo "<script>document.location='?menu=profil_pelamar';</script>";
                         }
@@ -47,6 +67,26 @@
 
                 <form action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id_pelamar" value="<?= $row['id_pelamar'] ?>">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="control-label" for="foto_pelamar">Foto Pelamar</label>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="col-12 pl-0 mb-3">
+                                    <img src="../uploud/<?= $row['foto_pelamar'] ?>" width="25%" class="img img-thumbnail" alt="Foto Pelamar">
+                                </div>
+                                <div class="col-12 pl-0">
+                                    <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                            <input type="file" name="logo" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">

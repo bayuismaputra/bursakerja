@@ -13,7 +13,7 @@ body {
 }
 
 .top-navbar {
-    z-index: 1;
+    z-index: 4;
     position: fixed;
     top: 0;
     left: 0;
@@ -24,7 +24,9 @@ body {
     font-family: 'viga', sans-serif;
     font-weight: bold;
     align-items: center;
-    box-shadow: 1px 0 5px rgba(179, 179, 179, 0.125);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03),
+        0 2px 4px rgba(0, 0, 0, 0.03),
+        0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
 .top-navbar button {
@@ -148,7 +150,9 @@ body {
     padding-bottom: 10px;
     text-align: justify;
     /* border-left: 2px solid #0c9463; */
-    box-shadow: 1px 0 5px rgba(179, 179, 179, 0.125);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05),
+        0 2px 6px rgba(0, 0, 0, 0.05),
+        0 3px 7px rgba(0, 0, 0, 0.05);
 }
 
 .main-container .judul-content .pilih-lowongan {
@@ -160,6 +164,7 @@ body {
     color: #fff;
     border-color: #0c9463;
     font-weight: bold;
+    /* z-index: 666; */
 }
 
 .main-container .judul-content .btn:hover {
@@ -178,11 +183,25 @@ body {
     margin-bottom: 10px;
     text-align: justify;
     padding-bottom: 20px;
-    box-shadow: 1px 0 5px rgba(179, 179, 179, 0.125);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05),
+        0 2px 6px rgba(0, 0, 0, 0.05),
+        0 3px 7px rgba(0, 0, 0, 0.05);
 }
 
 .main-container .content img {
     width: 100%;
+    height: auto;
+    background: #f5f5f5;
+}
+
+.main-container .content .foto_pelamar {
+    width: 80px;
+    height: auto;
+    background: #f5f5f5;
+}
+
+.main-container .content .logo_perusahaan {
+    width: 150px;
     height: auto;
     background: #f5f5f5;
 }
@@ -211,6 +230,22 @@ body {
     color: #fff;
 } */
 .main-container .profil-user i {
+    margin-right: 10px;
+    opacity: 50%;
+    padding: 5px;
+    width: 30px;
+    height: auto;
+}
+
+.main-container .cari-lowongan i {
+    margin-right: 10px;
+    opacity: 50%;
+    padding: 5px;
+    width: 30px;
+    height: auto;
+}
+
+.main-container .content ul li i {
     margin-right: 10px;
     opacity: 50%;
     padding: 5px;

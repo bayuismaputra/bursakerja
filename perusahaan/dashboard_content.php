@@ -9,9 +9,21 @@
                     <div class="card-body-icon">
                         <i class="fas fa-suitcase mr-2"></i>
                     </div>
+                    <?php
+                    include('../require/kelas_lowongan.php');
+                    include('../require/kelas_lamaran.php');
+                    $lowongan = new Lowongan();
+                    $pelamar = new Lamaran();
+                    $jml_lowongan = $lowongan->GetData("where status_lowongan='ada' AND id_perusahaan=" . $_SESSION['id_perusahaan']);
+                    $jml_pelamar = $pelamar->GetDataPelamar("where id_perusahaan=" . $_SESSION['id_perusahaan']);
+                    $jumlah = $jml_lowongan->rowCount();
+                    $jumlah_pelamar = $jml_pelamar->rowCount();
+
+
+                    ?>
                     <div class="card-body">
                         <h5 class="card-title">Data Lowongan</h5>
-                        <div class="display-4">1200</div>
+                        <div class="display-4"><?php echo $jumlah ?></div>
                     </div>
                 </div>
                 <div class="card bg-success ml-5" style="width: 18rem;">
@@ -20,7 +32,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Data Pelamar</h5>
-                        <div class="display-4">1200</div>
+                        <div class="display-4"><?php echo $jumlah_pelamar ?></div>
                     </div>
                 </div>
             </div>

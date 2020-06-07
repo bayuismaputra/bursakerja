@@ -32,7 +32,7 @@
                         <td>' . $value['status_uploud'] . '</td>
                         <td align="center">
                             <a href="?menu=edit_kriteria&id_kriteria=' . $value['id_kriteria'] . '" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                            <a href="?menu=hapus_kriteria$id_kriteria=' . $value['id_kriteria'] . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</a>
+                            <a href="?menu=hapus_kriteria&id_kriteria=' . $value['id_kriteria'] . '&id_lowongan=' . $_GET['id_lowongan'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Anda yakin akan menghapus kriteria ' . $value['nama_kriteria'] . '?\');"><i class="fa fa-trash"></i> Hapus</a>
             
                         </td>
                         </tr>';

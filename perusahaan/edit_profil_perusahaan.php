@@ -100,7 +100,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="col-12 pl-0 mb-3">
-                                    <img src="../uploud/<?= $row['logo_perusahaan'] ?>" width="25%" class="img img-thumbnail" alt="Logo Perusahaan">
+                                    <img src="../uploud/<?= $row['logo_perusahaan'] ?>" width="5%" class="img img-thumbnail logo_perusahaan" alt="Logo Perusahaan">
                                 </div>
                                 <div class="col-12 pl-0">
                                     <div class="input-group mb-3">

@@ -43,7 +43,7 @@ include('require/koneksi.php');
                             $_SESSION['id_perusahaan'] = $row['id_perusahaan'];
                         }
 
-                        echo "<script language='javascript'>alert('Login Success'); document.location='perusahaan/dashboard.php'</script>";
+                        echo "<script language='javascript'>alert('Login Sukses'); document.location='perusahaan/dashboard.php'</script>";
                     } else if ($hak_akses['hak_akses'] == 'pelamar') {
                         $pelamar = $login->getDatapelamar($hak_akses['id_user']);
                         if ($pelamar->rowCount() > 0) {
@@ -51,12 +51,12 @@ include('require/koneksi.php');
                             $_SESSION['id_pelamar'] = $row['id_pelamar'];
                         }
 
-                        echo "<script language='javascript'>alert('Login Success'); document.location='pelamar/dashboard_pelamar.php'</script>";
+                        echo "<script language='javascript'>alert('Login Sukses'); document.location='pelamar/dashboard_pelamar.php?menu=pelamar'</script>";
                     } else {
-                        echo "<script language='javascript'>alert('Login Success'); document.location='daftar.php'</script>";
+                        echo "<script language='javascript'>alert('Login Sukses'); document.location='daftar.php'</script>";
                     }
                 } else {
-                    echo "<script language='javascript'>alert('Username or Password Invalid'); document.location='login.php'</script>";
+                    echo "<script language='javascript'>alert('Username atau Password tidak valid'); document.location='login.php'</script>";
                 }
             }
             ?>

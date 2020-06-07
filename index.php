@@ -17,34 +17,19 @@
 <!-- lowongan -->
 <div class="container">
     <div class="row">
-        <?php include('menu_utama.php'); ?>
-        <?php include('require/kelas_lowongan.php'); ?>
         <?php
-        $tampil_lowongan = new lowongan();
-        $data_lowongan = $tampil_lowongan->GetData("where status_lowongan='ada'");
-        $no = 1;
-        while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
-        ?>
-            <div class="col-lg-3 tampil-lowongan">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="img/undraw_sign_in_e6hj.png" class="img-fluid" alt="">
-                        <h6 class="card-title"><?php echo $value['nama_lowongan']; ?></h6>
-                        <p class="card-text">PT. Sejahtera abadi jaya Tbk.</p>
-                        <ul class="list-group">
-                            <li><i class="fas fa-building"></i><?php echo $value['departemen']; ?></li>
-                            <li><i class="fas fa-map-marker-alt"></i><?php echo $value['kota']; ?></li>
-                            <li><i class="fas fa-money-bill-wave"></i><?php echo 'Rp. ' . $value['gaji']; ?>
-                            </li>
-                            <li><i class="fas fa-briefcase"></i><?php echo $value['pengalaman_kerja']; ?></li>
-                        </ul>
-                        <a href="?menu_utama=detail_lowongan_index&id_lowongan=<?php echo $value['id_lowongan']; ?>" class="btn btn-block tombol-lamar">Lamar</a>
-                    </div>
-                </div>
-            </div>
-        <?php
+        include('require/kelas_lowongan.php');
+        if ($_GET) {
+            if ($_GET['menu_utama']) {
+                include('menu_utama.php');
+            } else {
+                include('lowongan.php');
+            }
+        } else {
+            include('lowongan.php');
         }
         ?>
+
     </div>
 </div>
 </div>

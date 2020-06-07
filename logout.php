@@ -1,3 +1,3 @@
 <?php
 session_destroy();
-echo "<script>alert('Logout Success ');document.location='../index.php' </script> ";
+echo "<script>alert('Logout Sukses ');document.location='../index.php' </script> ";

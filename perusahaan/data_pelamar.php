@@ -45,6 +45,7 @@
                     <thead class="tabel" align="center">
                         <tr>
                             <th>No.</th>
+                            <th>FOTO</th>
                             <th>PELAMAR</th>
                             <th>JENIS KELAMIN</th>
                             <th>TEMPAT LAHIR</th>
@@ -63,10 +64,11 @@
                     while ($value = $data_pelamar->fetch(PDO::FETCH_ASSOC)) {
                         echo ' <tr>
                         <td align="center">' . $no . '</td>
+                        <td align="center"><img src="../uploud/' . $value['foto_pelamar'] . ' ?>" class="img img-thumbnail foto_pelamar" alt="Foto Pelamar"></td>
                         <td>' . $value['nama_lengkap'] . '</td>
                         <td>' . $value['jenis_kelamin'] . '</td>
                         <td>' . $value['tempat_lahir'] . '</td>
-                        <td>' . $value['tanggal_lahir'] . '</td>
+                        <td>' . date("d-m-Y", strtotime($value['tanggal_lahir'])) . '</td>
                         </tr>';
                         $no++;
                     }

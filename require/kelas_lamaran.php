@@ -14,7 +14,7 @@ class Lamaran extends Bursakerja
         $this->sqlEdit = $this->bukaKoneksi()->prepare("update lamaran set nama_kriteria=:nama_kriteria, tipe_kriteria=:tipe_kriteria, bobot=:bobot, status_uploud=:status_uploud where id_kriteria=:id_kriteria");
         $this->sqlHapus = $this->bukaKoneksi()->prepare("DELETE FROM lamaran where id_kriteria=:id_kriteria");
         $this->sqlHapusLamaran = $this->bukaKoneksi()->prepare("delete from lamaran where id_lowongan=:id_lowongan");
-        $this->sqlUpdtLamaran = $this->bukaKoneksi()->prepare("UPDATE `pelamar` SET `email`=:email,`alamat`=:alamat,`tempat_lahir`=:tempat_lahir,`tanggal_lahir`=:tanggal_lahir,`jenis_kelamin`=:jenis_kelamin,`no_telpon`=:no_telpon,`status_nikah`=:status_nikah,`curriculum_vitae`=:curriculum_vitae WHERE `id_user`=:id_user");
+        $this->sqlUpdtLamaran = $this->bukaKoneksi()->prepare("UPDATE `pelamar` SET `foto_pelamar`=:foto_pelamar,`email`=:email,`alamat`=:alamat,`tempat_lahir`=:tempat_lahir,`tanggal_lahir`=:tanggal_lahir,`jenis_kelamin`=:jenis_kelamin,`no_telpon`=:no_telpon,`status_nikah`=:status_nikah,`curriculum_vitae`=:curriculum_vitae WHERE `id_user`=:id_user");
     }
 
     function GetData($qry_custom)
@@ -101,9 +101,10 @@ class Lamaran extends Bursakerja
         }
     }
 
-    function updateLamaran($email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $curriculum_vitae, $id_user)
+    function updateLamaran($foto_pelamar, $email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $curriculum_vitae, $id_user)
     {
         try {
+            $this->sqlUpdtLamaran->bindParam(':foto_pelamar', $foto_pelamar);
             $this->sqlUpdtLamaran->bindParam(':email', $email);
             $this->sqlUpdtLamaran->bindParam(':alamat', $alamat);
             $this->sqlUpdtLamaran->bindParam(':tempat_lahir', $tempat_lahir);
