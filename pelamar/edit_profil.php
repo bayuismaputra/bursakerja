@@ -31,7 +31,7 @@
                         if (empty($_FILES['logo']['tmp_name']) && $row['foto_pelamar'] == "default.png") {
                             echo '
                             <div class="alert alert-warning fade show" role="alert">
-                                <strong>Data Kosong!</strong>
+                                <strong>Data Profil Kosong!</strong>
                             </div>
                             ';
                         } else {

@@ -68,9 +68,6 @@ if (isset($_GET['menu'])) {
 	if ($menu == "lamaran") {
 		include "../pelamar/lamaran.php";
 	}
-	if ($menu == "pengumuman") {
-		include "pengumuman.php";
-	}
 	if ($menu == "penilaian_kriteria") {
 		include "penilaian_kriteria.php";
 	}

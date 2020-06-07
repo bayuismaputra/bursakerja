@@ -17,7 +17,7 @@
             if ($row['email'] == '-' || $row['alamat'] == '-' || $row['tempat_lahir'] == '-' || $row['tanggal_lahir'] == '0000-00-00' || $row['jenis_kelamin'] == '-' || $row['no_telpon'] == '-' || $row['status_nikah'] == '-' || $row['curriculum_vitae'] == '-') {
                 echo '
                 <div class="alert alert-warning" role="alert">
-                    Lengkapi Data!
+                    Lengkapi Data Profil Anda
                 </div>
                 ';
             }

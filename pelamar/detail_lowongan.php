@@ -68,7 +68,7 @@
                     // var_dump($key);
                     if ($key['foto_pelamar'] == '-' || $key['email'] == '-' || $key['alamat'] == '-' || $key['tempat_lahir'] == '-' || $key['tanggal_lahir'] == '0000-00-00' || $key['jenis_kelamin'] == '-' || $key['no_telpon'] == '-' || $key['status_nikah'] == '-' || $key['curriculum_vitae'] == '-') {
                         echo "
-                        <script language='javascript'>alert('Lengkapi data anda !'); document.location='?menu=profil_pelamar'</script>                        
+                        <script language='javascript'>alert('Lengkapi Data Profil Anda'); document.location='?menu=profil_pelamar'</script>                        
                         ";
                     } else if ($qry_lamaran->rowCount() > 0) {
 

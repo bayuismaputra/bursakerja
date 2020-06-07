@@ -14,7 +14,7 @@
             <div class="content">
                 <div class="row">
                     <div class="col-lg-3">
-                        <img src="../uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid" alt="bayu">
+                        <img src="../uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid" alt="Logo Perusahaan">
                     </div>
                     <div class="col-lg-7 cari-lowongan">
                         <ul>

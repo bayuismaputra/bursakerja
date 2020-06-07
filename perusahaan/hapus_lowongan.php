@@ -7,7 +7,7 @@ if (isset($_GET['id_lowongan'])) {
     if ($qry) {
         echo "<script language='javascript'>alert('Data berhasil dihapus'); document.location='?menu=data_lowongan'</script>";
     } else {
-        echo "<script language='javascript'>alert('Gagal'); document.location='?menu=penerimaan'</script>";
+        echo "<script language='javascript'>alert('Gagal menghapus data'); document.location='?menu=penerimaan'</script>";
     }
 } else {
     echo "Pilih lowongan dahulu";

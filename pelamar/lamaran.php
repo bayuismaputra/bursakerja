@@ -36,9 +36,9 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                         $qry = $lamaran->InsertData($id_pelamar, $id_lowongan, $berkas['id_kriteria'], $file);
 
                         if ($qry) {
-                            echo "<script language='javascript'>alert('Berkas berhasil diupload'); document.location='?menu=pelamar'</script>";
+                            echo "<script language='javascript'>alert('Berkas lamaran anda berhasil diupload'); document.location='?menu=pelamar'</script>";
                         } else {
-                            echo "<script language='javascript'>alert('Gagal');document.location='?menu=lamaran&id_lowongan=$id_lowongan'</script>";
+                            echo "<script language='javascript'>alert('Gagal mengupload berkas');document.location='?menu=lamaran&id_lowongan=$id_lowongan'</script>";
                         }
                     }
                 }

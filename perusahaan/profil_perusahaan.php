@@ -18,12 +18,12 @@
             if ($row['nama_perusahaan'] == '-' || $row['alamat'] == '-' || $row['kota'] == '-' || $row['email'] == '-') {
                 echo '
                 <div class="alert alert-warning" role="alert">
-                    Lengkapi Data!
+                    Lengkapi Profil Perusahaan Anda
                 </div>
                 ';
             }
             ?>
-            
+
 
             <div class="row profil-user">
 
