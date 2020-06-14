@@ -15,10 +15,9 @@
                     $lowongan = new Lowongan();
                     $pelamar = new Lamaran();
                     $jml_lowongan = $lowongan->GetData("where status_lowongan='ada' AND id_perusahaan=" . $_SESSION['id_perusahaan']);
-                    $jml_pelamar = $pelamar->GetDataPelamar("where id_perusahaan=" . $_SESSION['id_perusahaan']);
+                    $jml_pelamar = $pelamar->GetDataPelamar("JOIN lamaran ON pelamar.id_pelamar=lamaran.id_pelamar JOIN lowongan ON lowongan.id_lowongan=lamaran.id_lowongan WHERE lowongan.id_perusahaan=" . $_SESSION['id_perusahaan'] . " GROUP BY lamaran.id_pelamar");
                     $jumlah = $jml_lowongan->rowCount();
                     $jumlah_pelamar = $jml_pelamar->rowCount();
-
 
                     ?>
                     <div class="card-body">

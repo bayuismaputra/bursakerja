@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="col-12 pl-0 mb-3">
-                                    <img src="../uploud/<?= $row['foto_pelamar'] ?>" width="25%" class="img img-thumbnail" alt="Foto Pelamar">
+                                    <img src="../uploud/<?= $row['foto_pelamar'] ?>" width="25%" class="img img-thumbnail logo_perusahaan" alt="Foto Pelamar">
                                 </div>
                                 <div class="col-12 pl-0">
                                     <div class="input-group mb-3">
@@ -195,7 +195,7 @@
                     <div class="form-group row">
                         <div class="col-md-2"></div>
                         <div class="col-sm-10">
-                            <button type="submit" name="update" value="update" class="btn btn-primary">Update</button>
+                            <button type="submit" name="update" value="update" class="btn btn-primary">Simpan</button>
                             <a href="?menu=profil_pelamar"><button type="button" class="btn btn-danger">Batal</button></a>
                         </div>
                     </div>

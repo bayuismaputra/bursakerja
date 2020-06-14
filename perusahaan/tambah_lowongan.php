@@ -77,10 +77,13 @@
                             <div class="col-md-2">
                                 <label class="control-label" for="tanggal_buka">Tanggal Buka</label>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <input type="date" name="tanggal_buka" class="form-control" id="tanggal_buka" required>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-2">
+                                <label class="control-label" for="tanggal_tutup">Tanggal Tutup</label>
+                            </div>
+                            <div class="col-md-4">
                                 <input type="date" name="tanggal_tutup" class="form-control" id="tanggal_tutup" required>
                             </div>
                         </div>

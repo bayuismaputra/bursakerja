@@ -32,15 +32,21 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-4">
                             <ul>
-                                <li><i class="fas fa-building"></i><?= ($row['nama_perusahaan'] == '-') ? "Nama Perusahaan" : $row['nama_perusahaan'] ?></li>
-                                <li><i class="fas fa-envelope-square"></i><?= ($row['email'] == '-') ? "Email" : $row['email'] ?></li>
-                                <li><i class="fas fa-map-marker-alt"></i><?= ($row['alamat'] == '-') ? "Alamat" : $row['alamat'] ?></li>
-                                <li><i class="fas fa-street-view"></i><?= ($row['kota'] == '-') ? "Kota" : $row['kota'] ?></li>
+                                <li><i class="fas fa-building"></i>Nama Perusahaan</li>
+                                <li><i class="fas fa-envelope-square"></i>Email</li>
+                                <li><i class="fas fa-map-marker-alt"></i>Alamat</li>
+                                <li><i class="fas fa-street-view"></i>Kota</li>
                             </ul>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-8">
+                            <ul>
+                                <li><i class="fas fa-user i"></i><?= ($row['nama_perusahaan'] == '-') ? " : " : $row['nama_perusahaan'] ?></li>
+                                <li><i class="fas fa-user i"></i><?= ($row['email'] == '-') ? ": " : $row['email'] ?></li>
+                                <li><i class="fas fa-user i"></i><?= ($row['alamat'] == '-') ? ": " : $row['alamat'] ?></li>
+                                <li><i class="fas fa-user i"></i><?= ($row['kota'] == '-') ? ": " : $row['kota'] ?></li>
+                            </ul>
                         </div>
                     </div>
                 </div>

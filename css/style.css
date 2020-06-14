@@ -17,9 +17,8 @@
 
 .tombol-masuk {
     background: #0c9463;
-    width: 136px;
-    margin-right: 5px;
     border-color: #0c9463;
+    outline: none;
 }
 
 .tombol-masuk:hover {

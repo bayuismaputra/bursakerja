@@ -1,7 +1,7 @@
 <div class="col-lg-10 main-container">
     <div class="container">
         <div class="judul-content">
-            <h5><i class="fas fa-tachometer-alt mr-2"></i> Cari Lowongan</h5>
+            <h5><i class="fas fa-search fa-sm"></i> Cari Lowongan</h5>
         </div>
         <?php include('../require/kelas_lowongan.php');
         $cari_lowongan = new lowongan();

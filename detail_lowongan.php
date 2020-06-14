@@ -35,8 +35,8 @@ session_start();
             <li><i class="fas fa-building"></i> <span><?php echo $value['departemen'] ?></span></li>
             <li><i class="fas fa-map-marker-alt"></i> <span><?php echo $value['kota'] ?></span></li>
             <li><i class="fas fa-suitcase"></i> <?php echo $value['pengalaman_kerja'] ?></li>
-            <li><i class="far fa-calendar-plus"></i> <?php echo $value['tanggal_buka'] ?></li>
-            <li><i class="far fa-calendar-times"></i> <?php echo $value['tanggal_tutup'] ?></li>
+            <li><i class="far fa-calendar-plus"></i> <?php echo date("d-m-Y", strtotime($value['tanggal_buka'])) ?></li>
+            <li><i class="far fa-calendar-times"></i> <?php echo date("d-m-Y", strtotime($value['tanggal_tutup'])) ?></li>
             <li><i class="fas fa-money-bill-wave"></i> <?php echo 'Rp. ' . $value['gaji'] ?></li>
         </ul>
     </div>
@@ -62,22 +62,12 @@ session_start();
                     echo "<script language='javascript'>alert('Berkas berhasil diupload'); document.location='?menu=lamaran'</script>";
                 }
             } else {
-
-                echo "<script language='javascript'>alert('Silahkan Login');</script>";
+                echo "<script language='javascript'>alert(' Untuk Dapat Melakukan Lamaran, Silahkan Login');</script>";
             }
             ?>
-
-            <!-- // validasi belum selesai
-                    // echo'
-                    //     <div class="alert alert-warning" role="alert">
-                    //         Lengkapi Data!
-                    //     </div>';
-                     -->
-
         </div>
     </div>
 <?php } ?>
 </div>
 </div>
 </div>
-<?php require('require/footer.php') ?>

@@ -42,7 +42,7 @@
                         echo ' <tr>
                         <td align="center">' . $no . '</td>
                         <td>' . $value['nama_lengkap'] . '</td>
-                        <td>' . $value['nilai_akhir'] . '</td>
+                        <td align="center">' . $value['nilai_akhir'] . '</td>
                         </tr>';
                         $no++;
                     }

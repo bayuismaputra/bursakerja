@@ -28,21 +28,30 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-3">
                             <ul>
-                                <li><i class="fas fa-user"></i> <?php echo $row['nama_lengkap'] ?></li>
-                                <li><i class="fas fa-envelope-square"></i> <?php echo $row['email'] ?></li>
-                                <li><i class="fas fa-map-marker-alt"></i> <?php echo $row['alamat'] ?></li>
-                                <li><i class="fas fa-street-view"></i> <?php echo $row['tempat_lahir'] ?></li>
-                                <li><i class="fas fa-birthday-cake"></i> <?php echo date("d-m-Y", strtotime($row['tanggal_lahir'])) ?></li>
+                                <li><i class="fas fa-user"></i> Nama Lengkap</li>
+                                <li><i class="fas fa-envelope-square"></i> Email</li>
+                                <li><i class="fas fa-map-marker-alt"></i> Alamat</li>
+                                <li><i class="fas fa-street-view"></i> Tempat Lahir</li>
+                                <li><i class="fas fa-birthday-cake"></i> Tanggal Lahir</li>
+                                <li><i class="fas fa-venus-mars"></i> jenis Kelamin</li>
+                                <li><i class="fas fa-phone-square"></i> No. Telepon</li>
+                                <li><i class="fas fa-ring"></i> Status Nikah</li>
+                                <li><i class="fas fa-file"></i> Curriculum Vitae</li>
                             </ul>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-7">
                             <ul>
-                                <li><i class="fas fa-venus-mars"></i> <?php echo $row['jenis_kelamin'] ?></li>
-                                <li><i class="fas fa-phone-square"></i> <?php echo $row['no_telpon'] ?></li>
-                                <li><i class="fas fa-ring"></i> <?php echo $row['status_nikah'] ?></li>
-                                <li><i class="fas fa-file"></i> <?php echo $row['curriculum_vitae'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['nama_lengkap'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['email'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['alamat'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['tempat_lahir'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . date("d-m-Y", strtotime($row['tanggal_lahir'])) ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['jenis_kelamin'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['no_telpon'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['status_nikah'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['curriculum_vitae'] ?></li>
                             </ul>
                         </div>
                     </div>
