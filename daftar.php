@@ -43,7 +43,7 @@
                     if ($qry) {
                         // simpan detail data berdasarkan hak akses
                         if ($hak_akses == "pelamar") {
-                            $insert_pelamar = $pelamar->InsertData('-', '-', '-', '0000-00-00', '-', '-', '-', '-', $id_user);
+                            $insert_pelamar = $pelamar->InsertData('-', '-', '-', '0000-00-00', '-', '-', '-', '-', '-', '-', '-', '-', '-', $id_user);
                         } else if ($hak_akses == "perusahaan") {
                             $insert_perusahaan = $perusahaan->InsertData($id_user, '-', '-', '-', 'default.png', '-');
                         }
@@ -63,7 +63,7 @@
                                 <i class="fas fa-user"></i>
                             </div>
                         </div>
-                        <input type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap">
+                        <input type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -73,7 +73,7 @@
                                 <i class="fas fa-user"></i>
                             </div>
                         </div>
-                        <input type="text" name="username" class="form-control" placeholder="username">
+                        <input type="text" name="username" class="form-control" placeholder="username" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -83,11 +83,11 @@
                                 <i class="fas fa-unlock-alt"></i>
                             </div>
                         </div>
-                        <input type="Password" name="password" class="form-control" placeholder="Password">
+                        <input type="Password" name="password" class="form-control" placeholder="Password" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <select id="inputState" name="hak_akses" class="form-control">
+                    <select id="inputState" name="hak_akses" class="form-control" required>
                         <option selected>Sebagai...</option>
                         <option value="pelamar">Pelamar</option>
                         <option value="perusahaan">Perusahaan</option>

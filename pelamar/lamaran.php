@@ -8,6 +8,7 @@ $id_pelamar = $_SESSION['id_pelamar'];
 $id_lowongan = $_GET['id_lowongan'];
 $qry_kriteria = $kriteria->GetData("WHERE id_lowongan='{$id_lowongan}' AND status_uploud='1'");
 $qry_kriteria1 = $kriteria->GetData("WHERE id_lowongan='{$id_lowongan}'");
+// var_dump($qry_kriteria1);
 $jml_uploud_berkas = $qry_kriteria->rowCount();
 ?>
 <div class="col-lg-10 main-container">
@@ -25,7 +26,7 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                     while ($berkas = $qry_kriteria1->fetch()) {
                         if (!empty($_FILES['fileberkas_' . $berkas['id_kriteria']]['tmp_name'])) {
                             $explode = explode(".", $_FILES['fileberkas_' . $berkas['id_kriteria']]['name']);
-                            $file = $id_user . "_" . $id_lowongan . "_" . $_FILES['fileberkas_' . $berkas['id_kriteria']]['name'] . rand(0, 100) . "." . end($explode);
+                            $file = $id_user . "_" . $id_lowongan . "_" . $_FILES['fileberkas_' . $berkas['id_kriteria']]['name'];
                             move_uploaded_file($_FILES['fileberkas_' . $berkas['id_kriteria']]['tmp_name'], "../uploud/" . $file);
                         } else {
                             echo "<script language='javascript'>console.log({$berkas['id_kriteria']}+'kosong');</script>";
@@ -35,6 +36,7 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                         // insert to tabel lamaran
                         $qry = $lamaran->InsertData($id_pelamar, $id_lowongan, $berkas['id_kriteria'], $file);
 
+                        // die;
                         if ($qry) {
                             echo "<script language='javascript'>alert('Berkas lamaran anda berhasil diupload'); document.location='?menu=pelamar'</script>";
                         } else {
@@ -51,7 +53,7 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                         // var_dump($row['nama_kriteria']);
                     ?>
                         <tr>
-                            <td class="pl-0" style="width: 300px;"><?= $row['nama_kriteria'] ?></td>
+                            <td class="pl-0" style="width: 350px;"><?= $row['nama_kriteria'] ?></td>
                             <td style="opacity: 50%;">
                                 <div class="form-group">
                                     <input type="hidden" name="fileberkas_kriteria_<?= $row['id_kriteria'] ?>" value="<?= $row['id_kriteria'] ?>">
@@ -65,10 +67,10 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
             </table>
             <table class="table table-borderless">
                 <tr>
-                    <td style="width: 300px;"></td>
+                    <td style="width: 350px;"></td>
                     <td>
                         <div class="form-group">
-                            <input type='submit' name='submit' value='Simpan' class="btn btn-success tombol-simpan">
+                            <input type='submit' name='submit' value='Simpan' class="btn btn-success tombol-lamar">
                         </div>
 
                     </td>

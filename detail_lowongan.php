@@ -20,7 +20,7 @@ session_start();
         ?>
             <div class="row profil-perusahaan">
                 <div class="col-lg-4">
-                    <img src="uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid" alt="logo_perusahaan">
+                    <img src="uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid logo_perusahaan" alt="logo_perusahaan">
                 </div>
                 <div class="col-lg-8">
                     <h5><i class="fas fa-building"></i><?php echo $value['nama_perusahaan'] ?></h5>

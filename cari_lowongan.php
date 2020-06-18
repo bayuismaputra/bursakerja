@@ -5,14 +5,14 @@
     <?php
     // include('require/kelas_lowongan.php');
     $cari_lowongan = new lowongan();
-    $data_lowongan = $cari_lowongan->GetData("JOIN perusahaan ON lowongan.id_perusahaan=perusahaan.id_perusahaan WHERE lowongan.nama_lowongan LIKE '%$_GET[posisi]%'");
+    $data_lowongan = $cari_lowongan->GetData("JOIN perusahaan ON lowongan.id_perusahaan=perusahaan.id_perusahaan WHERE perusahaan.nama_perusahaan LIKE '%$_GET[posisi]%' OR lowongan.nama_lowongan LIKE '%$_GET[posisi]%'");
     $no = 1;
     while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
     ?>
         <div class="content">
             <div class="row">
                 <div class="col-lg-3">
-                    <img src="../uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid" alt="Logo Perusahaan">
+                    <img src="uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid" alt="Logo Perusahaan">
                 </div>
                 <div class="col-lg-7 cari-lowongan">
                     <ul>

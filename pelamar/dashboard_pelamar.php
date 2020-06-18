@@ -24,7 +24,7 @@ include('../require/koneksi.php');
             <div class="brand">Bursa <span>SAW</span></div>
 
             <form action="" method="GET" class="input-group col-lg-4">
-                <input type="text" name="posisi" class="input form-control" placeholder="Posisi atau Perusahaan" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" name="posisi" class="input form-control" placeholder="Posisi atau Perusahaan" aria-label="Recipient's username" aria-describedby="button-addon2" required>
                 <div class="input-group-append">
                     <button class="btn btn-success" type="submit" name="menu" value="cari_lowongan" id="button-addon2"><i class="fas fa-search fa-sm"></i></button>
                 </div>

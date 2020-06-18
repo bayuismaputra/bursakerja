@@ -226,7 +226,7 @@ class Pelamar extends Bursakerja
     function __construct()
     {
         $this->sqlCekLamaran = $this->bukaKoneksi()->prepare("select * from pelamar where id_user=:id_user and id_lowongan=:id_lowongan");
-        $this->sqlInsert = $this->bukaKoneksi()->prepare("INSERT INTO `pelamar`(`id_pelamar`, `email`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `no_telpon`, `status_nikah`, `curriculum_vitae`, `id_user`) VALUES (null, :email, :alamat, :tempat_lahir, :tanggal_lahir, :jenis_kelamin, :no_telpon, :status_nikah, :curriculum_vitae, :id_user)");
+        $this->sqlInsert = $this->bukaKoneksi()->prepare("INSERT INTO `pelamar`(`id_pelamar`, `email`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `no_telpon`, `status_nikah`, `nama_sekolah`, `pendidikan`, `jurusan`, `tahun_lulus`, `ipk`, `curriculum_vitae`, `id_user`) VALUES (null, :email, :alamat, :tempat_lahir, :tanggal_lahir, :jenis_kelamin, :no_telpon, :status_nikah, :nama_sekolah, :pendidikan, :jurusan, :tahun_lulus, :ipk, :curriculum_vitae, :id_user)");
         $this->sqlUpdate = $this->bukaKoneksi()->prepare("UPDATE `pelamar` SET `email`=:email,`alamat`=:alamat,`tempat_lahir`=:tempat_lahir,`tanggal_lahir`=:tanggal_lahir,`jenis_kelamin`=:jenis_kelamin,`no_telpon`=:no_telpon,`status_nikah`=:status_nikah,`curriculum_vitae`=:curriculum_vitae,`id_user`=:id_user WHERE `id_pelamar`=:id_pelamar");
     }
 
@@ -253,7 +253,7 @@ class Pelamar extends Bursakerja
         }
     }
 
-    function InsertData($email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $curriculum_vitae, $id_user)
+    function InsertData($email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $nama_sekolah, $pendidikan, $jurusan, $tahun_lulus, $ipk, $curriculum_vitae, $id_user)
     {
         try {
             $this->sqlInsert->bindParam(':email', $email);
@@ -263,6 +263,11 @@ class Pelamar extends Bursakerja
             $this->sqlInsert->bindParam(':jenis_kelamin', $jenis_kelamin);
             $this->sqlInsert->bindParam(':no_telpon', $no_telpon);
             $this->sqlInsert->bindParam(':status_nikah', $status_nikah);
+            $this->sqlInsert->bindParam(':nama_sekolah', $nama_sekolah);
+            $this->sqlInsert->bindParam(':pendidikan', $pendidikan);
+            $this->sqlInsert->bindParam(':jurusan', $jurusan);
+            $this->sqlInsert->bindParam(':tahun_lulus', $tahun_lulus);
+            $this->sqlInsert->bindParam(':ipk', $ipk);
             $this->sqlInsert->bindParam(':curriculum_vitae', $curriculum_vitae);
             $this->sqlInsert->bindParam(':id_user', $id_user);
             $this->sqlInsert->execute();

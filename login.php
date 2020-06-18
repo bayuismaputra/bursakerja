@@ -67,7 +67,7 @@ include('require/koneksi.php');
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-user"></i></div>
                         </div>
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <input type="text" name="username" class="form-control" placeholder="Username" Required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -76,7 +76,7 @@ include('require/koneksi.php');
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                         </div>
-                        <input type="Password" name="password" class="form-control" placeholder="Password">
+                        <input type="Password" name="password" class="form-control" placeholder="Password" Required>
                     </div>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary btn-block tombol-masuk">Masuk</button>

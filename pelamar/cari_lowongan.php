@@ -5,7 +5,7 @@
         </div>
         <?php include('../require/kelas_lowongan.php');
         $cari_lowongan = new lowongan();
-        $data_lowongan = $cari_lowongan->GetData("JOIN perusahaan ON lowongan.id_perusahaan=perusahaan.id_perusahaan WHERE lowongan.nama_lowongan LIKE '%$_GET[posisi]%'");
+        $data_lowongan = $cari_lowongan->GetData("JOIN perusahaan ON lowongan.id_perusahaan=perusahaan.id_perusahaan WHERE perusahaan.nama_perusahaan LIKE '%$_GET[posisi]%' OR lowongan.nama_lowongan LIKE '%$_GET[posisi]%'");
         $no = 1;
         while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
             // var_dump($value);
@@ -23,14 +23,14 @@
                             <li><i class="fas fa-building"></i> <span><?php echo $value['departemen'] ?></span></li>
                             <li><i class="fas fa-map-marker-alt"></i> <span><?php echo $value['kota'] ?></span></li>
                             <li><i class="fas fa-suitcase"></i> <?php echo $value['pengalaman_kerja'] ?></li>
-                            <li><i class="far fa-calendar-plus"></i> <?php echo $value['tanggal_buka'] ?></li>
-                            <li><i class="far fa-calendar-times"></i> <?php echo $value['tanggal_tutup'] ?></li>
+                            <li><i class="far fa-calendar-plus"></i> <?php echo date("d-m-Y", strtotime($value['tanggal_buka'])) ?></li>
+                            <li><i class="far fa-calendar-times"></i> <?php echo date("d-m-Y", strtotime($value['tanggal_tutup'])) ?></li>
                             <li><i class="fas fa-money-bill-wave"></i> <?php echo 'Rp. ' . $value['gaji'] ?></li>
                         </ul>
 
                     </div>
                     <div class="col-lg-2">
-                        <a href="?menu=detail_lowongan&id_lowongan=<?php echo $value['id_lowongan'] ?>" class="btn btn-success"> Lamar</a>
+                        <a href="?menu=detail_lowongan&id_lowongan=<?php echo $value['id_lowongan'] ?>" class="tombol-lamar btn btn-success"> Lamar</a>
 
                     </div>
                 </div>

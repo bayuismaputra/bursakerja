@@ -66,6 +66,7 @@
                         $id_lowongan = "kosong";
                     }
                     $data_nilai = $lowongan->GetData("JOIN lamaran ON lowongan.id_lowongan=lamaran.id_lowongan JOIN pelamar ON lamaran.id_pelamar=pelamar.id_pelamar JOIN user ON pelamar.id_user=user.id_user WHERE lowongan.id_lowongan=" . $id_lowongan . " GROUP BY pelamar.id_pelamar");
+                    // var_dump($data_nilai);
                     $no = 1;
                     while ($value = $data_nilai->fetch(PDO::FETCH_ASSOC)) {
                         echo ' <tr>
@@ -296,7 +297,7 @@
                         <thead class="tabel" align="center">
                             <tr>
                                 <th>No.</th>
-                                <th>Pelamar</th>
+                                <th>PELAMAR</th>
                                 <th>PREFERENSI</th>
                             </tr>
                         </thead>
@@ -309,7 +310,7 @@
                             <tr>
                                 <td align="center"><?= $rank ?></td>
                                 <td><?= $v['nama_pelamar'] ?></td>
-                                <td class="text-center"><?= $v['nilai'] ?></td>
+                                <td class="text-center"><?= round($v['nilai'], 2) ?></td>
                             </tr>
                         <?php
                             $rank++;

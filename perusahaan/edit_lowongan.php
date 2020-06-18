@@ -1,7 +1,7 @@
 <div class="col-md-10 main-container">
     <div class="container">
         <div class="judul-content">
-            <h5><i class="fas fa-clipboard-list"></i> EDIT DATA KRITERIA</h5>
+            <h5><i class="fas fa-clipboard-list"></i> EDIT DATA LOWONGAN</h5>
         </div>
         <div class="content">
 
@@ -81,10 +81,13 @@
                                 <div class="col-md-2">
                                     <label class="control-label" for="tanggal_buka">Tanggal Buka</label>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <input type="date" name="tanggal_buka" value="<?php echo $value['tanggal_buka'] ?>" class="form-control" id="tanggal_buka" required>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-2">
+                                    <label class="control-label" for="tanggal_buka">Tanggal Buka</label>
+                                </div>
+                                <div class="col-md-4">
                                     <input type="date" name="tanggal_tutup" value="<?php echo $value['tanggal_tutup'] ?>" class="form-control" id="tanggal_tutup" required>
                                 </div>
                             </div>

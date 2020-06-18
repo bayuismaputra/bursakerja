@@ -33,8 +33,8 @@
                 <li><i class="fas fa-building"></i> <span><?php echo $value['departemen'] ?></span></li>
                 <li><i class="fas fa-map-marker-alt"></i> <span><?php echo $value['kota'] ?></span></li>
                 <li><i class="fas fa-suitcase"></i> <?php echo $value['pengalaman_kerja'] ?></li>
-                <li><i class="far fa-calendar-plus"></i> <?php echo $value['tanggal_buka'] ?></li>
-                <li><i class="far fa-calendar-times"></i> <?php echo $value['tanggal_tutup'] ?></li>
+                <li><i class="far fa-calendar-plus"></i> <?php echo date("d-m-Y", strtotime($value['tanggal_buka'])) ?></li>
+                <li><i class="far fa-calendar-times"></i> <?php echo date("d-m-Y", strtotime($value['tanggal_tutup'])) ?></li>
                 <li><i class="fas fa-money-bill-wave"></i> <?php echo 'Rp. ' . $value['gaji'] ?></li>
             </ul>
 
@@ -71,13 +71,18 @@
                         <script language='javascript'>alert('Lengkapi Data Profil Anda'); document.location='?menu=profil_pelamar'</script>                        
                         ";
                     } else if ($qry_lamaran->rowCount() > 0) {
-
                 ?>
-                        <button type="button" disabled class="btn btn-success">Sudah Lamar</button>
+                        <hr>
+                        <div align="right">
+                            <button type="button" disabled class="tombol-lamar btn btn-success">Sudah Lamar</button>
+                        </div>
                     <?php
                     } else {
                     ?>
-                        <a href="?menu=lamaran&id_lowongan=<?php echo $value['id_lowongan']; ?>" type="submit" name="submit" class="btn btn-success"> Lamar</a>
+                        <hr>
+                        <div align="right">
+                            <a href="?menu=lamaran&id_lowongan=<?php echo $value['id_lowongan']; ?>" type="submit" name="submit" class="tombol-lamar btn btn-success"> Lamar</a>
+                        </div>
                 <?php
                     }
                 }

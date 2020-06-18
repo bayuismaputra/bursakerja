@@ -2,8 +2,8 @@
     <footer class="site-footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-sm-6 col-xs-12">
-                    <p class="copyright-text">Proyek Tugas Akhir &copy; 2020 by
+                <div class="col-md-12 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Proyek Tugas Akhir &copy; 2020 oleh
                         <a href="#">Bayu Isma Putra</a>.
                     </p>
                 </div>

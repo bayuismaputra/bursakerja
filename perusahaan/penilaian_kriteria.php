@@ -10,9 +10,9 @@ $user = new User();
 $id_user = $_SESSION['id_user'];
 $id_pelamar = $_GET['id_pelamar'];
 $id_lowongan = $_GET['id_lowongan'];
-
 $qry_kriteria = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan}' AND lamaran.id_pelamar='{$id_pelamar}'");
 $qry_kriteria1 = $kriteria->GetData("JOIN lowongan ON lowongan.id_lowongan=kriteria.id_lowongan JOIN lamaran ON kriteria.id_kriteria=lamaran.id_kriteria WHERE lowongan.id_lowongan='{$id_lowongan} AND lamaran.id_pelamar='{$id_pelamar}'");
+// var_dump($qry_kriteria);
 $jml_uploud_berkas = $qry_kriteria->rowCount();
 ?>
 <div class="col-md-10 main-container">
@@ -42,16 +42,16 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                 ?>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-5">
                                 <label for=""><?= $row['nama_kriteria'] ?></label>
                                 <input type="hidden" name="id_kriteria_<?= $i ?>" value="<?= $row['id_kriteria'] ?>">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-7">
                                 <input type="text" name="kriteria_<?= $i ?>" value="<?= ($row['nilai'] == 0) ? "" : $row['nilai'] ?>" class="form-control" id="kriteiria 1" placeholder="Masukkan Nilai" required>
                                 <?php
                                 if ($row['status_uploud'] == '1') {
                                 ?>
-                                    <div class='control'><a target='blank' href=<?php echo '../uploud/' . $row['file'] ?> class='span8'>Berkas Pelamar</a></div>
+                                    <div class='control'><a target='blank' href="<?= '../uploud/' . $row['file'] ?>" class='span8'>Berkas Pelamar</a></div>
                                 <?php
                                 }
                                 ?>
@@ -66,8 +66,8 @@ $jml_uploud_berkas = $qry_kriteria->rowCount();
                 ?>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-9">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-7">
                             <button type="submit" name="submit" class="btn btn-success">Simpan</button>
                             <button type="button" name="Back" onclick="window.history.back()" class="btn btn-danger">Kembali</button>
                         </div>

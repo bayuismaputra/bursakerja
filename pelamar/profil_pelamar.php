@@ -30,28 +30,38 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <ul>
-                                <li><i class="fas fa-user"></i> Nama Lengkap</li>
-                                <li><i class="fas fa-envelope-square"></i> Email</li>
-                                <li><i class="fas fa-map-marker-alt"></i> Alamat</li>
-                                <li><i class="fas fa-street-view"></i> Tempat Lahir</li>
-                                <li><i class="fas fa-birthday-cake"></i> Tanggal Lahir</li>
-                                <li><i class="fas fa-venus-mars"></i> jenis Kelamin</li>
-                                <li><i class="fas fa-phone-square"></i> No. Telepon</li>
-                                <li><i class="fas fa-ring"></i> Status Nikah</li>
-                                <li><i class="fas fa-file"></i> Curriculum Vitae</li>
+                                <li><i class="fas fa-user"></i>Nama Lengkap</li>
+                                <li><i class="fas fa-envelope-square"></i>Email</li>
+                                <li><i class="fas fa-street-view"></i>Tempat Lahir</li>
+                                <li><i class="fas fa-birthday-cake"></i>Tanggal Lahir</li>
+                                <li><i class="fas fa-venus-mars"></i>jenis Kelamin</li>
+                                <li><i class="fas fa-phone-square"></i>No. Telepon</li>
+                                <li><i class="fas fa-ring"></i>Status Nikah</li>
+                                <li><i class="fas fa-ring"></i>Nama Sekolah</li>
+                                <li><i class="fas fa-user-graduate"></i>Pendidikan</li>
+                                <li><i class="fas fa-book"></i>Jurusan</li>
+                                <li><i class="fas fa-calendar-check"></i>Tahun Lulus</li>
+                                <li><i class="fas fa-book-reader"></i>IPK</li>
+                                <li><i class="fas fa-file"></i>Curriculum Vitae</li>
+                                <li><i class="fas fa-map-marker-alt"></i>Alamat</li>
                             </ul>
                         </div>
                         <div class="col-lg-7">
                             <ul>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['nama_lengkap'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['email'] ?></li>
-                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['alamat'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['tempat_lahir'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . date("d-m-Y", strtotime($row['tanggal_lahir'])) ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['jenis_kelamin'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['no_telpon'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['status_nikah'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['nama_sekolah'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['pendidikan'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['jurusan'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['tahun_lulus'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['ipk'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['curriculum_vitae'] ?></li>
+                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['alamat'] ?></li>
                             </ul>
                         </div>
                     </div>
