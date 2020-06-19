@@ -20,6 +20,7 @@
                         $alamat = $_POST['alamat'];
                         $kota = $_POST['kota'];
                         $email = $_POST['email'];
+                        $logolama = $_POST['logolama'];
 
                         if (empty($_FILES['logo']['tmp_name']) && $row['logo_perusahaan'] == "default.png") {
                             echo '
@@ -28,16 +29,19 @@
                             </div>
                             ';
                         } else {
-                            // ketika gambar diubah maka file yang sebelumnya harus di hapus kecuali file default.png
-                            if ($row['logo_perusahaan'] != 'default.png') {
-                                $hps = unlink('../uploud/' . $row['logo_perusahaan']);
+                            if ($_FILES['logo']['error'] == 4) {
+                                $fileName = $logolama;
+                            } else {
+                                // ketika gambar diubah maka file yang sebelumnya harus di hapus kecuali file default.png
+                                if ($row['logo_perusahaan'] != 'default.png') {
+                                    $hps = unlink('../uploud/' . $row['logo_perusahaan']);
+                                }
+
+                                // upload gambar
+                                $explode = explode(".", $_FILES['logo']['name']);
+                                $fileName = $id_user . "_Logo_" . $row['username'] . "." . end($explode);
+                                move_uploaded_file($_FILES['logo']['tmp_name'], "../uploud/" . $fileName);
                             }
-
-                            // upload gambar
-                            $explode = explode(".", $_FILES['logo']['name']);
-                            $fileName = $id_user . "_Logo_" . $row['username'] . "." . end($explode);
-                            move_uploaded_file($_FILES['logo']['tmp_name'], "../uploud/" . $fileName);
-
                             // update data perusahaan
                             $updt_perusahaan_rinci = $perusahaan->EditData($nama_perusahaan, $alamat, $kota, $fileName, $email, $id_perusahaan);
 
@@ -52,6 +56,7 @@
 
                 <form action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id_perusahaan" value="<?php echo $row['id_perusahaan'] ?>">
+                    <input type="hidden" name="logolama" value="<?= $row['logo_perusahaan'] ?>">
                     <div class="row">
                         <div class="col-md-3 logo">
                             <div class="form-group">
@@ -67,11 +72,14 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label class="control-label" for="logo_perusahaan">Logo Perusahaan</label>
+                                        <label class="control-label" for="foto_pelamar">Foto Pelamar</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="col-md-12 pl-0">
-                                            <input type="file" name="logo" class="input-logo">
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="logo" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

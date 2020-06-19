@@ -32,6 +32,8 @@
                         $jurusan = $_POST['jurusan'];
                         $tahun_lulus = $_POST['tahun_lulus'];
                         $ipk = $_POST['ipk'];
+                        $logolama = $_POST['logolama'];
+                        $cvLama = $_POST['cvLama'];
 
                         if (empty($_FILES['logo']['tmp_name']) && $row['foto_pelamar'] == "default.png") {
                             echo '
@@ -42,27 +44,35 @@
                         } else {
                         }
 
-                        if ($jenis_kelamin == "" || $status_nikah == "" || empty($_FILES['cv']['tmp_name'])) {
+                        if ($jenis_kelamin == "" || $status_nikah == "") {
                             echo '<div class="alert alert-warning fade show" role="alert">
-                            <strong>Lengkapi Data</strong></div>';
+                                <strong>Lengkapi Data</strong></div>
+                                ';
                         } else {
-                            // ketika gambar diubah maka file yang sebelumnya harus di hapus kecuali file default.png
-                            if ($row['foto_pelamar'] != 'default.png') {
-                                $hps = unlink('../uploud/' . $row['foto_pelamar']);
+                            if ($_FILES['logo']['error'] == 4) {
+                                $file_Foto = $logolama;
+                            } else {
+                                // ketika gambar diubah maka file yang sebelumnya harus di hapus kecuali file default.png
+                                if ($row['foto_pelamar'] != 'default.png') {
+                                    $hps = unlink('../uploud/' . $row['foto_pelamar']);
+                                }
+
+                                // upload gambar
+                                $explode = explode(".", $_FILES['logo']['name']);
+                                $file_Foto = $id_user . "_Foto_" . $nama_lengkap . "." . end($explode);
+                                move_uploaded_file($_FILES['logo']['tmp_name'], "../uploud/" . $file_Foto);
                             }
 
-                            // upload gambar
-                            $explode = explode(".", $_FILES['logo']['name']);
-                            $file_Foto = $id_user . "_Foto_" . $nama_lengkap . "." . end($explode);
-                            move_uploaded_file($_FILES['logo']['tmp_name'], "../uploud/" . $file_Foto);
-
-                            // upload cv
-                            $explode = explode(".", $_FILES['cv']['name']);
-                            $file_Cv = $id_user . "_CV_" . $nama_lengkap . "." . end($explode);
-                            move_uploaded_file($_FILES['cv']['tmp_name'], "../uploud/" . $file_Cv);
+                            if ($_FILES['cv']['error'] == 4) {
+                                $file_Cv = $cvLama;
+                            } else {
+                                // upload cv
+                                $explode = explode(".", $_FILES['cv']['name']);
+                                $file_Cv = $id_user . "_CV_" . $nama_lengkap . "." . end($explode);
+                                move_uploaded_file($_FILES['cv']['tmp_name'], "../uploud/" . $file_Cv);
+                            }
 
                             $updt_user = $user->UpdateData($nama_lengkap, $_SESSION['username'], $id_user);
-
                             $updt_user_rinci = $lamaran->updateLamaran($file_Foto, $email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $nama_sekolah, $pendidikan, $jurusan, $tahun_lulus, $ipk, $file_Cv, $id_user);
                             // die;
                             echo "<script>document.location='?menu=profil_pelamar';</script>";
@@ -73,6 +83,8 @@
 
                 <form action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id_pelamar" value="<?= $row['id_pelamar'] ?>">
+                    <input type="hidden" name="logolama" value="<?= $row['foto_pelamar'] ?>">
+                    <input type="hidden" name="cvLama" value="<?= $row['curriculum_vitae'] ?>">
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">

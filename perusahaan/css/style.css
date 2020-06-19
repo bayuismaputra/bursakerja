@@ -323,3 +323,77 @@ body {
   opacity: 0.5;
   font-size: 90px;
 }
+
+.main-container .content .lowongan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 0 0 0 0;
+}
+
+.main-container .tampil-lowongan img {
+  width: auto;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.main-container .tampil-lowongan .btn {
+  background-color: #0c9463;
+  border-color: #0c9463;
+  color: white;
+}
+
+.main-container .tampil-lowongan .card {
+  margin-bottom: 10px;
+  margin-top: 15px;
+  position: sticky;
+  max-height: 500px;
+  text-align: left;
+}
+
+.main-container .tampil-lowongan h6 {
+  color: #0c9463;
+  text-transform: capitalize;
+}
+.main-container .tampil-lowongan .card-title {
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #0c9463;
+  font-size: 14px;
+}
+.main-container .tampil-lowongan p {
+  text-transform: capitalize;
+  font-size: 13px;
+}
+
+.main-container .tampil-lowongan ul {
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.main-container .tampil-lowongan i {
+  text-transform: capitalize;
+  font-size: 15px;
+  margin-right: 10px;
+  width: 15px;
+  height: auto;
+}
+
+.main-container .tampil-lowongan li {
+  margin-bottom: 1px;
+}
+
+.main-container .tampil-lowongan ul li {
+  font-size: 14px;
+}
+
+.tombol-lamar {
+  background: #0c9463;
+  border-color: #0c9463;
+}
+
+.tombol-lamar:hover {
+  background-color: #1ea876;
+  border-color: #1ea876;
+}

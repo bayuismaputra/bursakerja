@@ -4,55 +4,35 @@
             <h5><i class="fas fa-tachometer-alt mr-2"></i> DASHBOARD</h5>
         </div>
         <div class="content">
-            <?php
-            include('../require/kelas_lowongan.php');
-            include('../require/kelas_kriteria.php');
-            include('../require/kelas_lamaran.php');
-            $lowongan = new Lowongan();
+            <div class="lowongan">
+                <?php
+                include('../require/kelas_lowongan.php');
 
-            $lamaran = new Lamaran();
-            $user = new User();
-            $Ckriteria = new Kriteria();
-            $bursaKerja = new Bursakerja();
-            $dLamaran = $lamaran->queryCustom("SELECT * FROM `lamaran` JOIN lowongan ON lowongan.id_lowongan=lamaran.id_lowongan WHERE lamaran.id_pelamar={$_SESSION['id_pelamar']} GROUP BY lamaran.id_lowongan");
-            ?>
-            <div class="table-responsive">
-                <table class="table table-bordered table table-hover" id="dataTables">
-                    <thead class="tabel" align="center">
-                        <tr>
-                            <th align="center">No.</th>
-                            <th>LOWONGAN</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i = 1;
-                        foreach ($dLamaran as $row) {
-                        ?>
-                            <tr>
-                                <td align="center"><?= $i ?></td>
-                                <td><?= $row['nama_lowongan'] ?></td>
-                                <td align="center">
-                                    <?php
-                                    if ($row['status_pengumuman'] == 1) {
-                                        echo '
-                                        <a href="?menu=pengumuman_pelamar&id_lowongan=' . $row['id_lowongan'] . '" class="btn btn-info btn-sm tombol-pengumuman"><i class="fa fa-edit"></i> Pengumuman</a>
-                                        ';
-                                    } else {
-                                        echo '
-                                        <button type="button" disabled class="btn btn-warning btn-sm tombol-pengumuman"><i class="fa fa-edit"></i> Tunggu</button>
-                                        ';
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                        <?php
-                            $i++;
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                $tampil_lowongan = new lowongan();
+                $data_lowongan = $tampil_lowongan->GetData("JOIN perusahaan ON lowongan.id_perusahaan=perusahaan.id_perusahaan where status_lowongan='ada'");
+                $no = 1;
+                while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                    <div class="col-lg-3 tampil-lowongan">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="../uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid" alt="logo_perusahaan">
+                                <p class="card-title"><?php echo $value['nama_lowongan'] ?></p>
+                                <p class="card-text"><?php echo $value['nama_perusahaan'] ?></p>
+                                <ul class="list-group">
+                                    <li><i class="fas fa-building"></i><?php echo $value['departemen'] ?></li>
+                                    <li><i class="fas fa-map-marker-alt"></i><?php echo $value['kota'] ?></li>
+                                    <li><i class="fas fa-money-bill-wave"></i><?php echo 'Rp. ' . $value['gaji'] ?>
+                                    </li>
+                                    <li><i class="fas fa-briefcase"></i><?php echo $value['pengalaman_kerja'] ?></li>
+                                </ul>
+                                <a href="?menu=detail_lowongan&id_lowongan=<?php echo $value['id_lowongan'] ?>" class="btn btn-block tombol-lamar">Lamar</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
