@@ -22,6 +22,7 @@
     </script>
     <script src="bootstrap/js/jquery.dataTables.min.js"></script>
     <script src="bootstrap/js/dataTables.bootstrap4.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
     <script>
         // Call the dataTables jQuery plugin
         $(document).ready(function() {
