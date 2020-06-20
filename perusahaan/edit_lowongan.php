@@ -19,8 +19,18 @@
                 $pengalaman_kerja = $_POST['pengalaman_kerja'];
                 $deskripsi = $_POST['deskripsi'];
                 $id_perusahaan = $_POST['id_perusahaan'];
+                if (isset($_POST['jurusan'])) {
+                    $jurusan = $_POST['jurusan'];
+                    $lowongan->queryCustom("DELETE from lowongan_detail where id_lowongan={$id_lowongan}");
+
+                    for ($i = 0; $i < count($jurusan); $i++) {
+                        $lowongan->queryCustom("INSERT INTO lowongan_detail (id_lowongan,id_jurusan) VALUES ({$id_lowongan},{$jurusan[$i]})");
+                    }
+                } else {
+                    $lowongan->queryCustom("DELETE from lowongan_detail where id_lowongan={$id_lowongan}");
+                }
+
                 $qry = $lowongan->EditData($nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan);
-                // die;
                 if ($qry) {
                     echo "<script language='javascript'>alert('Data berhasil diedit'); document.location='?menu=data_lowongan&id_perusahaan={$id_perusahaan}'</script>";
                 } else {
@@ -33,9 +43,9 @@
                 while ($value = $qry->fetch(PDO::FETCH_ASSOC)) {
 
             ?>
-                    <form action="" method="POST">
+                    <form action="" method="POST" class="form-lowongan">
                         <input type="hidden" name="id_perusahaan" value="<?php echo $value['id_perusahaan'] ?>">
-                        <input type="hidden" name="id_lowongan" value="<?php echo $value['id_lowongan'] ?>">
+                        <input type="hidden" name="id_lowongan" id="id_lowongan" value="<?php echo $value['id_lowongan'] ?>">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-2">
@@ -112,7 +122,21 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-group jurusan_custom">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label class="control-label" for="jurusan">Kategori Jurusan</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <?php $qry_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan DESC") ?>
+                                    <select class="customx-select selectpicker" name="jurusan[]" multiple required>
+                                        <?php foreach ($qry_jurusan as $key) : ?>
+                                            <option value="<?= $key['id_jurusan'] ?>"><?= $key['jurusan']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-2"></div>

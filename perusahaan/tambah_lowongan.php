@@ -20,7 +20,26 @@
                 $tanggal_tutup = $_POST['tanggal_tutup'];
                 $pengalaman_kerja = $_POST['pengalaman_kerja'];
                 $deskripsi = $_POST['deskripsi'];
-                $qry = $lowongan->InsertData($id_perusahaan, $nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi);
+
+                $jurusan = $_POST['jurusan'];
+
+                $qcekId = $lowongan->queryCustom("SELECT * FROM lowongan where nama_lowongan='-' and departemen='-' and gaji='-' order by id_lowongan DESC limit 1");
+                if ($qcekId->rowCount() > 0) {
+                    $res = $qcekId->fetch();
+                    $id_lowongan = $res['id_lowongan'];
+                } else {
+                    $qinsert = $lowongan->queryCustom("INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `departemen`, `gaji`, `kota`, `tanggal_buka`, `tanggal_tutup`, `pengalaman_kerja`, `deskripsi`, `id_perusahaan`, `status_lowongan`, `status_pengumuman`) VALUES (NULL, '-', '-', '-', '-', '0000-00-00', '0000-00-00', '-', '-', '{$id_perusahaan}', 'ada', '0')");
+
+                    $qId = $lowongan->queryCustom("SELECT * FROM lowongan where nama_lowongan='-' and departemen='-' and gaji='-' order by id_lowongan DESC limit 1");
+                    $res = $qcekId->fetch();
+                    $id_lowongan = $res['id_lowongan'];
+                }
+
+                for ($i = 0; $i < count($jurusan); $i++) {
+                    $lowongan->queryCustom("INSERT INTO lowongan_detail (id_lowongan,id_jurusan) VALUES ({$id_lowongan},{$jurusan[$i]})");
+                }
+
+                $qry = $lowongan->EditData($nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan);
                 if ($qry) {
                     echo "<script language='javascript'>alert('Data berhasil disimpan'); document.location='?menu=data_lowongan&id_perusahaan={$id_perusahaan}'</script>";
                 } else {
@@ -105,6 +124,21 @@
                             </div>
                             <div class="col-md-10">
                                 <textarea class="form-control" name="deskripsi" id="deskripsi" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group jurusan_custom">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label class="control-label" for="jurusan">Kategori Jurusan</label>
+                            </div>
+                            <div class="col-md-10">
+                                <?php $qry_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan DESC") ?>
+                                <select class="customx-select selectpicker" name="jurusan[]" multiple required>
+                                    <?php foreach ($qry_jurusan as $key) : ?>
+                                        <option value="<?= $key['id_jurusan'] ?>"><?= $key['jurusan']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
                     </div>

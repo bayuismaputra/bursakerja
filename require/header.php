@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="bootstrap/css/dataTables.bootstrap4.min.css">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
     <title>Bursa Kerja TI</title>
 </head>
 

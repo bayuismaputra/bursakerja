@@ -4,12 +4,18 @@
             <h5><i class="fas fa-tachometer-alt mr-2"></i> DASHBOARD</h5>
         </div>
         <div class="content">
-            <div class="lowongan">
+            <div class="container"></div>
+            <div class="row">
                 <?php
                 include('../require/kelas_lowongan.php');
+                include('../require/kelas_lamaran.php');
 
+                $lamaran = new Pelamar();
                 $tampil_lowongan = new lowongan();
-                $data_lowongan = $tampil_lowongan->GetData("JOIN perusahaan ON lowongan.id_perusahaan=perusahaan.id_perusahaan where status_lowongan='ada'");
+                $qPelamar = $lamaran->getDatapelamar($_SESSION['id_user']);
+                $resPelamar = $qPelamar->fetch();
+                $data_lowongan = $tampil_lowongan->GetData("JOIN perusahaan on lowongan.id_perusahaan=perusahaan.id_perusahaan JOIN lowongan_detail on lowongan_detail.id_lowongan=lowongan.id_lowongan JOIN jurusan on lowongan_detail.id_jurusan=jurusan.id_jurusan WHERE status_lowongan='ada' and jurusan.id_jurusan={$resPelamar['id_jurusan']}");
+
                 $no = 1;
                 while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
                 ?>
