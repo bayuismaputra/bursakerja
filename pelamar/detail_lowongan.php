@@ -21,7 +21,7 @@
                         <img src="../uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid" alt="bayu">
                     </div>
                     <div class="col-lg-9">
-                        <h5><i class="fas fa-building"></i> <?php echo $value['nama_perusahaan'] ?></h5>
+                        <h5><i class="fas fa-building"></i> <?php echo 'Nama Perusahaan : ' . $value['nama_perusahaan'] ?></h5>
                     </div>
                 </div>
         </div>

@@ -11,7 +11,8 @@
             $id_user = $_SESSION['id_user'];
             $user = new User();
             // print_r($_SESSION);
-            $profile = $user->getData("INNER JOIN pelamar WHERE user.id_user=pelamar.id_user AND user.id_user={$id_user}");
+            $profile = $user->getData("JOIN pelamar ON user.id_user=pelamar.id_user 
+            JOIN jurusan on pelamar.id_jurusan=jurusan.id_jurusan WHERE user.id_user=pelamar.id_user AND user.id_user={$id_user}");
             $row = $profile->fetch(PDO::FETCH_ASSOC);
             // print_r($row);
             if ($row['email'] == '-' || $row['alamat'] == '-' || $row['tempat_lahir'] == '-' || $row['tanggal_lahir'] == '0000-00-00' || $row['jenis_kelamin'] == '-' || $row['no_telpon'] == '-' || $row['status_nikah'] == '-' || $row['curriculum_vitae'] == '-') {
@@ -39,7 +40,7 @@
                                 <li><i class="fas fa-ring"></i>Status Nikah</li>
                                 <li><i class="fas fa-ring"></i>Nama Sekolah</li>
                                 <li><i class="fas fa-user-graduate"></i>Pendidikan</li>
-                                <li><i class="fas fa-book"></i>Jurusan</li>
+                                <li><i class="fas fa-user-graduate"></i>Jurusan</li>
                                 <li><i class="fas fa-calendar-check"></i>Tahun Lulus</li>
                                 <li><i class="fas fa-book-reader"></i>IPK</li>
                                 <li><i class="fas fa-file"></i>Curriculum Vitae</li>

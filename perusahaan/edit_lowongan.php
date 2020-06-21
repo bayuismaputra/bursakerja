@@ -122,13 +122,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group jurusan_custom">
+                        <div class="form-group jurusan_custom jurusan">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <label class="control-label" for="jurusan">Kategori Jurusan</label>
+                                    <label class="control-label" for="jurusan">Kriteria Jurusan</label>
                                 </div>
                                 <div class="col-md-10">
-                                    <?php $qry_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan DESC") ?>
+                                    <?php $qry_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan ASC") ?>
                                     <select class="customx-select selectpicker" name="jurusan[]" multiple required>
                                         <?php foreach ($qry_jurusan as $key) : ?>
                                             <option value="<?= $key['id_jurusan'] ?>"><?= $key['jurusan']; ?></option>

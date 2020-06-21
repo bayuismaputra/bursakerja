@@ -205,6 +205,21 @@ body {
 
 }
 
+.container .profil-user i {
+    margin-right: 10px;
+    opacity: 50%;
+    padding: 5px;
+    width: 30px;
+    height: auto;
+}
+
+.container .profil-user .i {
+    margin-right: 10px;
+    opacity: 0;
+    padding: 5px;
+    width: 30px;
+    height: auto;
+}
 
 .container .card {
     margin-bottom: 30px;

@@ -23,22 +23,37 @@ session_start();
                     <img src="uploud/<?php echo $value['logo_perusahaan'] ?>" class="img-fluid logo_perusahaan" alt="logo_perusahaan">
                 </div>
                 <div class="col-lg-8">
-                    <h5><i class="fas fa-building"></i><?php echo $value['nama_perusahaan'] ?></h5>
+                    <h5><i class="fas fa-building"></i><?php echo 'Nama Perusahaan : ' . $value['nama_perusahaan'] ?></h5>
                 </div>
             </div>
     </div>
     <div class="content">
         <h5>Lowongan</h5>
         <hr>
-        <ul>
-            <li><i class="fas fa-user"></i> <strong><?php echo $value['nama_lowongan'] ?></strong></li>
-            <li><i class="fas fa-building"></i> <span><?php echo $value['departemen'] ?></span></li>
-            <li><i class="fas fa-map-marker-alt"></i> <span><?php echo $value['kota'] ?></span></li>
-            <li><i class="fas fa-suitcase"></i> <?php echo $value['pengalaman_kerja'] ?></li>
-            <li><i class="far fa-calendar-plus"></i> <?php echo date("d-m-Y", strtotime($value['tanggal_buka'])) ?></li>
-            <li><i class="far fa-calendar-times"></i> <?php echo date("d-m-Y", strtotime($value['tanggal_tutup'])) ?></li>
-            <li><i class="fas fa-money-bill-wave"></i> <?php echo 'Rp. ' . $value['gaji'] ?></li>
-        </ul>
+        <div class="row profil-user">
+            <div class="col-md-3">
+                <ul>
+                    <li><i class="fas fa-user"></i>Nama Lowongan</strong></li>
+                    <li><i class="fas fa-building"></i>Departemen</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i>Kota</span></li>
+                    <li><i class="fas fa-suitcase"></i>Pengalaman Kerja</li>
+                    <li><i class="far fa-calendar-plus"></i>Tanggal Buka</li>
+                    <li><i class="far fa-calendar-times"></i>Tanggal Tutup</li>
+                    <li><i class="fas fa-money-bill-wave"></i>Gaji</li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <ul>
+                    <li><i class="fas fa-user i"></i> <strong><?php echo ': ' . $value['nama_lowongan'] ?></strong></li>
+                    <li><i class="fas fa-user i"></i> <span><?php echo ': ' . $value['departemen'] ?></span></li>
+                    <li><i class="fas fa-user i"></i> <span><?php echo ': ' . $value['kota'] ?></span></li>
+                    <li><i class="fas fa-user i"></i> <?php echo ': ' . $value['pengalaman_kerja'] ?></li>
+                    <li><i class="fas fa-user i"></i> <?php echo ': ' . date("d-m-Y", strtotime($value['tanggal_buka'])) ?></li>
+                    <li><i class="fas fa-user i"></i> <?php echo ': ' . date("d-m-Y", strtotime($value['tanggal_tutup'])) ?></li>
+                    <li><i class="fas fa-user i"></i> <?php echo ': ' . 'Rp. ' . $value['gaji'] ?></li>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="content">
         <h5>Persyaratan / Kriteria</h5>

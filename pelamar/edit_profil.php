@@ -8,11 +8,13 @@
 
                 <?php
                 require("../require/kelas_lamaran.php");
+                require("../require/kelas_lowongan.php");
 
                 $id_user = $_SESSION['id_user'];
                 $hak_akses = $_SESSION['hak_akses'];
                 $user = new User();
                 $lamaran = new Lamaran();
+                $lowongan = new Lowongan();
                 $profile = $user->getData("INNER JOIN pelamar WHERE user.id_user=pelamar.id_user AND user.id_user={$id_user}");
                 $row = $profile->fetch(PDO::FETCH_ASSOC);
 
@@ -73,7 +75,7 @@
                             }
 
                             $updt_user = $user->UpdateData($nama_lengkap, $_SESSION['username'], $id_user);
-                            $updt_user_rinci = $lamaran->updateLamaran($file_Foto, $email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $nama_sekolah, $pendidikan, $jurusan, $tahun_lulus, $ipk, $file_Cv, $id_user);
+                            $updt_user_rinci = $lamaran->updateLamaran($file_Foto, $email, $alamat, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $no_telpon, $status_nikah, $nama_sekolah, $pendidikan, $tahun_lulus, $ipk, $file_Cv, $id_user, $jurusan);
                             // die;
                             echo "<script>document.location='?menu=profil_pelamar';</script>";
                         }
@@ -221,9 +223,10 @@
                                         <select class="custom-select" name="pendidikan">
                                             <option <?= ($row['pendidikan'] == '-') ? 'selected' : '' ?> value="">Pendidikan</option>
                                             <option value="SMA/SMK/Sederajat" <?= ($row['pendidikan'] == 'SMA/SMK/Sederajat') ? 'selected' : '' ?>>SMA/SMK/Sederajat</option>
-                                            <option value="Sarjana/S1" <?= ($row['pendidikan'] == 'Sarjana/S1') ? 'selected' : '' ?>>Sarjana/S1</option>
-                                            <option value="Master/S2" <?= ($row['pendidikan'] == 'Master/S2') ? 'selected' : '' ?>>Master/S2</option>
-                                            <option value="Doktor/S3" <?= ($row['pendidikan'] == 'Doktor/S3') ? 'selected' : '' ?>>Doktor/S3</option>
+                                            <option value="Diploma" <?= ($row['pendidikan'] == 'Diploma') ? 'selected' : '' ?>>Diploma</option>
+                                            <option value="S1-Sarjana" <?= ($row['pendidikan'] == 'S1-Sarjana') ? 'selected' : '' ?>>S1-Sarjana</option>
+                                            <option value="S2-Master" <?= ($row['pendidikan'] == 'S2-Master') ? 'selected' : '' ?>>S2-Master</option>
+                                            <option value="S3-Doktor" <?= ($row['pendidikan'] == 'S3-Doktor') ? 'selected' : '' ?>>S3-Doktor</option>
                                         </select>
                                     </div>
                                 </div>
@@ -235,9 +238,19 @@
                                     </div>
                                     <div class="col-md-10">
                                         <select class="custom-select" name="jurusan">
-                                            <option <?= ($row['jurusan'] == '-') ? 'selected' : '' ?> value="">Jurusan</option>
-                                            <option value="Teknik Informatika" <?= ($row['jurusan'] == 'Teknik Informatika') ? 'selected' : '' ?>>Teknik Informatika</option>
-                                            <option value="Sistem Informasi" <?= ($row['jurusan'] == 'Sistem Informasi') ? 'selected' : '' ?>>Sistem Informasi</option>
+                                            <?php $pilih_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan ASC"); ?>
+                                            <?php
+                                            while ($roww = $pilih_jurusan->fetch()) {
+                                                if ($roww['id_jurusan'] == $row['id_jurusan']) {
+                                                    echo '
+                                                    <option value="' . $roww['id_jurusan'] . '" selected>' . $roww['jurusan'] . '</option>
+                                                    ';
+                                                } else {
+                                                    echo '<option value="' . $roww['id_jurusan'] . '">' . $roww['jurusan'] . '</option>
+                                                    ';
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
