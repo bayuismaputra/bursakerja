@@ -14,7 +14,7 @@
                 $tampil_lowongan = new lowongan();
                 $qPelamar = $lamaran->getDatapelamar($_SESSION['id_user']);
                 $resPelamar = $qPelamar->fetch();
-                $data_lowongan = $tampil_lowongan->GetData("JOIN perusahaan on lowongan.id_perusahaan=perusahaan.id_perusahaan JOIN lowongan_detail on lowongan_detail.id_lowongan=lowongan.id_lowongan JOIN jurusan on lowongan_detail.id_jurusan=jurusan.id_jurusan WHERE status_lowongan='ada' and jurusan.id_jurusan={$resPelamar['id_jurusan']}");
+                $data_lowongan = $tampil_lowongan->GetData("JOIN perusahaan on lowongan.id_perusahaan=perusahaan.id_perusahaan WHERE status_lowongan='ada'");
 
                 $no = 1;
                 while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
@@ -32,7 +32,11 @@
                                     </li>
                                     <li><i class="fas fa-briefcase"></i><?php echo $value['pengalaman_kerja'] ?></li>
                                 </ul>
-                                <a href="?menu=detail_lowongan&id_lowongan=<?php echo $value['id_lowongan'] ?>" class="btn btn-block tombol-lamar">Lamar</a>
+                                <?php
+                                $qjurusan = $tampil_lowongan->queryCustom("SELECT * FROM lowongan_detail where id_lowongan={$value['id_lowongan']} and id_jurusan={$resPelamar['id_jurusan']}");
+
+                                ?>
+                                <a href="<?= ($qjurusan->rowCount() > 0) ? '?menu=detail_lowongan&id_lowongan=' . $value['id_lowongan'] : '#' ?>" class="btn btn-block tombol-lamar" <?= ($qjurusan->rowCount() > 0) ? '' : 'onclick="alert(\'Jurusan anda tidak sesuai untuk melamar !\')"' ?>>Lamar</a>
                             </div>
                         </div>
                     </div>

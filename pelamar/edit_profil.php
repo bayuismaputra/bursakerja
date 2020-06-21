@@ -238,6 +238,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <select class="custom-select" name="jurusan">
+<<<<<<< HEAD
                                             <?php $pilih_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan ASC"); ?>
                                             <?php
                                             while ($roww = $pilih_jurusan->fetch()) {
@@ -247,6 +248,19 @@
                                                     ';
                                                 } else {
                                                     echo '<option value="' . $roww['id_jurusan'] . '">' . $roww['jurusan'] . '</option>
+=======
+                                            <option value="">Pilih Jurusan</option>
+                                            <?php
+                                            $qJ = $user->queryCustom("SELECT * from jurusan");
+                                            while ($j = $qJ->fetch()) {
+                                                if ($j['id_jurusan'] == $row['id_jurusan']) {
+                                                    echo '
+                                                    <option value="' . $j['id_jurusan'] . '" selected>' . $j['jurusan'] . '</option>
+                                                    ';
+                                                } else {
+                                                    echo '
+                                                    <option value="' . $j['id_jurusan'] . '">' . $j['jurusan'] . '</option>
+>>>>>>> refs/remotes/origin/master
                                                     ';
                                                 }
                                             }
