@@ -235,9 +235,21 @@
                                     </div>
                                     <div class="col-md-10">
                                         <select class="custom-select" name="jurusan">
-                                            <option <?= ($row['jurusan'] == '-') ? 'selected' : '' ?> value="">Jurusan</option>
-                                            <option value="Teknik Informatika" <?= ($row['jurusan'] == 'Teknik Informatika') ? 'selected' : '' ?>>Teknik Informatika</option>
-                                            <option value="Sistem Informasi" <?= ($row['jurusan'] == 'Sistem Informasi') ? 'selected' : '' ?>>Sistem Informasi</option>
+                                            <option value="">Pilih Jurusan</option>
+                                            <?php
+                                            $qJ = $user->queryCustom("SELECT * from jurusan");
+                                            while ($j = $qJ->fetch()) {
+                                                if ($j['id_jurusan'] == $row['id_jurusan']) {
+                                                    echo '
+                                                    <option value="' . $j['id_jurusan'] . '" selected>' . $j['jurusan'] . '</option>
+                                                    ';
+                                                } else {
+                                                    echo '
+                                                    <option value="' . $j['id_jurusan'] . '">' . $j['jurusan'] . '</option>
+                                                    ';
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
