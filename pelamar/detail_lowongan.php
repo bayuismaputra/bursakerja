@@ -35,7 +35,6 @@
                         <li><i class="fas fa-building"></i>Departemen</span></li>
                         <li><i class="fas fa-map-marker-alt"></i>Kota</span></li>
                         <li><i class="fas fa-suitcase"></i>Pengalaman Kerja</li>
-                        <li><i class="far fa-calendar-plus"></i>Tanggal Buka</li>
                         <li><i class="far fa-calendar-times"></i>Tanggal Tutup</li>
                         <li><i class="fas fa-money-bill-wave"></i>Gaji</li>
                     </ul>
@@ -46,7 +45,6 @@
                         <li><i class="fas fa-user i"></i> <span><?php echo ': ' . $value['departemen'] ?></span></li>
                         <li><i class="fas fa-user i"></i> <span><?php echo ': ' . $value['kota'] ?></span></li>
                         <li><i class="fas fa-user i"></i> <?php echo ': ' . $value['pengalaman_kerja'] ?></li>
-                        <li><i class="fas fa-user i"></i> <?php echo ': ' . date("d-m-Y", strtotime($value['tanggal_buka'])) ?></li>
                         <li><i class="fas fa-user i"></i> <?php echo ': ' . date("d-m-Y", strtotime($value['tanggal_tutup'])) ?></li>
                         <li><i class="fas fa-user i"></i> <?php echo ': ' . 'Rp. ' . $value['gaji'] ?></li>
                     </ul>

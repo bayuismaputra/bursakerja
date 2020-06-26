@@ -16,7 +16,7 @@
                 $departemen = $_POST['departemen'];
                 $gaji = $_POST['gaji'];
                 $kota = $_POST['kota'];
-                $tanggal_buka = $_POST['tanggal_buka'];
+                $kuota = $_POST['kuota'];
                 $tanggal_tutup = $_POST['tanggal_tutup'];
                 $pengalaman_kerja = $_POST['pengalaman_kerja'];
                 $deskripsi = $_POST['deskripsi'];
@@ -28,18 +28,18 @@
                     $res = $qcekId->fetch();
                     $id_lowongan = $res['id_lowongan'];
                 } else {
-                    $qinsert = $lowongan->queryCustom("INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `departemen`, `gaji`, `kota`, `tanggal_buka`, `tanggal_tutup`, `pengalaman_kerja`, `deskripsi`, `id_perusahaan`, `status_lowongan`, `status_pengumuman`) VALUES (NULL, '-', '-', '-', '-', '0000-00-00', '0000-00-00', '-', '-', '{$id_perusahaan}', 'ada', '0')");
+                    $qinsert = $lowongan->queryCustom("INSERT INTO `lowongan` (`id_lowongan`, `nama_lowongan`, `departemen`, `gaji`, `kota`, `kuota`, `tanggal_tutup`, `pengalaman_kerja`, `deskripsi`, `id_perusahaan`, `status_lowongan`, `status_pengumuman`) VALUES (NULL, '-', '-', '-', '-', 0, '0000-00-00', '-', '-', '{$id_perusahaan}', 'ada', '0')");
 
                     $qId = $lowongan->queryCustom("SELECT * FROM lowongan where nama_lowongan='-' and departemen='-' and gaji='-' order by id_lowongan DESC limit 1");
-                    $res = $qcekId->fetch();
+                    $res = $qId->fetch();
                     $id_lowongan = $res['id_lowongan'];
                 }
 
                 for ($i = 0; $i < count($jurusan); $i++) {
                     $lowongan->queryCustom("INSERT INTO lowongan_detail (id_lowongan,id_jurusan) VALUES ({$id_lowongan},{$jurusan[$i]})");
                 }
-
-                $qry = $lowongan->EditData($nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan);
+                $qry = $lowongan->EditData($nama_lowongan, $departemen, $gaji, $kota, $kuota, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan);
+                // die;
                 if ($qry) {
                     echo "<script language='javascript'>alert('Data berhasil disimpan'); document.location='?menu=data_lowongan&id_perusahaan={$id_perusahaan}'</script>";
                 } else {
@@ -94,10 +94,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label class="control-label" for="tanggal_buka">Tanggal Buka</label>
+                                <label class="control-label" for="kuota">Kuota</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="date" value="<?php echo date('Y-m-d') ?>" name="tanggal_buka" class="form-control" id="tanggal_buka" required>
+                                <input type="text" name="kuota" class="form-control" id="kuota" required>
                             </div>
                             <div class="col-md-2">
                                 <label class="control-label" for="tanggal_tutup">Tanggal Tutup</label>
@@ -127,13 +127,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group jurusan_custom">
+                    <div class="form-group jurusan_custom jurusan">
                         <div class="row">
                             <div class="col-md-2">
                                 <label class="control-label" for="jurusan">Kategori Jurusan</label>
                             </div>
                             <div class="col-md-10">
-                                <?php $qry_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan DESC") ?>
+                                <?php $qry_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan ASC") ?>
                                 <select class="customx-select selectpicker" name="jurusan[]" multiple required>
                                     <?php foreach ($qry_jurusan as $key) : ?>
                                         <option value="<?= $key['id_jurusan'] ?>"><?= $key['jurusan']; ?></option>

@@ -22,17 +22,19 @@
                     $data_lowongan = $lowongan->GetData("where status_lowongan='ada' AND id_perusahaan=" . $_SESSION['id_perusahaan']);
                     $no = 1;
                     while ($value = $data_lowongan->fetch(PDO::FETCH_ASSOC)) {
-                        echo ' <tr>
-                        <td align="center">' . $no . '</td>
-                        <td>' . $value['nama_lowongan'] . '</td>
-                        <td>Rp. ' . $value['gaji'] . '</td>
-                        <td>' . $value['departemen'] . '</td>
-                        <td align="center">
-                            <a href="?menu=data_kriteria&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-warning btn-sm"><i class="fas fa-clipboard-list mr-1"></i> Kriteria</a>
-                            <a href="?menu=edit_lowongan&id_lowongan=' . $value['id_lowongan'] . '" data-lowongan="' . $value['id_lowongan'] . '" class="btn btn-info btn-sm edit-lowongan"><i class="fa fa-edit mr-1"></i> Edit</a>
-                            <a href="?menu=hapus_lowongan&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Anda yakin akan menghapus lowongan ' . $value['nama_lowongan'] . '?\');"><i class="fa fa-trash mr-1"></i> Hapus</a>
-                        </td>
-                        </tr>';
+                        if ($value['nama_lowongan'] != '-') {
+                            echo ' <tr>
+                            <td align="center">' . $no . '</td>
+                            <td>' . $value['nama_lowongan'] . '</td>
+                            <td>Rp. ' . $value['gaji'] . '</td>
+                            <td>' . $value['departemen'] . '</td>
+                            <td align="center">
+                                <a href="?menu=data_kriteria&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-warning btn-sm"><i class="fas fa-clipboard-list mr-1"></i> Kriteria</a>
+                                <a href="?menu=edit_lowongan&id_lowongan=' . $value['id_lowongan'] . '" data-lowongan="' . $value['id_lowongan'] . '" class="btn btn-info btn-sm edit-lowongan"><i class="fa fa-edit mr-1"></i> Edit</a>
+                                <a href="?menu=hapus_lowongan&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Anda yakin akan menghapus lowongan ' . $value['nama_lowongan'] . '?\');"><i class="fa fa-trash mr-1"></i> Hapus</a>
+                            </td>
+                            </tr>';
+                        }
                         $no++;
                     }
                     ?>

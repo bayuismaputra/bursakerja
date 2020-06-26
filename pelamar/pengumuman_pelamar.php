@@ -22,7 +22,7 @@
                         <tr>
                             <th>No.</th>
                             <th>PELAMAR</th>
-                            <th>NILAI</th>
+                            <th>HASIL</th>
                         </tr>
                     </thead>
                     <?php
@@ -39,11 +39,24 @@
                     $data_nilai = $bursaKerja->queryCustom("SELECT * FROM `ranking` JOIN pelamar on pelamar.id_pelamar=ranking.id_pelamar JOIN user ON user.id_user=pelamar.id_user JOIN lowongan ON lowongan.id_lowongan=ranking.id_lowongan WHERE ranking.id_lowongan={$id_lowongan} ORDER BY ranking.nilai_akhir DESC");
                     $no = 1;
                     while ($value = $data_nilai->fetch(PDO::FETCH_ASSOC)) {
-                        echo ' <tr>
-                        <td align="center">' . $no . '</td>
-                        <td>' . $value['nama_lengkap'] . '</td>
-                        <td align="center">' . $value['nilai_akhir'] . '</td>
-                        </tr>';
+                    ?>
+                        <tr>
+                            <td align="center"><?php echo $no ?></td>
+                            <td><?php echo $value['nama_lengkap'] ?></td>
+                            <td align="center">
+                                <?php
+                                $qR = $lowongan->queryCustom("SELECT status from ranking where id_pelamar={$value['id_pelamar']}");
+                                $resR = $qR->fetch();
+                                // var_ dump($resR['status']);
+                                if ($resR['status'] == '1') {
+                                    echo "<span class='badge badge-success'>Diterima<span>";
+                                } else {
+                                    echo "<span class='badge badge-danger'>Tidak Diterima<span>";
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                    <?php
                         $no++;
                     }
                     ?>

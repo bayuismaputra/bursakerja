@@ -9,7 +9,7 @@
                 <?php
                 require("../require/kelas_lamaran.php");
                 require("../require/kelas_lowongan.php");
-
+                $thn_lulus = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020];
                 $id_user = $_SESSION['id_user'];
                 $hak_akses = $_SESSION['hak_akses'];
                 $user = new User();
@@ -238,7 +238,6 @@
                                     </div>
                                     <div class="col-md-10">
                                         <select class="custom-select" name="jurusan">
-<<<<<<< HEAD
                                             <?php $pilih_jurusan = $lowongan->queryCustom("SELECT * From jurusan ORDER BY jurusan ASC"); ?>
                                             <?php
                                             while ($roww = $pilih_jurusan->fetch()) {
@@ -248,19 +247,6 @@
                                                     ';
                                                 } else {
                                                     echo '<option value="' . $roww['id_jurusan'] . '">' . $roww['jurusan'] . '</option>
-=======
-                                            <option value="">Pilih Jurusan</option>
-                                            <?php
-                                            $qJ = $user->queryCustom("SELECT * from jurusan");
-                                            while ($j = $qJ->fetch()) {
-                                                if ($j['id_jurusan'] == $row['id_jurusan']) {
-                                                    echo '
-                                                    <option value="' . $j['id_jurusan'] . '" selected>' . $j['jurusan'] . '</option>
-                                                    ';
-                                                } else {
-                                                    echo '
-                                                    <option value="' . $j['id_jurusan'] . '">' . $j['jurusan'] . '</option>
->>>>>>> refs/remotes/origin/master
                                                     ';
                                                 }
                                             }
@@ -275,10 +261,20 @@
                                         <label class="control-label" for="tahun_lulus">Tahun Lulus</label>
                                     </div>
                                     <div class="col-md-10">
+
                                         <select class="custom-select" name="tahun_lulus">
-                                            <option <?= ($row['tahun_lulus'] == '-') ? 'selected' : '' ?> value="">Tahun Lulus</option>
-                                            <option value="2020" <?= ($row['tahun_lulus'] == '2020') ? 'selected' : '' ?>>2020</option>
-                                            <option value="2019" <?= ($row['tahun_lulus'] == '2019') ? 'selected' : '' ?>>2019</option>
+                                            <?php
+                                            foreach (array_reverse($thn_lulus, true) as $thn) {
+                                                if ($thn == $row['tahun_lulus']) {
+                                                    echo '
+                                                    <option value="' . $thn . '" selected>' . $thn . '</option>
+                                                    ';
+                                                } else {
+                                                    echo '<option value="' . $thn . '">' . $thn . '</option>
+                                                    ';
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>

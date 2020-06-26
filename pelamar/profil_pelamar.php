@@ -11,11 +11,10 @@
             $id_user = $_SESSION['id_user'];
             $user = new User();
             // print_r($_SESSION);
-            $profile = $user->getData("JOIN pelamar ON user.id_user=pelamar.id_user 
-            JOIN jurusan on pelamar.id_jurusan=jurusan.id_jurusan WHERE user.id_user=pelamar.id_user AND user.id_user={$id_user}");
-            $row = $profile->fetch(PDO::FETCH_ASSOC);
-            // print_r($row);
-            if ($row['email'] == '-' || $row['alamat'] == '-' || $row['tempat_lahir'] == '-' || $row['tanggal_lahir'] == '0000-00-00' || $row['jenis_kelamin'] == '-' || $row['no_telpon'] == '-' || $row['status_nikah'] == '-' || $row['curriculum_vitae'] == '-') {
+            $profile = $user->getData("JOIN pelamar ON pelamar.id_user=user.id_user WHERE user.id_user={$id_user}");
+            $row = $profile->fetch();
+            // var_dump($_SESSION);
+            if ($row['foto_pelamar'] == '-' || $row['email'] == '-' || $row['alamat'] == '-' || $row['tempat_lahir'] == '-' || $row['tanggal_lahir'] == '0000-00-00' || $row['jenis_kelamin'] == '-' || $row['no_telpon'] == '-' || $row['status_nikah'] == '-' || $row['nama_sekolah'] == '-' || $row['pendidikan'] == '-' || $row['id_jurusan'] == '0' || $row['tahun_lulus'] == '-' || $row['ipk'] == '-' || $row['curriculum_vitae'] == '-') {
                 echo '
                 <div class="alert alert-warning" role="alert">
                     Lengkapi Data Profil Anda
@@ -58,7 +57,17 @@
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['status_nikah'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['nama_sekolah'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['pendidikan'] ?></li>
-                                <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['jurusan'] ?></li>
+                                <li><i class="fas fa-user i"></i>
+                                    <?php
+                                    if ($row['id_jurusan'] == 0) {
+                                        echo ": -";
+                                    } else {
+                                        $qJ = $user->queryCustom("SELECT jurusan from jurusan where id_jurusan={$row['id_jurusan']}");
+                                        $resJ = $qJ->fetch();
+                                        echo ": " . $resJ['jurusan'];
+                                    }
+                                    ?>
+                                </li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['tahun_lulus'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['ipk'] ?></li>
                                 <li><i class="fas fa-user i"></i> <?php echo ': ' . $row['curriculum_vitae'] ?></li>

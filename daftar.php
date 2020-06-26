@@ -43,7 +43,7 @@
                     if ($qry) {
                         // simpan detail data berdasarkan hak akses
                         if ($hak_akses == "pelamar") {
-                            $insert_pelamar = $pelamar->InsertData('-', '-', '-', '0000-00-00', '-', '-', '-', '-', '-', '-', '-', '-', '-', $id_user);
+                            $insert_pelamar = $pelamar->InsertData('-', '-', '-', '-', '0000-00-00', '-', '-', '-', '-', '-', '-', '-', '-', $id_user, 0);
                         } else if ($hak_akses == "perusahaan") {
                             $insert_perusahaan = $perusahaan->InsertData($id_user, '-', '-', '-', 'default.png', '-');
                         }

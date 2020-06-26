@@ -9,9 +9,9 @@ class Lowongan extends Bursakerja
     function __construct()
     {
         try {
-            $this->sqlInsert = $this->bukaKoneksi()->prepare("insert INTO `lowongan` VALUES (NULL, :nama_lowongan, :departemen, :gaji, :kota, :tanggal_buka, :tanggal_tutup, :pengalaman_kerja, :deskripsi, :id_perusahaan, 'ada', '0')");
+            $this->sqlInsert = $this->bukaKoneksi()->prepare("insert INTO `lowongan` VALUES (NULL, :nama_lowongan, :departemen, :gaji, :kota, :kuota, :tanggal_tutup, :pengalaman_kerja, :deskripsi, :id_perusahaan, 'ada', '0')");
             $this->sqlHapus = $this->bukaKoneksi()->prepare("UPDATE lowongan SET status_lowongan = 'tidak ada' where id_lowongan=:id_lowongan");
-            $this->sqlEdit = $this->bukaKoneksi()->prepare("UPDATE lowongan SET nama_lowongan=:nama_lowongan, departemen=:departemen, gaji=:gaji, kota=:kota, tanggal_buka=:tanggal_buka, tanggal_tutup=:tanggal_tutup, pengalaman_kerja=:pengalaman_kerja, deskripsi=:deskripsi where id_lowongan=:id_lowongan");
+            $this->sqlEdit = $this->bukaKoneksi()->prepare("UPDATE lowongan SET nama_lowongan=:nama_lowongan, departemen=:departemen, gaji=:gaji, kota=:kota, kuota=:kuota, tanggal_tutup=:tanggal_tutup, pengalaman_kerja=:pengalaman_kerja, deskripsi=:deskripsi where id_lowongan=:id_lowongan");
             $this->sqlUmumkan = $this->bukaKoneksi()->prepare("update lowongan set pengumuman=:pengumuman where id_lowongan=:id_lowongan");
         } catch (PDOException $e) {
             print $e->getMessage();
@@ -29,14 +29,14 @@ class Lowongan extends Bursakerja
         }
     }
 
-    function InsertData($id_perusahaan, $nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi)
+    function InsertData($id_perusahaan, $nama_lowongan, $departemen, $gaji, $kota, $kuota, $tanggal_tutup, $pengalaman_kerja, $deskripsi)
     {
         try {
             $this->sqlInsert->bindParam(':nama_lowongan', $nama_lowongan);
             $this->sqlInsert->bindParam(':departemen', $departemen);
             $this->sqlInsert->bindParam(':gaji', $gaji);
             $this->sqlInsert->bindParam(':kota', $kota);
-            $this->sqlInsert->bindParam(':tanggal_buka', $tanggal_buka);
+            $this->sqlInsert->bindParam(':kuota', $kuota);
             $this->sqlInsert->bindParam(':tanggal_tutup', $tanggal_tutup);
             $this->sqlInsert->bindParam(':pengalaman_kerja', $pengalaman_kerja);
             $this->sqlInsert->bindParam(':deskripsi', $deskripsi);
@@ -59,14 +59,14 @@ class Lowongan extends Bursakerja
         }
     }
 
-    function EditData($nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan)
+    function EditData($nama_lowongan, $departemen, $gaji, $kota, $kuota, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan)
     {
         try {
             $this->sqlEdit->bindParam(':nama_lowongan', $nama_lowongan);
             $this->sqlEdit->bindParam(':departemen', $departemen);
             $this->sqlEdit->bindParam(':gaji', $gaji);
             $this->sqlEdit->bindParam(':kota', $kota);
-            $this->sqlEdit->bindParam(':tanggal_buka', $tanggal_buka);
+            $this->sqlEdit->bindParam(':kuota', $kuota);
             $this->sqlEdit->bindParam(':tanggal_tutup', $tanggal_tutup);
             $this->sqlEdit->bindParam(':pengalaman_kerja', $pengalaman_kerja);
             $this->sqlEdit->bindParam(':deskripsi', $deskripsi);

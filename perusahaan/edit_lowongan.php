@@ -14,7 +14,7 @@
                 $departemen = $_POST['departemen'];
                 $gaji = $_POST['gaji'];
                 $kota = $_POST['kota'];
-                $tanggal_buka = $_POST['tanggal_buka'];
+                $kuota = $_POST['kuota'];
                 $tanggal_tutup = $_POST['tanggal_tutup'];
                 $pengalaman_kerja = $_POST['pengalaman_kerja'];
                 $deskripsi = $_POST['deskripsi'];
@@ -30,7 +30,7 @@
                     $lowongan->queryCustom("DELETE from lowongan_detail where id_lowongan={$id_lowongan}");
                 }
 
-                $qry = $lowongan->EditData($nama_lowongan, $departemen, $gaji, $kota, $tanggal_buka, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan);
+                $qry = $lowongan->EditData($nama_lowongan, $departemen, $gaji, $kota, $kuota, $tanggal_tutup, $pengalaman_kerja, $deskripsi, $id_lowongan);
                 if ($qry) {
                     echo "<script language='javascript'>alert('Data berhasil diedit'); document.location='?menu=data_lowongan&id_perusahaan={$id_perusahaan}'</script>";
                 } else {
@@ -89,13 +89,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <label class="control-label" for="tanggal_buka">Tanggal Buka</label>
+                                    <label class="control-label" for="kuota">Kuota</label>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="date" name="tanggal_buka" value="<?php echo $value['tanggal_buka'] ?>" class="form-control" id="tanggal_buka" required>
+                                    <input type="text" name="kuota" value="<?php echo $value['kuota'] ?>" class="form-control" id="kuota" required>
                                 </div>
                                 <div class="col-md-2">
-                                    <label class="control-label" for="tanggal_buka">Tanggal Buka</label>
+                                    <label class="control-label" for="tanggal_tutup">Tanggal Tutup</label>
                                 </div>
                                 <div class="col-md-4">
                                     <input type="date" name="tanggal_tutup" value="<?php echo $value['tanggal_tutup'] ?>" class="form-control" id="tanggal_tutup" required>

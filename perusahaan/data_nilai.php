@@ -15,6 +15,8 @@
                 $Ckriteria = new Kriteria();
                 $bursaKerja = new Bursakerja();
 
+                $kuota = 0;
+
                 $pilih_lowongan = $lowongan->GetData("where status_lowongan='ada' AND id_perusahaan=" . $_SESSION['id_perusahaan']);
                 ?>
                 <div class="col-lg-12 pilih-lowongan">
@@ -24,9 +26,10 @@
                             <select class="custom-select" name="id_lowongan" id="inputGroupSelect04" aria-label="Example select with button addon">
                                 <?php
                                 while ($row = $pilih_lowongan->fetch()) {
-                                    if ($_POST) {
-                                        if ($row['id_lowongan'] == $_POST['id_lowongan']) {
+                                    if ($_GET) {
+                                        if ($row['id_lowongan'] == $_GET['id_lowongan']) {
                                             echo "<option value='$row[id_lowongan]' selected>$row[nama_lowongan]</option>";
+                                            $kuota = $row['kuota'];
                                         } else {
                                             echo "<option value='$row[id_lowongan]'>$row[nama_lowongan]</option>";
                                         }
@@ -44,6 +47,7 @@
                 </div>
             </div>
         </div>
+        <!-- <?= $kuota ?> -->
         <div class="content">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="dataTables">
@@ -69,11 +73,19 @@
                     // var_dump($data_nilai);
                     $no = 1;
                     while ($value = $data_nilai->fetch(PDO::FETCH_ASSOC)) {
-                        echo ' <tr>
-                        <td align="center">' . $no . '</td>
-                        <td>' . $value['nama_lengkap'] . '</td>
-                        <td align="center"><a href="?menu=penilaian_kriteria&id_pelamar=' . $value['id_pelamar'] . '&id_lowongan=' . $value['id_lowongan'] . '" class="btn btn-success tombol-penilaian btn-sm"><i class="fas fa-book-open mr-1"></i> Penilain</a></td>
-                        </tr>';
+                    ?>
+                        <tr>
+                            <td align="center"><?php echo $no ?></td>
+                            <td><?php echo $value['nama_lengkap'] ?></td>
+                            <td align="center">
+                                <?php
+                                $qR = $lowongan->queryCustom("SELECT nilai from lamaran where id_lowongan={$value['id_lowongan']} AND id_pelamar={$value['id_pelamar']} ");
+                                $resR = $qR->fetch();
+                                ?>
+                                <a href="?menu=penilaian_kriteria&id_pelamar=<?= $value['id_pelamar']  ?>&id_lowongan=<?= $value['id_lowongan'] ?>" class="btn <?= ($resR['nilai'] == 0) ? 'btn-secondary' : 'btn-success' ?> btn-sm"><i class="fas fa-book-open mr-1"></i> Penilain</a>
+                            </td>
+                        </tr>
+                    <?php
                         $no++;
                     }
                     ?>
@@ -287,6 +299,23 @@
                 return $a['nilai'] <=> $b['nilai'];
             });
 
+            // var_dump(array_reverse($nilai_v));
+            // die;
+            // simpan Rank ke database
+            foreach (array_reverse($nilai_v) as $row) {
+                $status = 0;
+                $qryCustom = $bursaKerja->queryCustom("SELECT * FROM ranking WHERE id_pelamar={$row['id_pelamar']} AND id_lowongan={$id_lowongan}");
+                if ($kuota > 0) {
+                    $status = 1;
+                    $kuota--;
+                }
+                // echo $status . "-:-";
+                if ($qryCustom->rowCount() > 0) {
+                    $q = $bursaKerja->queryCustom("UPDATE `ranking` SET `nilai_akhir` = '{$row['nilai']}', `status` = '{$status}' WHERE `id_pelamar`={$row['id_pelamar']} AND `id_lowongan`={$id_lowongan}");
+                } else {
+                    $q = $bursaKerja->queryCustom("INSERT INTO `ranking`(`id_pelamar`, `id_lowongan`, `nilai_akhir`,`status`) VALUES ({$row['id_pelamar']},{$id_lowongan},{$row['nilai']},{$status})");
+                }
+            }
             ?>
 
             <!-- rekomendasi -->
@@ -299,6 +328,7 @@
                                 <th>No.</th>
                                 <th>PELAMAR</th>
                                 <th>PREFERENSI</th>
+                                <th>STATUS</th>
                             </tr>
                         </thead>
                         <?php
@@ -306,11 +336,25 @@
                         // // menentukan Rangking V
                         $rank = 1;
                         foreach (array_reverse($nilai_v) as $v) {
+                            // var_dump($v);
+                            // die;
                         ?>
                             <tr>
                                 <td align="center"><?= $rank ?></td>
                                 <td><?= $v['nama_pelamar'] ?></td>
                                 <td class="text-center"><?= round($v['nilai'], 2) ?></td>
+                                <td class="text-center">
+                                    <?php
+                                    $qR = $lowongan->queryCustom("SELECT status from ranking where id_pelamar={$v['id_pelamar']}");
+                                    $resR = $qR->fetch();
+                                    // var_ dump($resR['status']);
+                                    if ($resR['status'] == '1') {
+                                        echo "<span class='badge badge-success'>Diterima<span>";
+                                    } else {
+                                        echo "<span class='badge badge-danger'>Tidak Diterima<span>";
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                         <?php
                             $rank++;
@@ -322,15 +366,5 @@
     </div>
 </div>
 <?php
-
-            // simpan Rank ke database
-            foreach ($nilai_v as $row) {
-                $qryCustom = $bursaKerja->queryCustom("SELECT * FROM ranking WHERE id_pelamar={$row['id_pelamar']} AND id_lowongan={$id_lowongan}");
-                if ($qryCustom->rowCount() > 0) {
-                    $q = $bursaKerja->queryCustom("UPDATE `ranking` SET `nilai_akhir`={$row['nilai']} WHERE `id_pelamar`={$row['id_pelamar']} AND `id_lowongan`={$id_lowongan}");
-                } else {
-                    $q = $bursaKerja->queryCustom("INSERT INTO `ranking`(`id_pelamar`, `id_lowongan`, `nilai_akhir`) VALUES ({$row['id_pelamar']},{$id_lowongan},{$row['nilai']})");
-                }
-            }
         }
 ?>
