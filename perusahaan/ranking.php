@@ -66,7 +66,7 @@
                     } else {
                         $id_lowongan = "kosong";
                     }
-                    $data_nilai = $bursaKerja->queryCustom("SELECT * FROM `ranking` JOIN pelamar on pelamar.id_pelamar=ranking.id_pelamar JOIN user ON user.id_user=pelamar.id_user JOIN lowongan ON lowongan.id_lowongan=ranking.id_lowongan WHERE ranking.id_lowongan={$id_lowongan} ORDER BY ranking.nilai_akhir DESC");
+                    $data_nilai = $bursaKerja->queryCustom("SELECT * FROM `ranking` JOIN pelamar on pelamar.id_pelamar=ranking.id_pelamar JOIN user ON user.id_user=pelamar.id_user JOIN lowongan ON lowongan.id_lowongan=ranking.id_lowongan WHERE ranking.id_lowongan={$id_lowongan} ORDER BY ranking.nilai_akhir DESC, ranking.status DESC");
                     $no = 1;
                     while ($value = $data_nilai->fetch(PDO::FETCH_ASSOC)) {
                     ?>

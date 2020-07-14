@@ -37,7 +37,7 @@
                                     <?php
                                     if ($row['status_pengumuman'] == 1) {
                                         echo '
-                                        <a href="?menu=pengumuman_pelamar&id_lowongan=' . $row['id_lowongan'] . '" class="btn btn-info btn-sm tombol-pengumuman"><i class="fa fa-edit"></i> Pengumuman</a>
+                                        <a href="?menu=pengumuman_pelamar&id_lowongan=' . $row['id_lowongan'] . '&id_user=' . $_SESSION['id_user'] . '" class="btn btn-info btn-sm tombol-pengumuman"><i class="fa fa-edit"></i> Pengumuman</a>
                                         ';
                                     } else {
                                         echo '
