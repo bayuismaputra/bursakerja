@@ -70,6 +70,9 @@ if (isset($_GET['menu'])) {
 	if ($menu == "penilaian_kriteria") {
 		include "penilaian_kriteria.php";
 	}
+	if ($menu == "cek_penilaian_kriteria") {
+		include "cek_penilaian_kriteria.php";
+	}
 	if ($menu == "profil_perusahaan") {
 		include "../perusahaan/profil_perusahaan.php";
 	}

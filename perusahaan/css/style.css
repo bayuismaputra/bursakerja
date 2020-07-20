@@ -91,7 +91,7 @@ body {
 
 .sidebar {
   position: fixed;
-  top: 70px;
+  top: 22px;
   left: 0;
   width: 280px;
   height: 100%;
@@ -153,8 +153,6 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.05),
     0 3px 7px rgba(0, 0, 0, 0.05);
 }
-
-
 
 .main-container .judul-content .pilih-lowongan {
   width: 300px;
@@ -227,7 +225,6 @@ body {
   background: #f5f5f5;
   width: 1000px;
   height: auto;
-
 }
 
 .main-container .content .tidak_diterima {
@@ -238,7 +235,6 @@ body {
   background: #f5f5f5;
   width: 1000px;
   height: auto;
-
 }
 
 .main-container .content .jurusan button {

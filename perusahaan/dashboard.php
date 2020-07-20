@@ -55,7 +55,9 @@ require('../require/koneksi.php'); ?>
             <script>
                 // Call the dataTables jQuery plugin
                 $(document).ready(function() {
-                    $('#dataTables').DataTable();
+                    $('.dataTables').each(function() {
+                        $(this).DataTable();
+                    });
                 });
 
                 // javascript menampilkan nama file pada componen input file

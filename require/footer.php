@@ -29,6 +29,12 @@
             $('#dataTable').DataTable();
         });
     </script>
+    <script>
+        // Call the dataTables jQuery plugin
+        $(document).ready(function() {
+            $('#data').DataTable();
+        });
+    </script>
     </body>
 
     </html>

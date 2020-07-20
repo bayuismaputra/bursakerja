@@ -46,7 +46,7 @@
         </div>
         <div class="content">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTables">
+                <table class="table table-bordered table-hover dataTables" id="dataTables">
                     <thead class="tabel" align="center">
                         <tr>
                             <th>No.</th>

@@ -50,7 +50,7 @@
         <!-- <?= $kuota ?> -->
         <div class="content">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTables">
+                <table class="table table-bordered table-hover dataTables" id="dataTables">
                     <thead class="tabel" align="center">
                         <tr>
                             <th>No.</th>
@@ -154,7 +154,7 @@
                     }
                     ?>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" id="dataTables">
+                        <table class="table table-bordered table-hover dataTables" id="data">
                             <h5 class="mb-3">KRITERIA</h5>
                             <thead class="tabel" align="center">
                                 <tr>
@@ -182,7 +182,7 @@
                 <!-- A -->
                 <div class="content">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" id="dataTables">
+                        <table class="table table-bordered table-hover dataTables" id="dataTables">
                             <h5 class="mb-3">NILAI PELAMAR</h5>
                             <thead class="tabel" align="center">
                                 <tr>
@@ -234,7 +234,7 @@
                 <!-- R -->
                 <div class="content">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" id="dataTables">
+                        <table class="table table-bordered table-hover dataTables" id="dataTables">
                             <h5 class="mb-3">NILAI R</h5>
                             <thead class="tabel" align="center">
                                 <tr>
@@ -367,7 +367,7 @@
                 <!-- rekomendasi -->
                 <div class="content">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" id="dataTables">
+                        <table class="table table-bordered table-hover dataTables" id="dataTables">
                             <h5 class="mb-3">NILAI PREFERENSI</h5>
                             <thead class="tabel" align="center">
                                 <tr>
@@ -390,17 +390,16 @@
                                         <?php
                                         $qR = $lowongan->queryCustom("SELECT * from ranking where id_pelamar={$value['id_pelamar']}");
                                         $resR = $qR->fetch();
-                                        // var_dump($resR['status']);
+                                        // var_dump($resR);
                                         if ($resR['status'] == '1') {
                                             echo "<span class='badge badge-success'>Diterima<span>";
                                         } else if ($resR['status'] == '-') {
                                         ?>
-                                            <form action="" method="get">
-                                                <input type="hidden" name="menu" value="<?= $_GET['menu'] ?>">
-                                                <input type="hidden" name="id_lowongan" value="<?= $_GET['id_lowongan'] ?>">
-                                                <input type="hidden" name="id" value="<?= $resR['id_ranking'] ?>">
-                                                <button type="submit" class="btn btn-success" name='action' value="konfirmasi">Terima</button>
-                                            </form>
+                                            <?php
+                                            $qR = $lowongan->queryCustom("SELECT nilai from lamaran where id_lowongan={$value['id_lowongan']} AND id_pelamar={$value['id_pelamar']} ");
+                                            $resR = $qR->fetch();
+                                            ?>
+                                            <a href="?menu=cek_penilaian_kriteria&id_pelamar=<?= $value['id_pelamar']  ?>&id_lowongan=<?= $value['id_lowongan'] ?>&id=<?= $resR[0] ?>" class="btn <?= ($resR['nilai'] == 0) ? 'btn-secondary' : 'btn-success' ?> btn-sm"><i class="fas fa-book-open mr-1"></i> Cek Penilain</a>
                                         <?php
                                         } else {
                                             echo "<span class='badge badge-danger'>Tidak Diterima<span>";
@@ -429,7 +428,7 @@
     <!-- rekomendasi -->
     <div class="content">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="dataTables">
+            <table class="table table-bordered table-hover dataTables" id="dataTables">
                 <h5 class="mb-3">NILAI PREFERENSI</h5>
                 <thead class="tabel" align="center">
                     <tr>
@@ -457,12 +456,11 @@
                                 echo "<span class='badge badge-success'>Diterima<span>";
                             } else if ($resR['status'] == '-') {
                             ?>
-                                <form action="" method="get">
-                                    <input type="hidden" name="menu" value="<?= $_GET['menu'] ?>">
-                                    <input type="hidden" name="id_lowongan" value="<?= $_GET['id_lowongan'] ?>">
-                                    <input type="hidden" name="id" value="<?= $resR['id_ranking'] ?>">
-                                    <button type="submit" class="btn btn-success" name='action' value="konfirmasi">Konfirmasi</button>
-                                </form>
+                                <?php
+                                $qR = $lowongan->queryCustom("SELECT nilai from lamaran where id_lowongan={$value['id_lowongan']} AND id_pelamar={$value['id_pelamar']} ");
+                                $resR = $qR->fetch();
+                                ?>
+                                <a href="?menu=cek_penilaian_kriteria&id_pelamar=<?= $value['id_pelamar']  ?>&id_lowongan=<?= $value['id_lowongan'] ?>&id=<?= $resR['id_ranking'] ?>" class="btn <?= ($resR['nilai'] == 0) ? 'btn-secondary' : 'btn-success' ?> btn-sm"><i class="fas fa-book-open mr-1"></i> Cek Penilain</a>
                             <?php
                             } else {
                                 echo "<span class='badge badge-danger'>Tidak Diterima<span>";
